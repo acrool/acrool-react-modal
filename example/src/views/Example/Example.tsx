@@ -1,4 +1,4 @@
-import {modal} from '@acrool/react-modal';
+import {modal, EVisible} from '@acrool/react-modal';
 import AcroolTable from '@acrool/react-table';
 import {useState} from 'react';
 
@@ -8,7 +8,8 @@ import CreateTaskModal from '../../viewModal/CreateTaskModal/CreateTaskModal';
 
 const Example = () => {
 
-    const [isVisibleModal, setVisibleModal] = useState(false);
+    // const [visible, setVisible] = useState<EVisible>(EVisible.none);
+    const [visible, setVisible] = useState<boolean>(false);
 
     return <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start', width: '100%'}}>
 
@@ -30,7 +31,7 @@ const Example = () => {
                         //     <Card title="Create Modal" direction="column" children={<div>test</div>}/>
                         // );
 
-                        setVisibleModal(true);
+                        setVisible(EVisible.visible);
                         // setTimeout(() => modal.hiddenAll(), 3000);
                     },
                     field: {
@@ -42,7 +43,18 @@ const Example = () => {
         />
 
 
-        {<CreateTaskModal isVisible={isVisibleModal} onClose={() => setVisibleModal(false)}/>}
+        {/*<CreateTaskModal*/}
+        {/*    onClose={() => setVisible(EVisible.none)}*/}
+        {/*/>*/}
+
+        {visible &&
+            <CreateTaskModal
+                onClose={() => {
+                    console.log('close');
+                    setVisible(false);
+                }}
+            />
+        }
 
 
 

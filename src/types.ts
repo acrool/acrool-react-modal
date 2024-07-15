@@ -7,7 +7,11 @@ export interface IRow {
     children: ReactNode,
 }
 
-
+export enum EVisible {
+    hidden= 'hidden',
+    visible = 'visible',
+    none= 'none',
+}
 
 export interface IModal {
     show: TShow
@@ -30,5 +34,8 @@ export interface IModalProps {
     isVisibleQueueKey?: boolean
     motionVariants?: Variants
     children: ReactNode
-    isVisible: boolean
+    // visible: EVisible
+    visible: boolean
+    onChangeVisible?: () => void
+    onExitComplete?: () => void
 }

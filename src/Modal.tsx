@@ -1,21 +1,16 @@
 import ReactPortal from '@acrool/react-portal';
-import {removeFind} from 'bear-jsutils/array';
 import {AnimatePresence} from 'framer-motion';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 
 import {rootId} from './config';
 import styles from './modal.module.scss';
 import ModalWrapper from './ModalWrapper';
-import {IModal, IModalProps, IRow, THidden, THiddenAll, TShow} from './types';
+import {IModalProps} from './types';
 
 
 /**
  * Global var
  */
-export let modal: IModal;
-
-export const defaultKey = 'globalModal';
-
 const Modal = (props: IModalProps) => {
 
     /**
@@ -23,11 +18,10 @@ const Modal = (props: IModalProps) => {
      */
     const renderModal = () => {
 
-        if(!props.isVisible){
+        if(!props.visible){
             return null;
         }
         return <ModalWrapper
-            // onExitComplete={hidden}
             isVisibleQueueKey={props.isVisibleQueueKey}
             motionVariants={props.motionVariants}
         >
@@ -35,12 +29,24 @@ const Modal = (props: IModalProps) => {
         </ModalWrapper>;
     };
 
+
+    /**
+     *
+     */
+    // const handleHidden = () => {
+    //     setMainVisible(false);
+    // };
+
+    // if(!isMainVisible){
+    //     return null;
+    // }
+
     return (
         <ReactPortal
             id={props.id || rootId}
             className={styles.root}
         >
-            <AnimatePresence>
+            <AnimatePresence onExitComplete={props.onExitComplete}>
                 {renderModal()}
             </AnimatePresence>
         </ReactPortal>

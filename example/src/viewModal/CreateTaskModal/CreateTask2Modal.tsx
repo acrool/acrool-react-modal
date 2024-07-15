@@ -6,6 +6,7 @@ import Card from '../../components/Card';
 import {EVisible} from "../../../../src";
 
 interface IProps {
+    isVisible: boolean,
     onClose: () => void,
 }
 
@@ -16,42 +17,38 @@ const modalVariantsItem = {
     hidden: {opacity: 0, transform: 'scale(0)'},
 };
 
-const CreateTaskModal = ({
+const CreateTask2Modal = ({
+    isVisible,
     onClose
 }: IProps) => {
 
-    // const [visible, setVisible] = useState<EVisible>(EVisible.hidden);
-    const [visible, setVisible] = useState<boolean>(true);
+    const [visible, setVisible] = useState<EVisible>(EVisible.initial);
 
 
     return <>
-        {/*<div>visible: {String(visible)}</div>*/}
+        <div>isVisible: {String(isVisible)}</div>
 
         <ReactModal
-            id="portal1"
+            id="portal2"
             motionVariants={modalVariantsItem}
             visible={visible}
-            // onChangeVisible={() => setVisible(1)}
-            onExitComplete={onClose}
+            onChangeVisible={() => setVisible(1)}
         >
             <CreateTaskModalRoot>
                 <Card title="Create Modal" direction="column">
-                    <div>Test content</div>
+                    <div>Test content 2</div>
                 </Card>
 
-                <button type="button" onClick={() => setVisible(false)}>X</button>
-                {/*<button type="button" onClick={() => setVisible(EVisible.visible)}>Open2Modal</button>*/}
+                <button type="button" onClick={onClose}>X</button>
 
             </CreateTaskModalRoot>
         </ReactModal>
 
 
-        {/*<CreateTask2Modal isVisible={isVisible2Modal} onClose={() => setVisible2Modal(false)}/>*/}
-
     </>;
 };
 
-export default CreateTaskModal;
+export default CreateTask2Modal;
 
 
 

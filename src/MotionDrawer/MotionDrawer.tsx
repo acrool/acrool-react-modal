@@ -6,7 +6,7 @@ import styles from './motion-drawer.module.scss';
 
 
 const spring = {
-    damping: 1,
+    damping: .2,
 };
 
 const maskVariantsItem = {
