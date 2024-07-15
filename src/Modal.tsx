@@ -1,6 +1,6 @@
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React, {useState} from 'react';
+import React from 'react';
 
 import {rootId} from './config';
 import styles from './modal.module.scss';
@@ -18,7 +18,7 @@ const Modal = (props: IModalProps) => {
      */
     const renderModal = () => {
 
-        if(!props.visible){
+        if(!props.isVisible){
             return null;
         }
         return <ModalWrapper
@@ -29,17 +29,6 @@ const Modal = (props: IModalProps) => {
         </ModalWrapper>;
     };
 
-
-    /**
-     *
-     */
-    // const handleHidden = () => {
-    //     setMainVisible(false);
-    // };
-
-    // if(!isMainVisible){
-    //     return null;
-    // }
 
     return (
         <ReactPortal

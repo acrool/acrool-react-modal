@@ -1,12 +1,10 @@
-import ReactModal from '@acrool/react-modal';
-import {useState} from 'react';
+import ReactModal, {useModal} from '@acrool/react-modal';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
-import {EVisible} from "../../../../src";
 
 interface IProps {
-    onClose: () => void,
+    onExitComplete: () => void,
 }
 
 
@@ -17,11 +15,12 @@ const modalVariantsItem = {
 };
 
 const CreateTaskModal = ({
-    onClose
+    onExitComplete
 }: IProps) => {
 
     // const [visible, setVisible] = useState<EVisible>(EVisible.hidden);
-    const [visible, setVisible] = useState<boolean>(true);
+    // const [visible, setVisible] = useState<boolean>(true);
+    const {isVisible, onClose} = useModal();
 
 
     return <>
@@ -30,16 +29,15 @@ const CreateTaskModal = ({
         <ReactModal
             id="portal1"
             motionVariants={modalVariantsItem}
-            visible={visible}
-            // onChangeVisible={() => setVisible(1)}
-            onExitComplete={onClose}
+            isVisible={isVisible}
+            onExitComplete={onExitComplete}
         >
             <CreateTaskModalRoot>
                 <Card title="Create Modal" direction="column">
                     <div>Test content</div>
                 </Card>
 
-                <button type="button" onClick={() => setVisible(false)}>X</button>
+                <button type="button" onClick={onClose}>X</button>
                 {/*<button type="button" onClick={() => setVisible(EVisible.visible)}>Open2Modal</button>*/}
 
             </CreateTaskModalRoot>

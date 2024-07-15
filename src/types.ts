@@ -1,5 +1,5 @@
+import {Variants} from 'framer-motion';
 import {ReactNode} from 'react';
-import {Variants} from "framer-motion";
 
 
 export interface IRow {
@@ -35,7 +35,6 @@ export interface IModalProps {
     motionVariants?: Variants
     children: ReactNode
     // visible: EVisible
-    visible: boolean
-    onChangeVisible?: () => void
+    isVisible: boolean
     onExitComplete?: () => void
 }

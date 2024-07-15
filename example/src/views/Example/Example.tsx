@@ -9,7 +9,7 @@ import CreateTaskModal from '../../viewModal/CreateTaskModal/CreateTaskModal';
 const Example = () => {
 
     // const [visible, setVisible] = useState<EVisible>(EVisible.none);
-    const [visible, setVisible] = useState<boolean>(false);
+    const [isVisible, setVisible] = useState<boolean>(false);
 
     return <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start', width: '100%'}}>
 
@@ -47,9 +47,9 @@ const Example = () => {
         {/*    onClose={() => setVisible(EVisible.none)}*/}
         {/*/>*/}
 
-        {visible &&
+        {isVisible &&
             <CreateTaskModal
-                onClose={() => {
+                onExitComplete={() => {
                     console.log('close');
                     setVisible(false);
                 }}
