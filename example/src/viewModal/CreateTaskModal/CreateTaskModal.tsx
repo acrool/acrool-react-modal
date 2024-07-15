@@ -8,11 +8,6 @@ interface IProps {
 }
 
 
-const modalVariantsItem = {
-    initial: {opacity: 1, transform: 'scale(0)'},
-    visible: {transform: 'scale(1)'},
-    hidden: {opacity: 0, transform: 'scale(0)'},
-};
 
 const CreateTaskModal = ({
     onExitComplete
@@ -28,7 +23,11 @@ const CreateTaskModal = ({
 
         <ReactModal
             id="portal1"
-            motionVariants={modalVariantsItem}
+            motionVariants={{
+                initial: {opacity: 1, transform: 'scale(0)'},
+                visible: {transform: 'scale(1)'},
+                hidden: {opacity: 0, transform: 'scale(0)'},
+            }}
             isVisible={isVisible}
             onExitComplete={onExitComplete}
         >
