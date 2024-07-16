@@ -1,10 +1,11 @@
 import {Variants} from 'framer-motion';
-import {ReactNode} from 'react';
+import React, {ReactNode} from 'react';
 
 
-export interface IRow {
+export interface IRow<T = undefined> {
     queueKey?: string
-    children: ReactNode,
+    children: React.FC<T>,
+    args?: T,
 }
 
 // export enum EVisible {
@@ -15,15 +16,15 @@ export interface IRow {
 
 export interface IModal {
     show: TShow
-    hidden: THidden
-    hiddenAll: THiddenAll
+    // hide: THidden
 }
 
 interface IShowArgs extends IRow{
 }
+type TFComp = () => JSX.Element
 
 
-export type TShow = (queueKey: string, children: ReactNode) => void
+export type TShow = <T = undefined>(children: React.FC<T>, args?: T) => void
 export type THidden = (queueKey?: string) => void;
 export type THiddenAll = () => void;
 
@@ -31,10 +32,8 @@ export type TOnExitComplete = () => void;
 
 export interface IModalProps {
     id?: string
-    isVisibleQueueKey?: boolean
-    motionVariants?: Variants
-    children: ReactNode
-    // visible: EVisible
-    isVisible: boolean
-    onExitComplete?: () => void
 }
+
+
+
+// export type TShowMulti = TShow & TShowStatus;

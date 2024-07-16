@@ -1,6 +1,7 @@
 import './App.css';
 
 import {GridThemeProvider} from '@acrool/react-grid';
+import {ModalPortal} from '@acrool/react-modal';
 
 import Banner from './components/Banner';
 import Example from './views/Example';
@@ -14,9 +15,7 @@ function App() {
                 <Banner/>
                 <Example/>
 
-                {/*<ModalPortal*/}
-                {/*    isVisibleQueueKey={true}*/}
-                {/*/>*/}
+                <ModalPortal/>
 
             </div>
         </GridThemeProvider>
