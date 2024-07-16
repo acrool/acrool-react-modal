@@ -21,6 +21,85 @@
 
 
 
+## Requirement
+
+### 單一頁面使用光箱
+
+```tsx
+
+// 製作
+
+const EditTaskModal = () => {
+    const modal = useModal();
+    
+    return <div>
+        This is Modal Content
+        <button type="button" onClick={modal.hidden}>Cancel</button>
+    </div>
+}
+
+// 使用
+import {useCreateModal} from "./Modal";
+const TaskList = () => {
+    const modal = useCreateModal(EditTaskModal);
+
+    const handleShow = (id: string) => {
+        modal.show({id});
+    }
+    
+    return <div>
+        <button onClick={() => handleShow(1)}>Show</button>
+
+        <modal.Component/>;
+    </div>;
+}
+```
+
+
+### 需要跨區呼叫的光箱
+
+```tsx
+
+
+// 製作
+const EditTaskModal = () => {
+    const modal = useModal();
+
+    return <div>
+        This is Modal Content
+        <button type="button" onClick={modal.hidden}>Cancel</button>
+    </div>
+}
+
+// 使用
+import {useCreateModal} from "./Modal";
+const PageParent = () => {
+    const WithEditTaskModal = useCreateModal(EditTaskModal);
+    
+    return <div>
+        <PageChild/>
+
+        
+        <WithEditTaskModal.Component/>;
+    </div>;
+}
+
+const PageChild = () => {
+    const WithEditTaskModal = useCreateModal(EditTaskModal);
+
+    const handleShow = (id: string) => {
+        WithEditTaskModal.show({id});
+    }
+    
+    return <div>
+        <button onClick={() => WithEditTaskModal.show(args)}>Show</button>
+
+        <WithEditTaskModal.Component/>;
+    </div>;
+}
+```
+
+
 
 ## Features
 
