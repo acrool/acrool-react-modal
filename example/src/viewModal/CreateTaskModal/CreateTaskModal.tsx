@@ -1,4 +1,4 @@
-import {CreateModal3,useModal2} from '@acrool/react-modal';
+import {CreateModal, useModalContext} from '@acrool/react-modal';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
@@ -8,10 +8,10 @@ interface IBaseModalProps {
     myVar: string
 }
 
-export const BaseModal = CreateModal3<IBaseModalProps>(
+export const BaseModal = CreateModal<IBaseModalProps>(
     (args) => {
 
-        const {isVisible, show, hidden} = useModal2();
+        const {isVisible, show, hidden} = useModalContext();
 
         // const data = useContext(ModalProviderContext);
 
