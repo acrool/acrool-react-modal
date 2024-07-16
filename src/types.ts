@@ -7,11 +7,11 @@ export interface IRow {
     children: ReactNode,
 }
 
-export enum EVisible {
-    hidden= 'hidden',
-    visible = 'visible',
-    none= 'none',
-}
+// export enum EVisible {
+//     hidden= 'hidden',
+//     visible = 'visible',
+//     none= 'none',
+// }
 
 export interface IModal {
     show: TShow

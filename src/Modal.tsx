@@ -38,6 +38,7 @@ export const CreateModal3 = <T = undefined>(Comp: React.FC<T>): React.FC<T> => {
         // };
 
         return <ModalProvider>
+
             <Comp {...args}/>
         </ModalProvider>;
 

@@ -37,7 +37,7 @@ export const BaseModal = CreateModal3<IBaseModalProps>(
                 <div>{String(isVisible)}</div>
             </Card>
 
-            <button type="button" onClick={show}>X </button>
+            <button type="button" onClick={hidden}>X </button>
 
             {/*<button type="button" onClick={() => setVisible(EVisible.visible)}>Open2Modal</button>*/}
 

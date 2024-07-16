@@ -1,4 +1,9 @@
+import ReactPortal from '@acrool/react-portal';
+import {AnimatePresence} from 'framer-motion';
 import React, {createContext, ReactNode, useCallback, useContext, useEffect, useId, useState} from 'react';
+
+import {rootId} from './config';
+import styles from './modal.module.scss';
 
 interface IContextProps {
     isVisible: boolean
@@ -21,32 +26,50 @@ interface IProps {
     children: ReactNode
 }
 
+export enum EVisible {
+    show,
+    hidden,
+    exit,
+}
+
 const ModalProvider = ({
     children,
     // isVisible,
     // show,
     // hidden,
 }: IProps) => {
-    const [isVisible, setVisible] = useState(false);
+    const [visible, setVisible] = useState<EVisible>(EVisible.show);
 
     const show = () => {
         console.log('show new');
-        setVisible(true);
+        setVisible(EVisible.show);
     };
 
     const hidden = () => {
         console.log('hidden new');
-        setVisible(false);
+        setVisible(EVisible.hidden);
+    };
+
+    const exit = () => {
+        console.log('hidden new');
+        setVisible(EVisible.exit);
     };
 
 
     return (
         <ModalProviderContext.Provider value={{
-            isVisible,
+            isVisible: visible === EVisible.show,
             show,
             hidden,
         }}>
-            {children}
+            <ReactPortal
+                id={rootId}
+                className={styles.root}
+            >
+                <AnimatePresence onExitComplete={exit}>
+                    {visible === EVisible.show && children}
+                </AnimatePresence>
+            </ReactPortal>
         </ModalProviderContext.Provider>
     );
 };
