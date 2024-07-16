@@ -136,32 +136,20 @@ export const CreateModal2 = (isT: string): () => ICreateModal => {
 
 type TCreateModal3 = (BaseModal: () => JSX.Element) => ICreateModal;
 
-export const CreateModal3 = (Comp: React.FC<any>) => {
+export const CreateModal3 = <T = unknown>(Comp: React.FC<T>, args: T): React.FC<T> => {
 
     // const [isVisible, setVisible] = useState(false);
 
-    const show = () => {
-        // setVisible(true);
-    };
-    const hidden = () => {
-        // setVisible(false);
-    };
+    return () => {
+        return <ReactPortal
+            id={rootId}
+            className={styles.root}
+        >
+            <AnimatePresence>
+                {Comp(args)}
+            </AnimatePresence>
+        </ReactPortal>;
 
-    return {
-        show,
-        hidden,
-        Component: () => {
-            const [isVisible, setVisible] = useState(false);
-
-            return <ReactPortal
-                id={rootId}
-                className={styles.root}
-            >
-                <AnimatePresence>
-                    xxxx
-                </AnimatePresence>
-            </ReactPortal>;
-        },
     };
 
 

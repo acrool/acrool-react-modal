@@ -3,13 +3,13 @@ import AcroolTable from '@acrool/react-table';
 import {useState} from 'react';
 
 import Card from '../../components/Card';
-import TaskModal from '../../viewModal/CreateTaskModal/CreateTaskModal';
+import {BaseModal} from '../../viewModal/CreateTaskModal/CreateTaskModal';
 
 
 const Example = () => {
 
     // const [visible, setVisible] = useState<EVisible>(EVisible.none);
-    const [isVisible, setVisible] = useState<boolean>(false);
+    // const [isVisible, setVisible] = useState<boolean>(false);
 
     // const MyModel = CreateTaskModal;
 
@@ -33,7 +33,7 @@ const Example = () => {
                         //     <Card title="Create Modal" direction="column" children={<div>test</div>}/>
                         // );
 
-                        TaskModal.show();
+                        // TaskModal.show();
                         // CreateTaskModal.visible();
                         // setVisible(EVisible.visible);
                         // setTimeout(() => modal.hiddenAll(), 3000);
@@ -47,7 +47,7 @@ const Example = () => {
         />
 
 
-        <TaskModal.Component/>
+        <BaseModal myVar="xx"/>
         {/*<CreateTaskModal*/}
         {/*    onClose={() => setVisible(EVisible.none)}*/}
         {/*/>*/}

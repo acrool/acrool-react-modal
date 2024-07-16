@@ -1,4 +1,4 @@
-import ReactModal, {useModal, useModal2, CreateModal, CreateModal2, CreateModal3} from '@acrool/react-modal';
+import ReactModal, {CreateModal, CreateModal2, CreateModal3,useModal, useModal2} from '@acrool/react-modal';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
@@ -19,25 +19,27 @@ interface IProps {
 
 
 interface IBaseModalProps {
-    name: string
+    myVar: string
 }
 
-export const BaseModal = CreateModal3(({name}: IBaseModalProps) => {
+export const BaseModal = CreateModal3(
+    (args: IBaseModalProps) => {
 
-    // const {hidden} = useModal2();
+        // const {hidden} = useModal2();
 
 
 
-    return <CreateTaskModalRoot>
-        <Card title="Create Modal" direction="column">
-            <div>Test content</div>
-        </Card>
+        return <CreateTaskModalRoot>
+            <Card title="Create Modal" direction="column">
+                <div>Test content</div>
+            </Card>
 
-        {/*<button type="button" onClick={hidden}>X</button>*/}
-        {/*<button type="button" onClick={() => setVisible(EVisible.visible)}>Open2Modal</button>*/}
+            {/*<button type="button" onClick={hidden}>X</button>*/}
+            {/*<button type="button" onClick={() => setVisible(EVisible.visible)}>Open2Modal</button>*/}
 
-    </CreateTaskModalRoot>;
-});
+        </CreateTaskModalRoot>;
+    }
+);
 
 // export default CreateModal(BaseModal);
 // export default CreateModal2()(BaseModal);
