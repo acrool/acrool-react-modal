@@ -1,8 +1,4 @@
-import {useCreateModal} from '@acrool/react-modal';
 import AcroolTable from '@acrool/react-table';
-import {useState} from 'react';
-
-import Card from '../../components/Card';
 import {BaseModal} from '../../viewModal/CreateTaskModal/CreateTaskModal';
 
 
