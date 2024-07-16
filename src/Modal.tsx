@@ -1,6 +1,6 @@
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React, {ReactNode, useState} from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import {rootId} from './config';
@@ -136,17 +136,23 @@ export const CreateModal2 = (isT: string): () => ICreateModal => {
 
 type TCreateModal3 = (BaseModal: () => JSX.Element) => ICreateModal;
 
-export const CreateModal3 = <T = unknown>(Comp: React.FC<T>, args: T): React.FC<T> => {
+export const CreateModal3 = <T = undefined>(Comp: React.FC<T>): React.FC<T> => {
 
-    // const [isVisible, setVisible] = useState(false);
 
-    return () => {
+    return (args?: T) => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [isVisible, setVisible] = useState(true);
+
+        const hidden = () => {
+            setVisible(false);
+        };
+
         return <ReactPortal
             id={rootId}
             className={styles.root}
         >
             <AnimatePresence>
-                {Comp(args)}
+                {isVisible && Comp(args)}
             </AnimatePresence>
         </ReactPortal>;
 

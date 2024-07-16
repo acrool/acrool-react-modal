@@ -22,7 +22,7 @@ interface IBaseModalProps {
     myVar: string
 }
 
-export const BaseModal = CreateModal3(
+export const BaseModal = CreateModal3<IBaseModalProps>(
     (args: IBaseModalProps) => {
 
         // const {hidden} = useModal2();
@@ -31,7 +31,7 @@ export const BaseModal = CreateModal3(
 
         return <CreateTaskModalRoot>
             <Card title="Create Modal" direction="column">
-                <div>Test content</div>
+                <div>Test content {args?.myVar}</div>
             </Card>
 
             {/*<button type="button" onClick={hidden}>X</button>*/}

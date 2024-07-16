@@ -47,7 +47,7 @@ const Example = () => {
         />
 
 
-        <BaseModal myVar="xx"/>
+        <BaseModal myVar="XXXXX"/>
         {/*<CreateTaskModal*/}
         {/*    onClose={() => setVisible(EVisible.none)}*/}
         {/*/>*/}
