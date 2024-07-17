@@ -7,7 +7,7 @@ import {IModalOptions} from './types';
 
 type TShowArgs<T> = (args: T) => void
 type TShow = () => void
-type TShowMulti<T> = T extends undefined ? TShow : TShowArgs<T>;
+// type TShowMulti<T> = T extends undefined ? TShow : TShowArgs<T>;
 
 
 interface ICreateModal<T = undefined> {
@@ -21,7 +21,7 @@ interface ICreateModal<T = undefined> {
  * @param ModalComponent
  * @param modalOptions
  */
-const CreateModal = <T = undefined>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
+const createModal = <T = undefined>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
     /**
      * Add framer motion
      * @param args
@@ -39,4 +39,4 @@ const CreateModal = <T = undefined>(ModalComponent: React.FC<T>, modalOptions?: 
     };
 };
 
-export default CreateModal;
+export default createModal;

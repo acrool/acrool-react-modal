@@ -1,4 +1,4 @@
-import {AnimationVariants, CreateModal, IModalProps, useModal} from '@acrool/react-modal';
+import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
@@ -9,8 +9,8 @@ interface IBaseModalProps {
 }
 
 
-const modalProps: IModalProps = {
-    variants: AnimationVariants.fadeInDown,
+const modalProps: IModalOptions = {
+    variants: animation.fadeInDown,
     className: 'p-3'
 };
 
@@ -19,7 +19,7 @@ const modalProps: IModalProps = {
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModal = CreateModal(
+const PromotionModal = createModal(
     (args: IBaseModalProps) => {
         const {hide} = useModal();
 
