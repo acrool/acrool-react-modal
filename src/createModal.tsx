@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import {modal} from './Modal';
 import MotionDrawer from './MotionDrawer';
 import {IModalOptions} from './types';
+import {useModal} from "./ModalProvider";
 
 
 type TShowArgs<T> = (args: T) => void
@@ -34,9 +35,14 @@ const createModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalO
     };
     
     const HashModal = (args: T) => {
+        const {hide} = useModal();
         useEffect(() => {
             modal.show(MotionModal, args);
-        }, []);
+
+            return () => {
+                hide();
+            };
+        }, [modal]);
         return null;
     };
 
