@@ -49,7 +49,6 @@
   },
   "peerDependencies": {
     "@acrool/react-portal": "^0.x",
-    "bear-jsutils": "^3.x",
     "clsx": "2.x",
     "framer-motion": "11.x",
     "react": "^18.x",

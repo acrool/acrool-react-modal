@@ -2,7 +2,7 @@ import {Variants} from 'framer-motion';
 import React, {ReactNode} from 'react';
 
 
-export interface IRow<T = undefined> {
+export interface IRow<T = any> {
     queueKey?: string
     children: React.FC<T>,
     args?: T,
@@ -19,12 +19,10 @@ export interface IModal {
     // hide: THidden
 }
 
-interface IShowArgs extends IRow{
-}
 type TFComp = () => JSX.Element
 
 
-export type TShow = <T = undefined>(children: React.FC<T>, args?: T) => void
+export type TShow = <T>(children: React.FC<T>, args?: T) => void
 export type THidden = (queueKey?: string) => void;
 export type THiddenAll = () => void;
 

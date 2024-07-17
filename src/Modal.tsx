@@ -35,10 +35,9 @@ const Modal = (props: IModalProps) => {
      * 顯示 Toaster
      * @param newItem
      */
-    const show: TShow = useCallback((children) => {
+    const show: TShow = useCallback((children, args) => {
         const queueKey = ulid().toLowerCase();
-        // @ts-ignore
-        setRows(prevRows => [...prevRows, {queueKey, children}]);
+        setRows(prevRows => [...prevRows, {queueKey, children, args}]);
     }, []);
 
 
@@ -47,7 +46,6 @@ const Modal = (props: IModalProps) => {
      * @param key
      */
     const hide: THidden = useCallback((key) => {
-        console.log('remove');
         setRows(prevRows => {
             const index = prevRows.findIndex(row => row.queueKey === key);
             return removeByIndex(prevRows, index);
@@ -67,20 +65,10 @@ const Modal = (props: IModalProps) => {
                     hide={() => hide(row.queueKey)}
                 >
                     <row.children
-                        // @ts-ignore
                         {...row.args}
                     />
                 </ModalProvider>
             );
-
-            // return <MotionDrawer key={row.queueKey}>
-            //     <ToasterWrapper
-            //         status={row.status}
-            //         timeout={row.timeout ?? props.defaultTimeout ?? defaultTimeout}
-            //         onClose={() => hidden(row.queueKey)}
-            //         message={row.message}
-            //     />
-            // </MotionDrawer>;
         });
     };
 
