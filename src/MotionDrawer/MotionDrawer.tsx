@@ -1,35 +1,27 @@
-import {AnimatePresence, motion, Variant, Variants} from 'framer-motion';
+import {clsx} from 'clsx';
+import {motion} from 'framer-motion';
 import {ReactNode} from 'react';
 
-import {TOnExitComplete} from '../types';
+import {IModalProps} from '../types';
 import styles from './motion-drawer.module.scss';
 
 
-const spring = {
-    damping: 1,
+const maskMotionProps: IModalProps = {
+    variants: {
+        initial: {opacity: 0, transition: {type:'spring'}},
+        show: {opacity: 1},
+        exit: {opacity: 0},
+    },
+    transition: {
+        damping: .2,
+    }
 };
 
-const maskVariantsItem = {
-    initial: {opacity: 0, transition: {type:'spring'}},
-    visible: {opacity: 1},
-    hidden: {opacity: 0},
-};
 
-const modalVariantsItem = {
-    initial: {transform: 'scale(0)'},
-    visible: {transform: 'scale(1)'},
-    hidden: {transform: 'scale(0)'},
-};
 
-interface IMotionVariants {
-    initial: Variants,
-    visible: Variants,
-    hidden: Variants,
-}
 
 interface IProps {
-    className?: string
-    motionVariants?: Variants
+    props?: IModalProps,
     children: ReactNode
 }
 
@@ -40,28 +32,26 @@ interface IProps {
  * @param children
  */
 const MotionDrawer = ({
-    motionVariants,
+    props,
     children,
 }: IProps) => {
+    const {className, ...motionProps} = props ?? {className: ''};
 
 
     return <motion.div
         className={styles.motionDrawer}
-        key="modal"
-        transition={spring}
-        variants={maskVariantsItem}
-        animate="visible"
+        {...maskMotionProps}
         initial="initial"
-        exit="hidden"
+        animate="show"
+        exit="exit"
     >
-        <div className={styles.motionScrollWrapper}>
-            <motion.div
-                variants={motionVariants}
-                transition={{type: 'spring', duration: 0.5}}
-            >
-                {children}
-            </motion.div>
-        </div>
+        <motion.div
+            transition={{type: 'spring', duration: 0.5}}
+            className={clsx(styles.motionScrollWrapper, className)}
+            {...motionProps}
+        >
+            {children}
+        </motion.div>
     </motion.div>;
 
 };
