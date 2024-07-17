@@ -1,12 +1,13 @@
 import ReactPortal from '@acrool/react-portal';
-import {removeFind} from 'bear-jsutils/array';
 import {AnimatePresence} from 'framer-motion';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
+import {ulid} from 'ulid';
 
 import {rootId} from './config';
 import styles from './modal.module.scss';
-import ModalWrapper from './ModalWrapper';
-import {IModal, IModalProps, IRow, THidden, THiddenAll, TShow} from './types';
+import ModalProvider from './ModalProvider';
+import {IModal, IModalProps, IRow, THidden, TShow} from './types';
+import {removeByIndex} from './utils';
 
 
 /**
@@ -14,25 +15,58 @@ import {IModal, IModalProps, IRow, THidden, THiddenAll, TShow} from './types';
  */
 export let modal: IModal;
 
-export const defaultKey = 'globalModal';
+
 
 const Modal = (props: IModalProps) => {
+    const [rows, setRows] = useState<IRow[]>([]);
+
+    // set global
+    useEffect(() => {
+        modal = {
+            show: (children, args) => show(children, args),
+        };
+        // modal.hide = (item) => show({...item, status: EStatus.warning});
+    }, []);
+
+
+    /**
+     * 顯示 Toaster
+     * @param newItem
+     */
+    const show: TShow = useCallback((ModalComponent, args) => {
+        const queueKey = ulid().toLowerCase();
+        setRows(prevRows => [...prevRows, {queueKey, ModalComponent, args}]);
+    }, []);
+
+
+    /**
+     * 隱藏 Toaster
+     * @param key
+     */
+    const hide: THidden = useCallback((key) => {
+        setRows(prevRows => {
+            const index = prevRows.findIndex(row => row.queueKey === key);
+            return removeByIndex(prevRows, index);
+        });
+    }, []);
+
 
     /**
      * 渲染項目
      */
-    const renderModal = () => {
-
-        if(!props.isVisible){
-            return null;
-        }
-        return <ModalWrapper
-            // onExitComplete={hidden}
-            isVisibleQueueKey={props.isVisibleQueueKey}
-            motionVariants={props.motionVariants}
-        >
-            {props.children}
-        </ModalWrapper>;
+    const renderItems = () => {
+        return rows.map(row => {
+            return (
+                <ModalProvider
+                    key={row.queueKey}
+                    hide={() => hide(row.queueKey)}
+                >
+                    <row.ModalComponent
+                        {...row.args}
+                    />
+                </ModalProvider>
+            );
+        });
     };
 
     return (
@@ -41,7 +75,7 @@ const Modal = (props: IModalProps) => {
             className={styles.root}
         >
             <AnimatePresence>
-                {renderModal()}
+                {renderItems()}
             </AnimatePresence>
         </ReactPortal>
     );

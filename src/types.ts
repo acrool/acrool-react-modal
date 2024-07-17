@@ -1,34 +1,44 @@
-import {ReactNode} from 'react';
-import {Variants} from "framer-motion";
+import {Transition, Variant, Variants} from 'framer-motion';
+import React, {ReactNode} from 'react';
 
 
-export interface IRow {
+export interface IRow<T = any> {
     queueKey?: string
-    children: ReactNode,
+    ModalComponent: React.FC<T>,
+    args?: T,
 }
 
-
+// export enum EVisible {
+//     hidden= 'hidden',
+//     visible = 'visible',
+//     none= 'none',
+// }
 
 export interface IModal {
     show: TShow
-    hidden: THidden
-    hiddenAll: THiddenAll
-}
-
-interface IShowArgs extends IRow{
+    // hide: THidden
 }
 
 
-export type TShow = (queueKey: string, children: ReactNode) => void
+
+export type TShow = <T>(children: React.FC<T>, args?: T) => void
 export type THidden = (queueKey?: string) => void;
-export type THiddenAll = () => void;
 
 export type TOnExitComplete = () => void;
 
 export interface IModalProps {
     id?: string
-    isVisibleQueueKey?: boolean
-    motionVariants?: Variants
-    children: ReactNode
-    isVisible: boolean
 }
+
+
+type TVariantKey = 'initial'|'show'|'exit'
+export type TAnimationVariants = Record<TVariantKey, Variant>;
+
+
+export interface IModalProps {
+    variants?: TAnimationVariants,
+    transition?: Transition,
+    className?: string
+}
+
+// export type TShowMulti = TShow & TShowStatus;
