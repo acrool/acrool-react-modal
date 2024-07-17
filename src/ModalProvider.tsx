@@ -1,7 +1,8 @@
-import React, {createContext, ReactNode, useCallback, useContext, useEffect, useId, useState} from 'react';
+import React, {createContext, useContext} from 'react';
 
 
 interface IContextProps {
+    queueKey?: string,
     hide: () => void
 }
 
@@ -12,33 +13,3 @@ export const ModalProviderContext = createContext<IContextProps>({
 export const ModalProviderConsumer = ModalProviderContext.Consumer;
 
 export const useModal = () => useContext(ModalProviderContext);
-
-
-interface IProps {
-    children: ReactNode
-    hide: () => void,
-}
-
-export enum EVisible {
-    show,
-    hidden,
-    exit,
-}
-
-const ModalProvider = ({
-    children,
-    hide,
-}: IProps) => {
-
-
-    return (
-        <ModalProviderContext.Provider value={{
-            hide,
-        }}>
-            {children}
-        </ModalProviderContext.Provider>
-    );
-};
-
-export default ModalProvider;
-

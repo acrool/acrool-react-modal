@@ -5,7 +5,7 @@ import {ulid} from 'ulid';
 
 import {rootId} from './config';
 import styles from './modal.module.scss';
-import ModalProvider from './ModalProvider';
+import {ModalProviderContext} from './ModalProvider';
 import {IModal, IModalPortalProps, IRow, THidden, TShow} from './types';
 import {removeByIndex} from './utils';
 
@@ -24,6 +24,7 @@ const Modal = (props: IModalPortalProps) => {
     useEffect(() => {
         modal = {
             show: (children, args) => show(children, args),
+            hide,
         };
         // modal.hide = (item) => show({...item, status: EStatus.warning});
     }, []);
@@ -41,11 +42,11 @@ const Modal = (props: IModalPortalProps) => {
 
     /**
      * 隱藏 Toaster
-     * @param key
+     * @param queueKey
      */
-    const hide: THidden = useCallback((key) => {
+    const hide: THidden = useCallback((queueKey) => {
         setRows(prevRows => {
-            const index = prevRows.findIndex(row => row.queueKey === key);
+            const index = prevRows.findIndex(row => row.queueKey === queueKey);
             return removeByIndex(prevRows, index);
         });
     }, []);
@@ -57,14 +58,17 @@ const Modal = (props: IModalPortalProps) => {
     const renderItems = () => {
         return rows.map(row => {
             return (
-                <ModalProvider
-                    key={row.queueKey}
-                    hide={() => hide(row.queueKey)}
-                >
+                <ModalProviderContext.Provider
+                    key={row.queueKey}    
+                    value={{
+                        queueKey: row.queueKey,
+                        hide: () => hide(row.queueKey)
+                    }}>
                     <row.ModalComponent
+                        key={row.queueKey}
                         {...row.args}
                     />
-                </ModalProvider>
+                </ModalProviderContext.Provider>
             );
         });
     };

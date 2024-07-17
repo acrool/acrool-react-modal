@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {modal} from './Modal';
 import MotionDrawer from './MotionDrawer';
@@ -12,6 +12,7 @@ type TShow = () => void
 
 interface ICreateModal<T> {
     FC: React.FC<T>,
+    HashFC: React.FC<T>,
     show: TShow;
     showArgs: TShowArgs<T>;
 }
@@ -31,9 +32,17 @@ const createModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalO
             <ModalComponent {...args}/>
         </MotionDrawer>;
     };
+    
+    const HashModal = (args: T) => {
+        useEffect(() => {
+            modal.show(MotionModal, args);
+        }, []);
+        return null;
+    };
 
     return {
         FC: MotionModal,
+        HashFC: HashModal,
         show: () => modal.show(MotionModal),
         showArgs: (args) => modal.show(MotionModal, args),
     };

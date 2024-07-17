@@ -16,7 +16,7 @@ export interface IRow<T = any> {
 
 export interface IModal {
     show: TShow
-    // hide: THidden
+    hide: THidden
 }
 
 
@@ -24,7 +24,7 @@ export interface IModal {
 export type TShow = <T>(children: React.FC<T>, args?: T) => void
 export type THidden = (queueKey?: string) => void;
 
-export type TOnExitComplete = () => void;
+// export type TOnExitComplete = () => void;
 
 export interface IModalPortalProps {
     id?: string
