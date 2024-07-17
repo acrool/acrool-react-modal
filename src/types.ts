@@ -4,7 +4,7 @@ import React, {ReactNode} from 'react';
 
 export interface IRow<T = any> {
     queueKey?: string
-    children: React.FC<T>,
+    ModalComponent: React.FC<T>,
     args?: T,
 }
 

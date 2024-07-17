@@ -6,8 +6,6 @@ import {ulid} from 'ulid';
 import {rootId} from './config';
 import styles from './modal.module.scss';
 import ModalProvider from './ModalProvider';
-import MotionDrawer from './MotionDrawer';
-// import ToasterWrapper from './ToasterWrapper';
 import {IModal, IModalProps, IRow, THidden, TShow} from './types';
 import {removeByIndex} from './utils';
 
@@ -35,9 +33,9 @@ const Modal = (props: IModalProps) => {
      * 顯示 Toaster
      * @param newItem
      */
-    const show: TShow = useCallback((children, args) => {
+    const show: TShow = useCallback((ModalComponent, args) => {
         const queueKey = ulid().toLowerCase();
-        setRows(prevRows => [...prevRows, {queueKey, children, args}]);
+        setRows(prevRows => [...prevRows, {queueKey, ModalComponent, args}]);
     }, []);
 
 
@@ -59,12 +57,11 @@ const Modal = (props: IModalProps) => {
     const renderItems = () => {
         return rows.map(row => {
             return (
-
                 <ModalProvider
                     key={row.queueKey}
                     hide={() => hide(row.queueKey)}
                 >
-                    <row.children
+                    <row.ModalComponent
                         {...row.args}
                     />
                 </ModalProvider>
