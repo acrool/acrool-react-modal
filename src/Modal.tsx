@@ -4,8 +4,9 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {ulid} from 'ulid';
 
 import {rootId} from './config';
-import MotionDrawer from './MotionDrawer';
 import styles from './modal.module.scss';
+import ModalProvider from './ModalProvider';
+import MotionDrawer from './MotionDrawer';
 // import ToasterWrapper from './ToasterWrapper';
 import {IModal, IModalProps, IRow, THidden, TShow} from './types';
 import {removeByIndex} from './utils';
@@ -36,6 +37,7 @@ const Modal = (props: IModalProps) => {
      */
     const show: TShow = useCallback((children) => {
         const queueKey = ulid().toLowerCase();
+        // @ts-ignore
         setRows(prevRows => [...prevRows, {queueKey, children}]);
     }, []);
 
@@ -44,7 +46,8 @@ const Modal = (props: IModalProps) => {
      * 隱藏 Toaster
      * @param key
      */
-    const hidden: THidden = useCallback((key) => {
+    const hide: THidden = useCallback((key) => {
+        console.log('remove');
         setRows(prevRows => {
             const index = prevRows.findIndex(row => row.queueKey === key);
             return removeByIndex(prevRows, index);
@@ -57,7 +60,19 @@ const Modal = (props: IModalProps) => {
      */
     const renderItems = () => {
         return rows.map(row => {
-            return <row.children {...row.args}/>;
+            return (
+
+                <ModalProvider
+                    key={row.queueKey}
+                    hide={() => hide(row.queueKey)}
+                >
+                    <row.children
+                        // @ts-ignore
+                        {...row.args}
+                    />
+                </ModalProvider>
+            );
+
             // return <MotionDrawer key={row.queueKey}>
             //     <ToasterWrapper
             //         status={row.status}

@@ -1,6 +1,6 @@
 import AcroolTable from '@acrool/react-table';
 import {modal} from '@acrool/react-modal';
-import {BaseModal} from '../../viewModal/CreateTaskModal/CreateTaskModal';
+import {BaseModal, BaseModal2} from '../../viewModal/CreateTaskModal/CreateTaskModal';
 
 
 const Example = () => {
@@ -30,6 +30,7 @@ const Example = () => {
                         //     <Card title="Create Modal" direction="column" children={<div>test</div>}/>
                         // );
 
+                        // modal.show(BaseModal, {myVar: 'xxx'});
                         modal.show(BaseModal, {myVar: 'xxx'});
                         // TaskModal.show();
                         // CreateTaskModal.visible();

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-// import '@acrool/react-modal/dist/index.css';
+import '@acrool/react-modal/dist/index.css';
 import '@acrool/react-table/dist/index.css';
 import '@acrool/react-table/dist/themes/acrool.css';
 import '@acrool/react-grid/dist/index.css';
