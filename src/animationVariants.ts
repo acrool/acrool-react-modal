@@ -11,7 +11,6 @@ const fadeInDown: TAnimationVariants = {
     exit: {opacity: 0, y: 0}
 };
 
-
 const zoomInDown: TAnimationVariants = {
     initial: {scaleX: .1, scaleY: .1, scaleZ: .1, translateX: 0, translateY: -1000, translateZ: 0, opacity: 0, transition: {type:'spring'}},
     show: {scaleX: 1, scaleY: 1, scaleZ: 1, translateX: 0, translateY: 60, translateZ: 0, opacity: 1},

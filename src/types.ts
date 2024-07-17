@@ -35,9 +35,10 @@ type TVariantKey = 'initial'|'show'|'exit'
 export type TAnimationVariants = Record<TVariantKey, Variant>;
 
 
-export interface IMotionProps {
-    variants: TAnimationVariants,
+export interface IModalProps {
+    variants?: TAnimationVariants,
     transition?: Transition,
+    className?: string
 }
 
 // export type TShowMulti = TShow & TShowStatus;

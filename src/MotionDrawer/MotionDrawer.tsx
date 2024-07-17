@@ -1,11 +1,12 @@
+import {clsx} from 'clsx';
 import {motion} from 'framer-motion';
 import {ReactNode} from 'react';
 
-import {IMotionProps} from '../types';
+import {IModalProps} from '../types';
 import styles from './motion-drawer.module.scss';
 
 
-const maskMotionProps: IMotionProps = {
+const maskMotionProps: IModalProps = {
     variants: {
         initial: {opacity: 0, transition: {type:'spring'}},
         show: {opacity: 1},
@@ -20,7 +21,7 @@ const maskMotionProps: IMotionProps = {
 
 
 interface IProps {
-    motionProps?: IMotionProps,
+    props?: IModalProps,
     children: ReactNode
 }
 
@@ -31,9 +32,11 @@ interface IProps {
  * @param children
  */
 const MotionDrawer = ({
-    motionProps,
+    props,
     children,
 }: IProps) => {
+    const {className, ...motionProps} = props ?? {className: ''};
+
 
     return <motion.div
         className={styles.motionDrawer}
@@ -42,14 +45,13 @@ const MotionDrawer = ({
         animate="show"
         exit="exit"
     >
-        <div className={styles.motionScrollWrapper}>
-            <motion.div
-                transition={{type: 'spring', duration: 0.5}}
-                {...motionProps}
-            >
-                {children}
-            </motion.div>
-        </div>
+        <motion.div
+            transition={{type: 'spring', duration: 0.5}}
+            className={clsx(styles.motionScrollWrapper, className)}
+            {...motionProps}
+        >
+            {children}
+        </motion.div>
     </motion.div>;
 
 };

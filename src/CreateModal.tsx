@@ -1,22 +1,21 @@
-import {Variants} from 'framer-motion';
 import React from 'react';
 
 import MotionDrawer from './MotionDrawer';
-import {IMotionProps} from './types';
+import {IModalProps} from './types';
 
 
 /**
  * 產生帶 framer-motion 功能的Modal
  * @param ModalComponent
- * @param motionProps
+ * @param props
  */
-const CreateModal = <T = undefined>(ModalComponent: React.FC<T>, motionProps?: IMotionProps): React.FC<T> => {
+const CreateModal = <T = undefined>(ModalComponent: React.FC<T>, props?: IModalProps): React.FC<T> => {
     /**
      * Add framer motion
      * @param args
      */
     const MotionModal = (args?: T) => {
-        return <MotionDrawer motionProps={motionProps}>
+        return <MotionDrawer props={props}>
             <ModalComponent {...args}/>
         </MotionDrawer>;
     };

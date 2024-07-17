@@ -1,4 +1,4 @@
-import {AnimationVariants, CreateModal, useModal} from '@acrool/react-modal';
+import {AnimationVariants, CreateModal, IModalProps, IMotionProps, useModal} from '@acrool/react-modal';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
@@ -15,6 +15,11 @@ const animationVariants = {
     hidden: {transform: 'scale(0)'},
 };
 
+const modalProps: IMotionProps = {
+    variants: AnimationVariants.fadeInDown,
+    className: 'p-3'
+};
+// const modalPropsUndefined: IModalProps|undefined = undefined;
 
 /**
  * 優惠活動光箱
@@ -34,13 +39,12 @@ const PromotionModal = CreateModal<IBaseModalProps>(
 
         </CreateTaskModalRoot>;
     }
-    ,{
-        variants: AnimationVariants.zoomInDown,
-    });
+    , modalProps);
 
 export default PromotionModal;
 
 
 const CreateTaskModalRoot = styled.div`
-
+  width: 400px;
+  margin: 0 auto;
 `;
