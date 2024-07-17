@@ -1,4 +1,4 @@
-import {Variants} from 'framer-motion';
+import {Transition, Variant, Variants} from 'framer-motion';
 import React, {ReactNode} from 'react';
 
 
@@ -19,12 +19,10 @@ export interface IModal {
     // hide: THidden
 }
 
-type TFComp = () => JSX.Element
 
 
 export type TShow = <T>(children: React.FC<T>, args?: T) => void
 export type THidden = (queueKey?: string) => void;
-export type THiddenAll = () => void;
 
 export type TOnExitComplete = () => void;
 
@@ -33,5 +31,13 @@ export interface IModalProps {
 }
 
 
+type TVariantKey = 'initial'|'show'|'exit'
+export type TAnimationVariants = Record<TVariantKey, Variant>;
+
+
+export interface IMotionProps {
+    variants: TAnimationVariants,
+    transition?: Transition,
+}
 
 // export type TShowMulti = TShow & TShowStatus;

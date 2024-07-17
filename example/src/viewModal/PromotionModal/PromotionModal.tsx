@@ -1,4 +1,4 @@
-import {CreateModal, useModal} from '@acrool/react-modal';
+import {AnimationVariants, CreateModal, useModal} from '@acrool/react-modal';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
@@ -22,9 +22,7 @@ const animationVariants = {
  * PS: 示範用客製化光箱
  */
 const PromotionModal = CreateModal<IBaseModalProps>(
-    animationVariants,
     (args) => {
-
         const {hide} = useModal();
 
         return <CreateTaskModalRoot>
@@ -36,7 +34,9 @@ const PromotionModal = CreateModal<IBaseModalProps>(
 
         </CreateTaskModalRoot>;
     }
-);
+    ,{
+        variants: AnimationVariants.zoomInDown,
+    });
 
 export default PromotionModal;
 
