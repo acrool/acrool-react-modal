@@ -10,7 +10,7 @@ type TShow = () => void
 // type TShowMulti<T> = T extends undefined ? TShow : TShowArgs<T>;
 
 
-interface ICreateModal<T = undefined> {
+interface ICreateModal<T> {
     FC: React.FC<T>,
     show: TShow;
     showArgs: TShowArgs<T>;
