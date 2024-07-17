@@ -1,7 +1,8 @@
-import AcroolTable from '@acrool/react-table';
 import {modal} from '@acrool/react-modal';
+import AcroolTable from '@acrool/react-table';
+
 import PromotionModal from '../../viewModal/PromotionModal';
-import PromotionModal2 from "../../viewModal/PromotionModal/PromotionModal2";
+import PromotionModal2 from '../../viewModal/PromotionModal/PromotionModal2';
 
 
 const Example = () => {
@@ -47,11 +48,11 @@ const Example = () => {
                 {
                     id: 3,
                     onClickRow: () => {
-                        PromotionModal.show({myVar: 'Imagine'});
+                        PromotionModal.showArgs({myVar: 'Imagine'});
                     },
                     field: {
                         name: 'Args',
-                        use: 'PromotionModal.show({myVar: \'Imagine\'})',
+                        use: 'PromotionModal.showArgs({myVar: \'Imagine\'})',
                     }
                 },
                 {

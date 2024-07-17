@@ -2,11 +2,11 @@ import {clsx} from 'clsx';
 import {motion} from 'framer-motion';
 import {ReactNode} from 'react';
 
-import {IModalProps} from '../types';
+import {IModalOptions} from '../types';
 import styles from './motion-drawer.module.scss';
 
 
-const maskMotionProps: IModalProps = {
+const maskMotionProps: IModalOptions = {
     variants: {
         initial: {opacity: 0, transition: {type:'spring'}},
         show: {opacity: 1},
@@ -21,21 +21,21 @@ const maskMotionProps: IModalProps = {
 
 
 interface IProps {
-    props?: IModalProps,
+    modalOptions?: IModalOptions,
     children: ReactNode
 }
 
 
 /**
- * 右側半抽屜彈窗
- * @param isVisible
+ * Motion 動畫
+ * @param modalOptions
  * @param children
  */
 const MotionDrawer = ({
-    props,
+    modalOptions,
     children,
 }: IProps) => {
-    const {className, ...motionProps} = props ?? {className: ''};
+    const {className, ...motionProps} = modalOptions ?? {className: ''};
 
 
     return <motion.div

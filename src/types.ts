@@ -26,7 +26,7 @@ export type THidden = (queueKey?: string) => void;
 
 export type TOnExitComplete = () => void;
 
-export interface IModalProps {
+export interface IModalPortalProps {
     id?: string
 }
 
@@ -35,7 +35,7 @@ type TVariantKey = 'initial'|'show'|'exit'
 export type TAnimationVariants = Record<TVariantKey, Variant>;
 
 
-export interface IModalProps {
+export interface IModalOptions {
     variants?: TAnimationVariants,
     transition?: Transition,
     className?: string

@@ -6,7 +6,7 @@ import {ulid} from 'ulid';
 import {rootId} from './config';
 import styles from './modal.module.scss';
 import ModalProvider from './ModalProvider';
-import {IModal, IModalProps, IRow, THidden, TShow} from './types';
+import {IModal, IModalPortalProps, IRow, THidden, TShow} from './types';
 import {removeByIndex} from './utils';
 
 
@@ -17,7 +17,7 @@ export let modal: IModal;
 
 
 
-const Modal = (props: IModalProps) => {
+const Modal = (props: IModalPortalProps) => {
     const [rows, setRows] = useState<IRow[]>([]);
 
     // set global

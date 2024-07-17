@@ -2,46 +2,40 @@ import React from 'react';
 
 import {modal} from './Modal';
 import MotionDrawer from './MotionDrawer';
-import {IModalProps} from './types';
+import {IModalOptions} from './types';
 
 
 type TShowArgs<T> = (args: T) => void
 type TShow = () => void
-type TShowMulti<T> = TShow|TShowArgs<T>
-type TShowMulti2<T> = T extends undefined ? TShow : TShowArgs<T>;
+type TShowMulti<T> = T extends undefined ? TShow : TShowArgs<T>;
 
 
 interface ICreateModal<T = undefined> {
     FC: React.FC<T>,
-    show: TShowArgs<T>;
-    // show: any;
+    show: TShow;
+    showArgs: TShowArgs<T>;
 }
 
 /**
  * 產生帶 framer-motion 功能的Modal
  * @param ModalComponent
- * @param props
+ * @param modalOptions
  */
-const CreateModal = <T = undefined>(ModalComponent: React.FC<T>, props?: IModalProps): ICreateModal<T> => {
+const CreateModal = <T = undefined>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
     /**
      * Add framer motion
      * @param args
      */
     const MotionModal = (args: T) => {
-        return <MotionDrawer props={props}>
+        return <MotionDrawer modalOptions={modalOptions}>
             <ModalComponent {...args}/>
         </MotionDrawer>;
     };
 
     return {
         FC: MotionModal,
-        show: (args) => {
-            if(args){
-                modal.show(MotionModal, args);
-            }else{
-                modal.show(MotionModal);
-            }
-        },
+        show: () => modal.show(MotionModal),
+        showArgs: (args) => modal.show(MotionModal, args),
     };
 };
 
