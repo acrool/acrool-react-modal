@@ -9,23 +9,30 @@ interface IBaseModalProps {
 }
 
 
+const animationVariants = {
+    initial: {transform: 'scale(0)'},
+    visible: {transform: 'scale(1)'},
+    hidden: {transform: 'scale(0)'},
+};
+
 const modalProps: IModalProps = {
     variants: AnimationVariants.fadeInDown,
     className: 'p-3'
 };
+// const modalPropsUndefined: IModalProps|undefined = undefined;
 
 /**
- * 優惠活動光箱
+ * 優惠活動光箱2
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModal = CreateModal(
-    (args: IBaseModalProps) => {
+const PromotionModal2 = CreateModal(
+    () => {
         const {hide} = useModal();
 
         return <CreateTaskModalRoot>
             <Card title="Create Modal" direction="column">
-                <div>Test content {args?.myVar}</div>
+                <div>Test2 content</div>
             </Card>
 
             <button type="button" onClick={hide}>X </button>
@@ -34,7 +41,7 @@ const PromotionModal = CreateModal(
     }
     , modalProps);
 
-export default PromotionModal;
+export default PromotionModal2;
 
 
 const CreateTaskModalRoot = styled.div`

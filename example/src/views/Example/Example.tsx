@@ -1,6 +1,7 @@
 import AcroolTable from '@acrool/react-table';
 import {modal} from '@acrool/react-modal';
-import BaseModal from '../../viewModal/PromotionModal';
+import PromotionModal from '../../viewModal/PromotionModal';
+import PromotionModal2 from "../../viewModal/PromotionModal/PromotionModal2";
 
 
 const Example = () => {
@@ -25,23 +26,45 @@ const Example = () => {
                 {
                     id: 1,
                     onClickRow: () => {
-                        // modal.show(
-                        //     'createModal',
-                        //     <Card title="Create Modal" direction="column" children={<div>test</div>}/>
-                        // );
-
-                        // modal.show(BaseModal, {myVar: 'xxx'});
-                        modal.show(BaseModal, {myVar: 'xxx'});
-                        // TaskModal.show();
-                        // CreateTaskModal.visible();
-                        // setVisible(EVisible.visible);
-                        // setTimeout(() => modal.hiddenAll(), 3000);
+                        PromotionModal2.show();
                     },
                     field: {
                         name: 'Default',
-                        use: 'modal.show()',
+                        use: 'PromotionModal2.show()',
                     }
                 },
+                {
+                    id: 2,
+                    onClickRow: () => {
+                        modal.show(PromotionModal2.FC);
+                    },
+                    field: {
+                        name: 'Base Default',
+                        use: 'PromotionModal2.show()',
+                    }
+                },
+
+                {
+                    id: 3,
+                    onClickRow: () => {
+                        PromotionModal.show({myVar: 'Imagine'});
+                    },
+                    field: {
+                        name: 'Args',
+                        use: 'PromotionModal.show({myVar: \'Imagine\'})',
+                    }
+                },
+                {
+                    id: 4,
+                    onClickRow: () => {
+                        modal.show(PromotionModal.FC, {myVar: 'Imagine'});
+                    },
+                    field: {
+                        name: 'Base Args',
+                        use: 'modal.show(PromotionModal.FC, {myVar: \'Imagine\'})',
+                    }
+                },
+
             ]}
         />
 
