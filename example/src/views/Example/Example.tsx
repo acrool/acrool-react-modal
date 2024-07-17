@@ -70,6 +70,8 @@ const Example = () => {
         />
 
 
+        {/*<PromotionModal.FC myVar="image"/>*/}
+        {/*<PromotionBaseModal myVar="image"/>*/}
         {/*<BaseModal myVar="XXXXX"/>*/}
         {/*<CreateTaskModal*/}
         {/*    onClose={() => setVisible(EVisible.none)}*/}

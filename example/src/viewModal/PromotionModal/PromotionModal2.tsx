@@ -9,14 +9,13 @@ interface IBaseModalProps {
 }
 
 
-const animationVariants = {
-    initial: {transform: 'scale(0)'},
-    visible: {transform: 'scale(1)'},
-    hidden: {transform: 'scale(0)'},
-};
-
 const modalProps: IModalOptions = {
     variants: animation.fadeInDown,
+    // variants: {
+    //     initial: {transform: 'scale(0)'},
+    //     show: {transform: 'scale(1)'},
+    //     exit: {transform: 'scale(0)'},
+    // },
     className: 'p-3'
 };
 // const modalPropsUndefined: IModalProps|undefined = undefined;
@@ -39,7 +38,7 @@ const PromotionModal2 = createModal(
 
         </CreateTaskModalRoot>;
     }
-,modalProps);
+    ,modalProps);
 
 export default PromotionModal2;
 

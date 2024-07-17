@@ -21,7 +21,7 @@ interface ICreateModal<T> {
  * @param ModalComponent
  * @param modalOptions
  */
-const createModal = <T = undefined>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
+const createModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
     /**
      * Add framer motion
      * @param args

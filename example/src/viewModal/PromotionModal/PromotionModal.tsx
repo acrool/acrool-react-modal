@@ -9,9 +9,10 @@ interface IBaseModalProps {
 }
 
 
-const modalProps: IModalOptions = {
+const modalOptions: IModalOptions = {
     variants: animation.fadeInDown,
-    className: 'p-3'
+    className: 'p-3',
+    // isEnableClickMaskHide: true,
 };
 
 /**
@@ -32,9 +33,10 @@ const PromotionModal = createModal(
 
         </CreateTaskModalRoot>;
     }
-    , modalProps);
+    , modalOptions);
 
 export default PromotionModal;
+
 
 
 const CreateTaskModalRoot = styled.div`
