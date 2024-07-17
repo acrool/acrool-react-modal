@@ -11,7 +11,7 @@ export const ModalProviderContext = createContext<IContextProps>({
 
 export const ModalProviderConsumer = ModalProviderContext.Consumer;
 
-export const useModalContext = () => useContext(ModalProviderContext);
+export const useModal = () => useContext(ModalProviderContext);
 
 
 interface IProps {

@@ -1,6 +1,6 @@
 import AcroolTable from '@acrool/react-table';
 import {modal} from '@acrool/react-modal';
-import {BaseModal, BaseModal2} from '../../viewModal/CreateTaskModal/CreateTaskModal';
+import BaseModal from '../../viewModal/PromotionModal';
 
 
 const Example = () => {

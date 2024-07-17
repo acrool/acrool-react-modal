@@ -8,7 +8,6 @@ import MotionDrawer from './MotionDrawer';
  * 產生帶 framer-motion 功能的Modal
  * @param animationVariants
  * @param Comp
- * @constructor
  */
 const CreateModal = <T = undefined>(animationVariants: Variants, Comp: React.FC<T>): React.FC<T> => {
     /**
