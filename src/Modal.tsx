@@ -29,7 +29,7 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         super(props);
 
         modal = {
-            show: (children, args) => this.show(children, args),
+            show: this.show,
             hide: this.hide,
         };
     }
