@@ -36,7 +36,8 @@ class Modal extends React.Component<IModalPortalProps, IState> {
 
     /**
      * 顯示 Toaster
-     * @param newItem
+     * @param ModalComponent
+     * @param args
      */
     show: TShow = (ModalComponent, args) => {
         const queueKey = ulid().toLowerCase();
