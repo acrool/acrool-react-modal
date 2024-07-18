@@ -1,4 +1,5 @@
 import React, {createContext, useContext} from 'react';
+import Logger from '@acrool/js-logger';
 
 
 interface IContextProps {
@@ -7,7 +8,7 @@ interface IContextProps {
 }
 
 export const ModalProviderContext = createContext<IContextProps>({
-    hide: () => {throw new Error('No hide method detected, did you embed your app with Acrool/ModalPortal?');}
+    hide: () => Logger.warning('No hide method detected, did you embed your app with Acrool/ModalPortal?'),
 });
 
 export const ModalProviderConsumer = ModalProviderContext.Consumer;

@@ -1,7 +1,7 @@
 import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 import styled from 'styled-components';
 
-import Card from '../../components/Card';
+// import Card from '../../components/Card';
 
 
 interface IBaseModalProps {
@@ -25,9 +25,9 @@ const PromotionModal = createModal(
         const {hide} = useModal();
 
         return <CreateTaskModalRoot>
-            <Card title="Create Modal" direction="column">
-                <div>Test content {args?.myVar}</div>
-            </Card>
+            {/*<Card title="Create Modal" direction="column">*/}
+            <div>Test content {args?.myVar}</div>
+            {/*</Card>*/}
 
             <button type="button" onClick={hide}>X </button>
 
