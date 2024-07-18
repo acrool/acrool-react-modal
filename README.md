@@ -117,3 +117,8 @@ There is also a example that you can play with it:
 ## License
 
 MIT © [Acrool](https://github.com/acrool) & [Imagine](https://github.com/imagine10255)
+
+
+## Refer to
+
+- [https://github.com/ebay/nice-modal-react](https://github.com/ebay/nice-modal-react)
