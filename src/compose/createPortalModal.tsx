@@ -7,16 +7,11 @@ import {IModalOptions} from '../types';
 
 type TShowArgs<T> = (args: T) => void
 type TShow = () => void
-// type TShowMulti<T> = T extends undefined ? TShow : TShowArgs<T>;
-
+type TShowMulti<T> = {} extends T ? TShow : TShowArgs<T>;
 
 interface ICreateModal<T> extends React.FC<T>{
-    show: TShow;
-    showArgs: TShowArgs<T>;
+    show: TShowMulti<T>;
 }
-
-
-
 
 /**
  * 產生帶 framer-motion 功能的Modal
@@ -30,16 +25,27 @@ const createPortalModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: I
      * Add framer motion
      * @param args
      */
-    const MotionModal = (args: T) => {
+    const MotionModal: React.FC<T> & { show: TShowMulti<T> }  = (args: T) => {
         return <MotionDrawer modalOptions={modalOptions}>
             <ModalComponent {...args}/>
         </MotionDrawer>;
     };
 
-    MotionModal.show = () => modal.show(MotionModal);
-    MotionModal.showArgs = (args) => modal.show(MotionModal, args);
+    // Overload signatures
+    function show(): void;
+    function show(args: T): void;
+    function show(args?: T): void {
+        if (args) {
+            modal.show(MotionModal, args);
+        } else {
+            modal.show(MotionModal);
+        }
+    }
 
-    return MotionModal;
+    // Assign the overloaded function to MotionModal.show
+    MotionModal.show = show as TShowMulti<T>;
+
+    return MotionModal as ICreateModal<T>;
 };
 
 

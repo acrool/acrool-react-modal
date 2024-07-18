@@ -25,7 +25,7 @@ const EditAccountModal = createControlledModal(
                 <button type="button" onClick={() => navigate({hash: '/control/editAccount/1'})}>navigate HashModal 1</button>
                 <button type="button" onClick={() => navigate({hash: '/control/editAccount/2'})}>navigate HashModal 2</button>
                 <button type="button" onClick={() => navigate({hash: '/control/editPassword'})}>navigate DiffModal</button>
-                <button type="button" onClick={PromotionModal.show}>show portal modal</button>
+                {/*<button type="button" onClick={PromotionModal.show}>show portal modal</button>*/}
             </div>
         </>;
     }, {
