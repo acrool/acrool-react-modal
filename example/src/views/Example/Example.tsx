@@ -38,7 +38,7 @@ const Example = () => {
                 {
                     id: 2,
                     onClickRow: () => {
-                        PromotionModalArgs.showArgs({myVar: 'Imagine'});
+                        PromotionModalArgs.show({myVar: 'Imagine'});
                     },
                     field: {
                         name: 'Fast Show Args',

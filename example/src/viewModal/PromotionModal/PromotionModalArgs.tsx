@@ -31,7 +31,7 @@ const PromotionModalArgs = createPortalModal(
             </Card>
 
             <button type="button" onClick={hide}>X </button>
-            <button type="button" onClick={PromotionModal.show}>Show B Modal </button>
+            {/*<button type="button" onClick={PromotionModal.show}>Show B Modal </button>*/}
 
         </CreateTaskModalRoot>;
     }

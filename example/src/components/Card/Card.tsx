@@ -59,8 +59,8 @@ const CardBody = styled.div<{
     flex-direction: ${props => props.direction === 'column' ? 'column': 'row'};
     padding: ${props => props.fluid ? 0: '5px 10px'};
 
-    ${media.lg`
-      padding: ${props => props.fluid ? 0: '10px 20px'};
+    ${props => media.lg`
+      padding: ${props.fluid ? 0: '10px 20px'};
     `}
 `;
 
