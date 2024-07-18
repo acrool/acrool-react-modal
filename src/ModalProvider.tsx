@@ -1,5 +1,5 @@
-import React, {createContext, useContext} from 'react';
 import Logger from '@acrool/js-logger';
+import React, {createContext, useContext} from 'react';
 
 
 interface IContextProps {
