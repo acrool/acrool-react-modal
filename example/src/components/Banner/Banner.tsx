@@ -2,12 +2,17 @@ import styled from 'styled-components';
 import {useRef} from 'react';
 import domtoimage from 'dom-to-image';
 import Github from '../../assets/github.svg?react';
-import {media} from '@acrool/react-grid';
+import {media} from "@acrool/react-grid";
 
 
 interface IProps {
     className?: string
 }
+
+
+
+const repositoryUrl = 'https://github.com/acrool/acrool-react-modal';
+const name = 'Acrool React Modal';
 
 
 
@@ -32,11 +37,6 @@ const Banner = ({
             });
     };
 
-
-    const repositoryUrl = 'https://github.com/acrool/acrool-react-modal';
-    const name = 'Acrool React Modal';
-
-
     return <BannerRoot className={className}>
         <a href={repositoryUrl} target="_blank" rel="noopener noreferrer">
             <Github width={40} height={40}/>
@@ -54,7 +54,6 @@ export default Banner;
 
 
 
-
 const DownloadWrapper = styled.div`
   text-align: center;
   display: flex;
@@ -67,11 +66,11 @@ const DownloadWrapper = styled.div`
   width: 100%;
   gap: 12px;
   background-color: #000;
-  
+
   > img{
     height: 100px;
   }
-  
+
   > h1{
     word-wrap:break-word;
 
@@ -91,6 +90,7 @@ const DownloadWrapper = styled.div`
 
   `}
 `;
+
 
 
 const DownloadButton = styled.button`
