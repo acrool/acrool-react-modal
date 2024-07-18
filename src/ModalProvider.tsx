@@ -4,11 +4,11 @@ import Logger from '@acrool/js-logger';
 
 interface IContextProps {
     queueKey?: string,
-    hide: () => void
+    hide: () => Promise<void>
 }
 
 export const ModalProviderContext = createContext<IContextProps>({
-    hide: () => Logger.warning('No hide method detected, did you embed your app with Acrool/ModalPortal?'),
+    hide: async () => Logger.warning('No hide method detected, did you embed your app with Acrool/ModalPortal?'),
 });
 
 export const ModalProviderConsumer = ModalProviderContext.Consumer;
