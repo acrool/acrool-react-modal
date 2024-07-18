@@ -1,6 +1,6 @@
 {
   "name": "@acrool/react-modal",
-  "version": "0.0.4-alpha.3",
+  "version": "0.0.4-alpha.6",
   "description": "Modal library based for Reactjs",
   "keywords": [
     "acrool",
@@ -9,6 +9,7 @@
     "modal",
     "portal"
   ],
+  "author": "info@acrool.com",
   "private": false,
   "type": "module",
   "license": "MIT",
@@ -55,7 +56,8 @@
     "react-dom": "^18.x"
   },
   "devDependencies": {
-    "@acrool/react-portal": "^0.0.4-alpha.3",
+    "@acrool/react-portal": "^0.0.4-alpha.4",
+    "@acrool/js-logger": "1.0.23",
     "@types/jest": "^29.5.0",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",

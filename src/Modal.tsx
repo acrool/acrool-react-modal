@@ -1,11 +1,11 @@
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React, {useCallback, useEffect, useState} from 'react';
+import React from 'react';
 import {ulid} from 'ulid';
 
 import {rootId} from './config';
 import styles from './modal.module.scss';
-import ModalProvider from './ModalProvider';
+import {ModalProviderContext} from './ModalProvider';
 import {IModal, IModalPortalProps, IRow, THidden, TShow} from './types';
 import {removeByIndex} from './utils';
 
@@ -15,70 +15,91 @@ import {removeByIndex} from './utils';
  */
 export let modal: IModal;
 
+interface IState {
+    rows: IRow[]
+}
 
+class Modal extends React.Component<IModalPortalProps, IState> {
 
-const Modal = (props: IModalPortalProps) => {
-    const [rows, setRows] = useState<IRow[]>([]);
+    state: IState = {
+        rows: []
+    };
 
-    // set global
-    useEffect(() => {
+    constructor(props) {
+        super(props);
+
         modal = {
-            show: (children, args) => show(children, args),
+            show: (children, args) => this.show(children, args),
+            hide: this.hide,
         };
-        // modal.hide = (item) => show({...item, status: EStatus.warning});
-    }, []);
-
+    }
 
     /**
      * 顯示 Toaster
-     * @param newItem
+     * @param ModalComponent
+     * @param args
      */
-    const show: TShow = useCallback((ModalComponent, args) => {
+    show: TShow = (ModalComponent, args) => {
         const queueKey = ulid().toLowerCase();
-        setRows(prevRows => [...prevRows, {queueKey, ModalComponent, args}]);
-    }, []);
+        this.setState(prev => {
+            return {
+                rows: [...prev.rows, {queueKey, ModalComponent, args}],
+            };
+        });
+    };
 
 
     /**
      * 隱藏 Toaster
-     * @param key
+     * @param queueKey
      */
-    const hide: THidden = useCallback((key) => {
-        setRows(prevRows => {
-            const index = prevRows.findIndex(row => row.queueKey === key);
-            return removeByIndex(prevRows, index);
+    hide: THidden = (queueKey) => {
+        this.setState(prev => {
+            const index = prev.rows.findIndex(row => row.queueKey === queueKey);
+            return {
+                rows: removeByIndex(prev.rows, index),
+            };
         });
-    }, []);
+
+    };
 
 
     /**
      * 渲染項目
      */
-    const renderItems = () => {
+    renderItems() {
+        const {rows} = this.state;
         return rows.map(row => {
             return (
-                <ModalProvider
+                <ModalProviderContext.Provider
                     key={row.queueKey}
-                    hide={() => hide(row.queueKey)}
-                >
+                    value={{
+                        queueKey: row.queueKey,
+                        hide: async () => this.hide(row.queueKey)
+                    }}>
                     <row.ModalComponent
+                        key={row.queueKey}
                         {...row.args}
                     />
-                </ModalProvider>
+                </ModalProviderContext.Provider>
             );
         });
     };
 
-    return (
-        <ReactPortal
-            id={props.id || rootId}
-            className={styles.root}
-        >
-            <AnimatePresence>
-                {renderItems()}
-            </AnimatePresence>
-        </ReactPortal>
-    );
-};
+
+
+    render() {
+        return (
+            <ReactPortal
+                id={this.props.id || rootId}
+                className={styles.root}
+            >
+                <AnimatePresence>
+                    {this.renderItems()}
+                </AnimatePresence>
+            </ReactPortal>
+        );
+    }
+}
 
 export default Modal;

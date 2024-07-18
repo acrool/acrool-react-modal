@@ -1,11 +1,12 @@
 import {modal} from '@acrool/react-modal';
 import AcroolTable from '@acrool/react-table';
+import {useNavigate} from 'react-router-dom';
 
-import PromotionModal from '../../viewModal/PromotionModal';
-import PromotionModal2 from '../../viewModal/PromotionModal/PromotionModal2';
+import {PromotionModal, PromotionModalArgs} from '../../viewModal/PromotionModal';
 
 
 const Example = () => {
+    const navigate = useNavigate();
 
     // const [visible, setVisible] = useState<EVisible>(EVisible.none);
     // const [isVisible, setVisible] = useState<boolean>(false);
@@ -27,42 +28,71 @@ const Example = () => {
                 {
                     id: 1,
                     onClickRow: () => {
-                        PromotionModal2.show();
+                        PromotionModal.show();
                     },
                     field: {
-                        name: 'Default',
-                        use: 'PromotionModal2.show()',
+                        name: 'Fast Show',
+                        use: 'PromotionModal.show()',
                     }
                 },
                 {
                     id: 2,
                     onClickRow: () => {
-                        modal.show(PromotionModal2.FC);
+                        PromotionModalArgs.showArgs({myVar: 'Imagine'});
                     },
                     field: {
-                        name: 'Base Default',
-                        use: 'PromotionModal2.show()',
+                        name: 'Fast Show Args',
+                        use: 'PromotionModal.showArgs({myVar: \'Imagine\'})',
                     }
                 },
-
                 {
                     id: 3,
                     onClickRow: () => {
-                        PromotionModal.showArgs({myVar: 'Imagine'});
+                        modal.show(PromotionModal);
                     },
                     field: {
-                        name: 'Args',
-                        use: 'PromotionModal.showArgs({myVar: \'Imagine\'})',
+                        name: 'Origin Show',
+                        use: 'modal.show(PromotionModal)',
                     }
                 },
                 {
                     id: 4,
                     onClickRow: () => {
-                        modal.show(PromotionModal.FC, {myVar: 'Imagine'});
+                        modal.show(PromotionModalArgs, {myVar: 'Imagine'});
                     },
                     field: {
-                        name: 'Base Args',
+                        name: 'Origin Show Args',
                         use: 'modal.show(PromotionModal.FC, {myVar: \'Imagine\'})',
+                    }
+                },
+                {
+                    id: 5,
+                    onClickRow: () => {
+                        navigate({hash: '/control/editAccount/1'});
+                    },
+                    field: {
+                        name: 'Hash Modal 1',
+                        use: 'navigate({hash: \'/control/editAccount/1\'})',
+                    }
+                },
+                {
+                    id: 6,
+                    onClickRow: () => {
+                        navigate({hash: '/control/editAccount/2'});
+                    },
+                    field: {
+                        name: 'Hash Modal 2',
+                        use: 'navigate({hash: \'/control/editAccount/2\'})',
+                    }
+                },
+                {
+                    id: 7,
+                    onClickRow: () => {
+                        navigate({hash: '/control/editPassword'});
+                    },
+                    field: {
+                        name: 'Hash Modal Diff',
+                        use: 'navigate({hash: \'/control/editPassword\'})',
                     }
                 },
 

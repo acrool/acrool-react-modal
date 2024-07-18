@@ -2,10 +2,15 @@
 # yarn lockfile v1
 
 
-"@acrool/react-portal@^0.0.4-alpha.3":
-  version "0.0.4-alpha.3"
-  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-0.0.4-alpha.3.tgz#713bf47225648558bf3702d49e3354380b83d30f"
-  integrity sha512-OOltgOIL93yKMxHdPCInp2qvKPuFkUT0aElrswCGXWDmHUOQYswcqoEJLuPabYcPZZqRZZn9Bm2lJZ0iu6eZiw==
+"@acrool/js-logger@1.0.23":
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/@acrool/js-logger/-/js-logger-1.0.23.tgz#2dd951fc3142cef0a9a050f02aaa4d94eab09042"
+  integrity sha512-UW4mXflIYYIKx4CaptY6HZmY+I2fRY76Eb/E4ACpEm7LXsZPdbgKwpGlzkky7212us8sPP8PyJnhWU7ftMhLXA==
+
+"@acrool/react-portal@^0.0.4-alpha.4":
+  version "0.0.4-alpha.4"
+  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-0.0.4-alpha.4.tgz#dda6015678714770867f9b0c856392fdefd121fe"
+  integrity sha512-QUxgntgnWh+yUGU4SK+emO82lRgdKGdwryo+iG2u9Ooz13QloCvdlPF4KxVzV5KhuXphtbvxFpHXhOJkuki18w==
 
 "@ampproject/remapping@^2.2.0":
   version "2.3.0"
