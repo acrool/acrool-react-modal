@@ -8,7 +8,7 @@ import MotionDrawer from '../MotionDrawer';
 import {IModalOptions} from '../types';
 
 
-interface ICreateControlledModal<T> extends React.FC<T>{
+interface ICreateStateModal<T> extends React.FC<T>{
 }
 
 
@@ -19,12 +19,13 @@ interface ICreateControlledModal<T> extends React.FC<T>{
  * @param ModalComponent
  * @param modalOptions
  */
-const createControlledModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateControlledModal<T> => {
+const createStateModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateStateModal<T> => {
     /**
      * Add framer motion
+     * Add state
      * @param args
      */
-    const ControlledMotionModal = (args: T) => {
+    const StateModal = (args: T) => {
 
         const [isVisible, setVisible] = useState(true);
 
@@ -78,7 +79,7 @@ const createControlledModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions
     };
 
 
-    return ControlledMotionModal;
+    return StateModal;
 };
 
-export default createControlledModal;
+export default createStateModal;

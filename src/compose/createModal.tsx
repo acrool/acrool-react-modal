@@ -20,7 +20,7 @@ interface ICreateModal<T> extends React.FC<T>{
  * @param ModalComponent
  * @param modalOptions
  */
-const createPortalModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
+const createModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
     /**
      * Add framer motion
      * @param args
@@ -49,4 +49,4 @@ const createPortalModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: I
 };
 
 
-export default createPortalModal;
+export default createModal;

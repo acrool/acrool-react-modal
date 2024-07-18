@@ -1,4 +1,4 @@
-import {animation, createPortalModal, IModalOptions, useModal} from '@acrool/react-modal';
+import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
@@ -27,7 +27,7 @@ const modalProps: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModal = createPortalModal(
+const PromotionModal = createModal(
     () => {
         const {hide} = useModal();
         const navigate = useNavigate();

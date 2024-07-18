@@ -1,9 +1,9 @@
-import {animation, createControlledModal, useModal} from '@acrool/react-modal';
+import {animation, createStateModal, useModal} from '@acrool/react-modal';
 import {useHashParams, useHashPathname} from '@acrool/react-router-hash';
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 
-const EditPasswordModal = createControlledModal(
+const EditPasswordModal = createStateModal(
     () => {
         const navigate = useNavigate();
         const pathname = useHashPathname();

@@ -1,2 +1,2 @@
-export {default as createControlledModal} from './createControlledModal';
-export {default as createPortalModal} from './createPortalModal';
+export {default as createStateModal} from './createStateModal';
+export {default as createModal} from './createModal';

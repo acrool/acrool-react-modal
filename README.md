@@ -58,10 +58,10 @@ const App = () => {
 };
 ```
 
-custom modal component
+### Custom modal component
 
 ```tsx
-import {animation, createPortalModal, IModalOptions, useModal} from '@acrool/react-modal';
+import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 
 const modalProps: IModalOptions = {
     variants: animation.fadeInDown,
@@ -72,10 +72,9 @@ interface IProps {
     myVar: string
 }
 
-const PromotionModalArgs = createPortalModal(
+const PromotionModal = createModal(
     (args: IProps) => {
         const {hide} = useModal();
-        const navigate = useNavigate();
 
         return <div>
             <div>Test2 content</div>
@@ -85,28 +84,68 @@ const PromotionModalArgs = createPortalModal(
     , modalProps
 );
 
-export default PromotionModalArgs;
+export default PromotionModal;
 ```
+
 
 
 then in your page
 
 ```tsx
-import PromotionModalArgs from './PromotionModalArgs';
+import PromotionModa from './PromotionModal';
 import {modal} from '@acrool/react-modal';
 import {useEffect} from "react";
 
 const Example = () => {
-
     return (
         <div>
             <button type="button" onClick={() => {
-                PromotionModalArgs.show({myVar: 'Imagine'});
+                PromotionModa.show({myVar: 'Imagine'});
             }}>Open Modal</button>
         </div>
     );
 };
 ```
+
+### Custom state modal component
+
+ex: hash router
+
+```tsx
+import {animation, createStateModal, IModalOptions, useModal} from '@acrool/react-modal';
+
+const modalProps: IModalOptions = {
+    variants: animation.fadeInDown,
+    className: 'p-3'
+};
+
+interface IProps {
+    myVar: string
+}
+
+const PromotionHashModal = createStateModal(
+    (args: IProps) => {
+        const {hide} = useModal();
+        const navigate = useNavigate();
+        
+        const handleClose = () => {
+            hide().then(() => {
+                navigate({hash: undefined});
+            })
+        }
+
+        return <div>
+            <div>Test2 content</div>
+            <button type="button" onClick={handleClose}>X </button>
+        </div>;
+    }
+    , modalProps
+);
+
+export default PromotionHashModal;
+```
+
+
 
 
 There is also a example that you can play with it:
@@ -122,3 +161,4 @@ MIT © [Acrool](https://github.com/acrool) & [Imagine](https://github.com/imagin
 ## Refer to
 
 - [https://github.com/ebay/nice-modal-react](https://github.com/ebay/nice-modal-react)
+- [https://animate.style](https://animate.style)

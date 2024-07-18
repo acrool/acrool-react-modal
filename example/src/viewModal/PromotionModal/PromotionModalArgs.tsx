@@ -1,4 +1,4 @@
-import {animation, createPortalModal, IModalOptions, useModal} from '@acrool/react-modal';
+import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
@@ -21,7 +21,7 @@ const modalOptions: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModalArgs = createPortalModal(
+const PromotionModalArgs = createModal(
     (args: IProps) => {
         const {hide} = useModal();
 
