@@ -5,7 +5,7 @@ import Card from '../../components/Card';
 import PromotionModal from './PromotionModal';
 
 
-interface IBaseModalProps {
+interface IProps {
     myVar: string
 }
 
@@ -22,7 +22,7 @@ const modalOptions: IModalOptions = {
  * PS: 示範用客製化光箱
  */
 const PromotionModalArgs = createPortalModal(
-    (args: IBaseModalProps) => {
+    (args: IProps) => {
         const {hide} = useModal();
 
         return <CreateTaskModalRoot>

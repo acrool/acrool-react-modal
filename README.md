@@ -21,90 +21,14 @@
 
 
 
-## Requirement
-
-### 單一頁面使用光箱
-
-```tsx
-
-// 製作
-
-const EditTaskModal = () => {
-    const modal = useModal();
-    
-    return <div>
-        This is Modal Content
-        <button type="button" onClick={modal.hidden}>Cancel</button>
-    </div>
-}
-
-// 使用
-import {useCreateModal} from "./Modal";
-const TaskList = () => {
-    const modal = useCreateModal(EditTaskModal);
-
-    const handleShow = (id: string) => {
-        modal.show({id});
-    }
-    
-    return <div>
-        <button onClick={() => handleShow(1)}>Show</button>
-
-        <modal.Component/>;
-    </div>;
-}
-```
-
-
-### 需要跨區呼叫的光箱
-
-```tsx
-
-
-// 製作
-const EditTaskModal = () => {
-    const modal = useModal();
-
-    return <div>
-        This is Modal Content
-        <button type="button" onClick={modal.hidden}>Cancel</button>
-    </div>
-}
-
-// 使用
-import {useCreateModal} from "./Modal";
-const PageParent = () => {
-    const WithEditTaskModal = useCreateModal(EditTaskModal);
-    
-    return <div>
-        <PageChild/>
-
-        
-        <WithEditTaskModal.Component/>;
-    </div>;
-}
-
-const PageChild = () => {
-    const WithEditTaskModal = useCreateModal(EditTaskModal);
-
-    const handleShow = (id: string) => {
-        WithEditTaskModal.show({id});
-    }
-    
-    return <div>
-        <button onClick={() => WithEditTaskModal.show(args)}>Show</button>
-
-        <WithEditTaskModal.Component/>;
-    </div>;
-}
-```
-
 
 
 ## Features
 
 - Supports queue modal list
 - Plug and unplug using `@acrool/react-portal` and `framer-motion`
+- Quickly create light box effects and send them to the outside to avoid hierarchical problems
+- Support [@acrool/react-router-hash](https://github.com/acrool/acrool-react-router-hash) lightbox (using createControlledModal)
 
 ## Install
 
@@ -128,43 +52,61 @@ const App = () => {
     return (
         <div>
             <BaseUsed/>
-            <ModalPortal
-                isVisibleQueueKey={false}
-                renderLoader={<Loader/>}
-                defaultMessage="Loading..."
-            />
+            <ModalPortal/>
         </div>
     );
 };
 ```
 
+custom modal component
+
+```tsx
+import {animation, createPortalModal, IModalOptions, useModal} from '@acrool/react-modal';
+
+const modalProps: IModalOptions = {
+    variants: animation.fadeInDown,
+    className: 'p-3'
+};
+
+interface IProps {
+    myVar: string
+}
+
+const PromotionModalArgs = createPortalModal(
+    (args: IProps) => {
+        const {hide} = useModal();
+        const navigate = useNavigate();
+
+        return <div>
+            <div>Test2 content</div>
+            <button type="button" onClick={hide}>X </button>
+        </div>;
+    }
+    , modalProps
+);
+
+export default PromotionModalArgs;
+```
+
+
 then in your page
 
 ```tsx
+import PromotionModalArgs from './PromotionModalArgs';
 import {modal} from '@acrool/react-modal';
 import {useEffect} from "react";
 
 const Example = () => {
 
-    useEffect(() => {
-        modal.show();
-        
-        setTimeout(() => {
-            modal.hidden();
-        }, 3000)
-    }, []);
-
     return (
         <div>
-            sample page
+            <button type="button" onClick={() => {
+                PromotionModalArgs.show({myVar: 'Imagine'});
+            }}>Open Modal</button>
         </div>
     );
 };
 ```
-
-- modal.show
-- modal.hidden
-- toast.hiddenAll
 
 
 There is also a example that you can play with it:
