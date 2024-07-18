@@ -56,6 +56,7 @@
   },
   "devDependencies": {
     "@acrool/react-portal": "^0.0.4-alpha.3",
+    "@acrool/js-logger": "1.0.23",
     "@types/jest": "^29.5.0",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",
