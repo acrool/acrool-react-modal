@@ -47,7 +47,7 @@ const MotionDrawer = ({
     >
         <motion.div
             transition={{type: 'spring', duration: 0.5}}
-            className={clsx(styles.motionScrollWrapper, className)}
+            className={clsx(styles.motionAnimationWrapper, className)}
             {...motionProps}
         >
             {children}
