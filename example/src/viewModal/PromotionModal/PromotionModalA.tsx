@@ -1,5 +1,6 @@
-import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
+import {animation, createPortalModal, IModalOptions, useModal} from '@acrool/react-modal';
 import styled from 'styled-components';
+import PromotionModalB from './PromotionModalB';
 
 // import Card from '../../components/Card';
 
@@ -20,7 +21,7 @@ const modalOptions: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModal = createModal(
+const PromotionModalA = createPortalModal(
     (args: IBaseModalProps) => {
         const {hide} = useModal();
 
@@ -30,12 +31,13 @@ const PromotionModal = createModal(
             {/*</Card>*/}
 
             <button type="button" onClick={hide}>X </button>
+            <button type="button" onClick={PromotionModalB.show}>Show B Modal </button>
 
         </CreateTaskModalRoot>;
     }
     , modalOptions);
 
-export default PromotionModal;
+export default PromotionModalA;
 
 
 

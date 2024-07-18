@@ -7,11 +7,11 @@ import {createBrowserHistory} from 'history';
 import {BrowserRouter as Router,Route, Routes} from 'react-router-dom';
 
 import Banner from './components/Banner';
+import {PromotionModalA} from './viewModal/PromotionModal';
 import Dashboard from './views/Dashboard';
 import NotFound from './views/NotFound';
 import EditAccountModal from './views/ViewModal/EditLayout/EditAccountModal';
 import EditPasswordModal from './views/ViewModal/EditLayout/EditPasswordModal';
-import PromotionModal from "./viewModal/PromotionModal";
 
 
 const history = createBrowserHistory({window});
@@ -49,7 +49,7 @@ function App() {
 
                 <MainRouter/>
 
-                <button type="button" onClick={() => PromotionModal.show()}>Open</button>
+                <button type="button" onClick={() => PromotionModalA.show()}>Open</button>
 
                 <ModalPortal/>
             </div>

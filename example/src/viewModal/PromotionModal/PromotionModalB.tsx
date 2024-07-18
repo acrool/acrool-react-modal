@@ -1,7 +1,7 @@
-import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
+import {animation, createPortalModal, IModalOptions, useModal} from '@acrool/react-modal';
 import styled from 'styled-components';
 
-import Card from '../../components/Card';
+// import Card from '../../components/Card';
 
 
 interface IBaseModalProps {
@@ -25,14 +25,14 @@ const modalProps: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModal2 = createModal(
+const PromotionModalB = createPortalModal(
     () => {
         const {hide} = useModal();
 
         return <CreateTaskModalRoot>
-            <Card title="Create Modal" direction="column">
-                <div>Test2 content</div>
-            </Card>
+            {/*<Card title="Create Modal" direction="column">*/}
+            <div>Test2 content</div>
+            {/*</Card>*/}
 
             <button type="button" onClick={hide}>X </button>
 
@@ -40,7 +40,7 @@ const PromotionModal2 = createModal(
     }
     ,modalProps);
 
-export default PromotionModal2;
+export default PromotionModalB;
 
 
 const CreateTaskModalRoot = styled.div`
