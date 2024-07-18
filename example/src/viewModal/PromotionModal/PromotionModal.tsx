@@ -1,4 +1,6 @@
 import {animation, createPortalModal, IModalOptions, useModal} from '@acrool/react-modal';
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
@@ -28,12 +30,14 @@ const modalProps: IModalOptions = {
 const PromotionModal = createPortalModal(
     () => {
         const {hide} = useModal();
+        const navigate = useNavigate();
 
         return <CreateTaskModalRoot>
             <Card title="Create Modal" direction="column">
                 <div>Test2 content</div>
             </Card>
 
+            <button type="button" onClick={() => navigate({hash: '/control/editAccount/1'})}>navigate HashModal 1</button>
             <button type="button" onClick={hide}>X </button>
 
         </CreateTaskModalRoot>;

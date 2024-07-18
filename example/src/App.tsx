@@ -36,6 +36,8 @@ const MainRouter = () => {
             </HashRoute>
         </HashRoutes>
 
+        <ModalPortal/>
+
     </Router>;
 };
 
@@ -47,9 +49,6 @@ function App() {
                 <Banner/>
 
                 <MainRouter/>
-
-
-                <ModalPortal/>
             </div>
         </GridThemeProvider>
     );

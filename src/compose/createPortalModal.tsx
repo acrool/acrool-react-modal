@@ -18,10 +18,6 @@ interface ICreateModal<T> extends React.FC<T>{
 
 
 
-
-
-
-
 /**
  * 產生帶 framer-motion 功能的Modal
  *
