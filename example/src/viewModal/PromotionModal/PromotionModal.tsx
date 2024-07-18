@@ -1,4 +1,4 @@
-import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
+import {animation, createPortalModal, IModalOptions, useModal} from '@acrool/react-modal';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
@@ -9,34 +9,38 @@ interface IBaseModalProps {
 }
 
 
-const modalOptions: IModalOptions = {
+const modalProps: IModalOptions = {
     variants: animation.fadeInDown,
-    className: 'p-3',
-    // isEnableClickMaskHide: true,
+    // variants: {
+    //     initial: {transform: 'scale(0)'},
+    //     show: {transform: 'scale(1)'},
+    //     exit: {transform: 'scale(0)'},
+    // },
+    className: 'p-3'
 };
+// const modalPropsUndefined: IModalProps|undefined = undefined;
 
 /**
- * 優惠活動光箱
+ * 優惠活動光箱2
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModal = createModal(
-    (args: IBaseModalProps) => {
+const PromotionModal = createPortalModal(
+    () => {
         const {hide} = useModal();
 
         return <CreateTaskModalRoot>
             <Card title="Create Modal" direction="column">
-                <div>Test content {args?.myVar}</div>
+                <div>Test2 content</div>
             </Card>
 
             <button type="button" onClick={hide}>X </button>
 
         </CreateTaskModalRoot>;
     }
-    , modalOptions);
+    ,modalProps);
 
 export default PromotionModal;
-
 
 
 const CreateTaskModalRoot = styled.div`
