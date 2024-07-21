@@ -4,6 +4,7 @@ import {ReactNode} from 'react';
 
 import {IModalOptions} from '../types';
 import styles from './motion-drawer.module.scss';
+import animation from '../animation';
 
 
 const maskMotionProps: IModalOptions = {
@@ -48,6 +49,7 @@ const MotionDrawer = ({
         <motion.div
             transition={{type: 'spring', duration: 0.5}}
             className={clsx(styles.motionAnimationWrapper, className)}
+            variants={animation.fadeInDown}
             {...motionProps}
         >
             {children}
