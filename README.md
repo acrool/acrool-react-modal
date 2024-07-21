@@ -210,6 +210,12 @@ const ExamplePage = () => {
 ```
 
 
+- animation
+  - fadeInDown: (default), ex Base modal style
+  - zoomInDown
+  - slideInLeft: ex Drawer slider
+  - slideInRight: ex Drawer slider
+  - slideInUp: ex Dropdown
 
 
 There is also a example that you can play with it:
