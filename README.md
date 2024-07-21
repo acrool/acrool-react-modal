@@ -62,8 +62,8 @@ const App = () => {
 ```
 
 - Here are two ways to use it
-  - [A. Custom modal component](?tab=readme-ov-file#acustom-modal-component)
-  - [B. Custom state modal component](?tab=readme-ov-file#bcustom-state-modal-component)
+  - [A. Custom modal component](#a-custom-modal-component)
+  - [B. Custom state modal component](#b-custom-state-modal-component)
 
 
 ## A. Custom modal component
