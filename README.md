@@ -62,11 +62,11 @@ const App = () => {
 ```
 
 - Here are two ways to use it
-  - [A. Custom modal component](#A.custom-modal-component)
-  - [B. Custom state modal component](#B.custom-state-modal-component)
+  - [A. Custom modal component](?tab=readme-ov-file#acustom-modal-component)
+  - [B. Custom state modal component](?tab=readme-ov-file#bcustom-state-modal-component)
 
 
-### A.Custom modal component
+## A. Custom modal component
 
 Add the lightbox to the display column list by throwing the Show method
 
@@ -114,7 +114,12 @@ const ExamplePage = () => {
 
 
 
-### B.Custom state modal component
+
+
+
+
+
+## B. Custom state modal component
 
 The inside of the light box is controlled by its own state, which is displayed through rendering, such as using HashRouter.
 
