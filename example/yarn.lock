@@ -7,10 +7,9 @@
   resolved "https://registry.yarnpkg.com/@acrool/react-grid/-/react-grid-5.2.2.tgz#8de39e0709625ce22c024a587bc2d632edbd38a5"
   integrity sha512-23+iQrn9tgHW0Bg8oHtbtoxQoruFg2AoEHUCsqklRYjxZdXj0Nik32SfJ1svhGdLIzNwD0GSdl2GrQ5qNKncGA==
 
-"@acrool/react-modal@0.0.5-alpha.0":
-  version "0.0.5-alpha.0"
-  resolved "https://registry.yarnpkg.com/@acrool/react-modal/-/react-modal-0.0.5-alpha.0.tgz#e92704bc19fa73a31251f9af1507db639c83b4de"
-  integrity sha512-FErHL8JcFLtOFWwAfhRQiVTSQhFOIegtkFPcCqFXaQjO4gH0nwuRjZjH9OW7H0WVFfPerp0oGsTNr0QgEgZNXQ==
+"@acrool/react-modal@link:..":
+  version "0.0.0"
+  uid ""
 
 "@acrool/react-router-hash@3.1.3":
   version "3.1.3"

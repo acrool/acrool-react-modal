@@ -3,19 +3,17 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
-import Card from '../../components/Card';
 
 
 
 
 const modalProps: IModalOptions = {
-    variants: animation.fadeInDown,
+    variants: animation.slideInRight,
     // variants: {
     //     initial: {transform: 'scale(0)'},
     //     show: {transform: 'scale(1)'},
     //     exit: {transform: 'scale(0)'},
     // },
-    className: 'p-3'
 };
 // const modalPropsUndefined: IModalProps|undefined = undefined;
 
@@ -24,27 +22,29 @@ const modalProps: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModal = createModal(
+const SliderLeft = createModal(
     () => {
         const {hide} = useModal();
         const navigate = useNavigate();
 
-        return <CreateTaskModalRoot>
-            <Card title="Create Modal" direction="column">
-                <div>Test2 content</div>
-            </Card>
+        return <SliderLeftRoot>
+            <div>RightSlider content</div>
 
             <button type="button" onClick={() => navigate({hash: '/control/editAccount/1'})}>navigate HashModal 1</button>
             <button type="button" onClick={hide}>X </button>
 
-        </CreateTaskModalRoot>;
+        </SliderLeftRoot>;
     }
     ,modalProps);
 
-export default PromotionModal;
+export default SliderLeft;
 
 
-const CreateTaskModalRoot = styled.div`
-  width: 400px;
-  margin: 0 auto;
+const SliderLeftRoot = styled.div`
+  width: 300px;
+  height: 100vh;
+  
+  margin-right: auto;
+  background-color: #2b3035;
+  padding: 40px 20px;
 `;

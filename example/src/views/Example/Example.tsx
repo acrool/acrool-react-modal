@@ -3,6 +3,9 @@ import AcroolTable from '@acrool/react-table';
 import {useNavigate} from 'react-router-dom';
 
 import {PromotionModal, PromotionModalArgs} from '../../viewModal/PromotionModal';
+import SliderRight from '../../viewModal/SliderRight';
+import SliderLeft from '../../viewModal/SliderLeft';
+import SliderUp from '../../viewModal/SliderUp';
 
 
 const Example = () => {
@@ -95,7 +98,30 @@ const Example = () => {
                         use: 'navigate({hash: \'/control/editPassword\'})',
                     }
                 },
-
+                {
+                    id: 8,
+                    onClickRow: SliderRight.show,
+                    field: {
+                        name: 'Slider Right Show',
+                        use: 'SliderRight.show',
+                    }
+                },
+                {
+                    id: 9,
+                    onClickRow: SliderLeft.show,
+                    field: {
+                        name: ' Slider Left Show',
+                        use: 'SliderLeft.show',
+                    }
+                },
+                {
+                    id: 10,
+                    onClickRow: SliderUp.show,
+                    field: {
+                        name: ' Slider Up Show',
+                        use: 'SliderUp.show',
+                    }
+                },
             ]}
         />
 
