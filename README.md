@@ -45,6 +45,9 @@ import "@acrool/react-modal/dist/index.css";
 
 add in your App.tsx
 
+> It should be noted that it must be within the scope of `Router Provider`. Another way is to place it in `Layout` and `Outlet` middle layer.
+
+
 ```tsx
 import {ModalPortal} from "@acrool/react-modal";
 
@@ -58,7 +61,12 @@ const App = () => {
 };
 ```
 
-### Custom modal component
+- Here are two ways to use it
+  - [A. Custom modal component](#A.custom-modal-component)
+  - [B. Custom state modal component](#B.custom-state-modal-component)
+
+
+### A.Custom modal component
 
 Add the lightbox to the display column list by throwing the Show method
 
@@ -106,7 +114,7 @@ const ExamplePage = () => {
 
 
 
-### Custom state modal component
+### B.Custom state modal component
 
 The inside of the light box is controlled by its own state, which is displayed through rendering, such as using HashRouter.
 
