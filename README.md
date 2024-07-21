@@ -60,6 +60,10 @@ const App = () => {
 
 ### Custom modal component
 
+Add the lightbox to the display column list by throwing the Show method
+
+***Defined Modal***
+
 ```tsx
 import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 
@@ -87,32 +91,30 @@ const PromotionModal = createModal(
 export default PromotionModal;
 ```
 
-
+***Use Modal***
 
 then in your page
 
 ```tsx
-import PromotionModa from './PromotionModal';
-import {modal} from '@acrool/react-modal';
-import {useEffect} from "react";
-
-const Example = () => {
-    return (
-        <div>
-            <button type="button" onClick={() => {
-                PromotionModa.show({myVar: 'Imagine'});
-            }}>Open Modal</button>
-        </div>
-    );
-};
+const ExamplePage = () => {
+    return <div>
+        <button type="button" onClick={() => PromotionModal.show({myVar: 'Imageine'})}>Show Modal</button>
+    </div>
+}
 ```
+
+
+
 
 ### Custom state modal component
 
-ex: hash router
+The inside of the light box is controlled by its own state, which is displayed through rendering, such as using HashRouter.
+
+***Defined Modal***
 
 ```tsx
 import {animation, createStateModal, IModalOptions, useModal} from '@acrool/react-modal';
+import {useHashParams} from '@acrool/react-router-hash';
 
 const modalProps: IModalOptions = {
     variants: animation.fadeInDown,
@@ -124,11 +126,12 @@ interface IProps {
 }
 
 const PromotionHashModal = createStateModal(
-    (args: IProps) => {
+    () => {
         const {hide} = useModal();
         const navigate = useNavigate();
+        const {id} = useHashParams<{id: string}>();
         
-        const handleClose = () => {
+        const handleOnClose = () => {
             hide().then(() => {
                 navigate({hash: undefined});
             })
@@ -136,13 +139,61 @@ const PromotionHashModal = createStateModal(
 
         return <div>
             <div>Test2 content</div>
-            <button type="button" onClick={handleClose}>X </button>
+            <button type="button" onClick={handleOnClose}>Close Modal</button>
         </div>;
     }
     , modalProps
 );
 
 export default PromotionHashModal;
+```
+
+
+***Defined Hash Route***
+
+> It should be noted that it must be within the scope of `Router Provider`. Another way is to place it in `Layout` and `Outlet` middle layer.
+
+```tsx
+import {HashRoute,HashRoutes} from '@acrool/react-router-hash';
+import {createBrowserHistory} from 'history';
+import {BrowserRouter as Router,Route, Routes} from 'react-router-dom';
+
+const history = createBrowserHistory({window});
+
+const RouterSetting = () => {
+    return <Router>
+
+        <Routes>
+            <Route path="/" element={<Example/>} />
+        </Routes>
+
+        <HashRoutes>
+            <HashRoute path="promotion/:id" element={<PromotionHashModal/>}/>
+        </HashRoutes>
+
+        {/* Add this */}
+        <ModalPortal/>
+
+    </Router>;
+};
+```
+
+
+
+***Use Modal***
+
+then in your page
+
+```tsx
+import {useNavigate} from 'react-router-dom';
+
+const ExamplePage = () => {
+    const navigate = useNavigate();
+    return <div>
+        <button type="button" onClick={() => navigate({hash: '/promotion/1'})}>Show Modal</button>
+        <button type="button" onClick={() => navigate({hash: '/promotion/2'})}>Show Modal</button>
+    </div>
+}
 ```
 
 

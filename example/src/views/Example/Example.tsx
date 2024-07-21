@@ -13,7 +13,7 @@ const Example = () => {
 
     // const MyModel = CreateTaskModal;
 
-    return <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start', width: '100%'}}>
+    return <div className="d-flex gap-3 w-100">
 
         <AcroolTable
             isDark

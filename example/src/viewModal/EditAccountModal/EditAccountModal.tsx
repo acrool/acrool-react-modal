@@ -2,7 +2,6 @@ import {animation, useModal, createStateModal} from '@acrool/react-modal';
 import {useHashParams, useHashPathname} from '@acrool/react-router-hash';
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import {PromotionModal} from "../PromotionModal";
 
 const EditAccountModal = createStateModal(
     () => {
