@@ -210,12 +210,21 @@ const ExamplePage = () => {
 ```
 
 
+
 - animation
   - fadeInDown: (default), ex Base modal style
   - zoomInDown
   - slideInLeft: ex Drawer slider
   - slideInRight: ex Drawer slider
   - slideInUp: ex Dropdown
+  - custom (ref; https://www.framer.com/motion/animate-presence/#usage)
+   ```tsx
+  variants = {
+    initial: {opacity: 0, y: -20, transition: {type:'spring'}},
+    show: {opacity: 1, y: 0},
+    exit: {opacity: 0, y: -40}
+  }
+  ```
 
 
 There is also a example that you can play with it:
