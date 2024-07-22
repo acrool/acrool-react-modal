@@ -4,12 +4,20 @@ import {modal} from '../Modal';
 import MotionDrawer from '../MotionDrawer';
 import {IModalOptions} from '../types';
 
+// 必填 (Rule1) >> 完全不帶 但是誤判
+type TShowArgs<T> = (args: T) => void;
 
-type TShowArgs<T> = (args: T) => void
-type TShow = () => void
-type TShowMulti<T> = {} extends T ? TShow : TShowArgs<T>;
+// 非必填 (Rule2)
+type TShowNotRequiredArgs<T> = (args?: T) => void;
 
-interface ICreateModal<T> extends React.FC<T>{
+// 不需要帶 (RuleEmpty)
+type TShow = () => void;
+
+type TShowMulti<T> = T extends undefined ? TShow : T extends Required<{}> ? TShowArgs<T> : TShowNotRequiredArgs<T>;
+
+
+
+interface ICreateModal<T> extends React.FC<T> {
     show: TShowMulti<T>;
 }
 
@@ -20,15 +28,17 @@ interface ICreateModal<T> extends React.FC<T>{
  * @param ModalComponent
  * @param modalOptions
  */
-const createModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
+const createModal = <T = unknown>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
     /**
      * Add framer motion
      * @param args
      */
-    const MotionModal: React.FC<T> & { show: TShowMulti<T> }  = (args: T) => {
-        return <MotionDrawer modalOptions={modalOptions}>
-            <ModalComponent {...args}/>
-        </MotionDrawer>;
+    const MotionModal: React.FC<T> & { show: TShowMulti<T> } = (args?: T) => {
+        return (
+            <MotionDrawer modalOptions={modalOptions}>
+                <ModalComponent {...(args as T)} />
+            </MotionDrawer>
+        );
     };
 
     // Overload signatures
@@ -47,6 +57,5 @@ const createModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalO
 
     return MotionModal as ICreateModal<T>;
 };
-
 
 export default createModal;

@@ -5,7 +5,7 @@ import Card from '../../components/Card';
 
 
 interface IProps {
-    myVar: string
+    myVar?: string
 }
 
 
@@ -20,23 +20,21 @@ const modalOptions: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModalArgs = createModal(
-    (args: IProps) => {
+const PromotionModalArgs2 = createModal(
+    ({myVar}: IProps) => {
         const {hide} = useModal();
 
         return <CreateTaskModalRoot>
             <Card title="Create Modal" direction="column">
-                <div>Test content {args?.myVar}</div>
+                <div>Test not all required {myVar}</div>
             </Card>
 
             <button type="button" onClick={hide}>X </button>
-            {/*<button type="button" onClick={PromotionModal.show}>Show B Modal </button>*/}
-
         </CreateTaskModalRoot>;
     }
     , modalOptions);
 
-export default PromotionModalArgs;
+export default PromotionModalArgs2;
 
 
 

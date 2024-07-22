@@ -19,7 +19,7 @@ interface ICreateStateModal<T> extends React.FC<T>{
  * @param ModalComponent
  * @param modalOptions
  */
-const createStateModal = <T = {}>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateStateModal<T> => {
+const createStateModal = <T = unknown>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateStateModal<T> => {
     /**
      * Add framer motion
      * Add state
