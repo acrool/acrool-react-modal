@@ -52,7 +52,6 @@ const Example = () => {
                     id: 3,
                     onClickRow: () => {
                         PromotionModalArgs2.show({myVar: 'x'});
-                        PromotionModalArgs2.show({});
                     },
                     field: {
                         name: 'Origin Show Args (Not All Required)',
