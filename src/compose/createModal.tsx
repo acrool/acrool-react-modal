@@ -20,7 +20,7 @@ type TModalShowNotRequiredArgs<T> = (partialArgs?: T) => void;
 
 // 注意 createModal T = ? 與 T extends ?
 // 兩個需要相同
-type TModalShowMulti<T> = T extends undefined ? TModalShow :
+type TModalShowMulti<T> = T extends undefined|Function ? TModalShow :
     T extends Required<{}> ? TModalShowArgs<T> :
         TModalShowNotRequiredArgs<T>;
 
@@ -31,7 +31,7 @@ type TModalShowMulti<T> = T extends undefined ? TModalShow :
  * @param ModalComponent
  * @param modalOptions
  */
-function createModal<T = undefined>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> {
+function createModal<T = undefined|Function>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> {
     /**
      * Add framer motion
      * @param args
