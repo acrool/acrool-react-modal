@@ -8,7 +8,7 @@ import {TAnimationVariants} from './types';
 const fadeInDown: TAnimationVariants = {
     initial: {opacity: 0, y: 20, transition: {type:'spring'}},
     show: {opacity: 1, y: 40},
-    exit: {opacity: 0, y: 0}
+    exit: {opacity: 0, y: 20}
 };
 
 const zoomInDown: TAnimationVariants = {

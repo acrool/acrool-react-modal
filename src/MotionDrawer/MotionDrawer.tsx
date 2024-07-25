@@ -39,23 +39,29 @@ const MotionDrawer = ({
     const {className, ...motionProps} = modalOptions ?? {className: ''};
 
 
-    return <motion.div
-        className={styles.motionDrawer}
-        {...maskMotionProps}
-        initial="initial"
-        animate="show"
-        exit="exit"
-    >
+    return <div className={styles.motionDrawer}>
         <motion.div
             transition={{type: 'spring', duration: 0.5}}
+            className={styles.motionMaskWrapper}
+            variants={animation.fadeInDown}
+            {...maskMotionProps}
+            initial="initial"
+            animate="show"
+            exit="exit"
+        />
+
+        <motion.div
+            transition={{type: 'spring', duration: 0.3}}
             className={clsx(styles.motionAnimationWrapper, className)}
             variants={animation.fadeInDown}
             {...motionProps}
+            initial="initial"
+            animate="show"
+            exit="exit"
         >
             {children}
         </motion.div>
-    </motion.div>;
-
+    </div>;
 };
 
 
