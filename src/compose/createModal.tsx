@@ -39,8 +39,7 @@ function createModal<T = undefined>(ModalComponent: React.FC<T>, modalOptions?: 
     const MotionModal: React.FC<T> & { show: TModalShowMulti<T> } = (args?: T) => {
         return (
             <MotionDrawer modalOptions={modalOptions}>
-                {ModalComponent(args as T)}
-                {/*<ModalComponent {...(args as T & {})} />*/}
+                <ModalComponent {...args as T & {}} />
             </MotionDrawer>
         );
     };

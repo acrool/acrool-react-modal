@@ -64,8 +64,7 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IModalO
                 <AnimatePresence onExitComplete={handleOnExitComplete}>
                     {isVisible &&
                         <MotionDrawer modalOptions={modalOptions}>
-                            {ModalComponent(args)}
-                            {/*<ModalComponent {...args}/>*/}
+                            <ModalComponent {...args as T & {}} />
                         </MotionDrawer>
                     }
                 </AnimatePresence>
