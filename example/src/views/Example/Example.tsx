@@ -62,7 +62,7 @@ const Example = () => {
                 {
                     id: 4,
                     onClickRow: () => {
-                        modal.show(PromotionModal);
+                        modal.show(PromotionModal, undefined);
                     },
                     field: {
                         name: 'Origin Show',
@@ -72,7 +72,7 @@ const Example = () => {
                 {
                     id: 5,
                     onClickRow: () => {
-                        modal.show(PromotionModalArgs, );
+                        modal.show(PromotionModalArgs, {myVar: 'Imagine'});
                     },
                     field: {
                         name: 'Origin Show Args',
@@ -127,7 +127,7 @@ const Example = () => {
                 },
                 {
                     id: 11,
-                    onClickRow: SliderUp.show,
+                    onClickRow: () => SliderUp.show(),
                     field: {
                         name: ' Slider Up Show',
                         use: 'SliderUp.show',

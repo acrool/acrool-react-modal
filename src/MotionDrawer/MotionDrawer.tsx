@@ -2,9 +2,9 @@ import {clsx} from 'clsx';
 import {motion} from 'framer-motion';
 import {ReactNode} from 'react';
 
+import animation from '../animation';
 import {IModalOptions} from '../types';
 import styles from './motion-drawer.module.scss';
-import animation from '../animation';
 
 
 const maskMotionProps: IModalOptions = {

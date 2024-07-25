@@ -4,22 +4,25 @@ import {modal} from '../Modal';
 import MotionDrawer from '../MotionDrawer';
 import {IModalOptions} from '../types';
 
-// 必填 (Rule1) >> 完全不帶 但是誤判
-type TShowArgs<T> = (args: T) => void;
 
-// 非必填 (Rule2)
-type TShowNotRequiredArgs<T> = (args?: T) => void;
+
+interface ICreateModal<T> extends React.FC<T>{
+    show: TModalShowMulti<T>;
+}
+
 
 // 不需要帶 (RuleEmpty)
-type TShow = () => void;
+type TModalShow = () => void;
 
-type TShowMulti<T> = T extends undefined ? TShow : T extends Required<{}> ? TShowArgs<T> : TShowNotRequiredArgs<T>;
+// 必填 (Rule2) >> 完全不帶 但是誤判
+type TModalShowArgs<T> = (args: T) => void;
+type TModalShowNotRequiredArgs<T> = (partialArgs?: T) => void;
 
-
-
-interface ICreateModal<T> extends React.FC<T> {
-    show: TShowMulti<T>;
-}
+// 注意 createModal T = ? 與 T extends ?
+// 兩個需要相同
+type TModalShowMulti<T> = T extends undefined ? TModalShow :
+    T extends Required<{}> ? TModalShowArgs<T> :
+        TModalShowNotRequiredArgs<T>;
 
 /**
  * 產生帶 framer-motion 功能的Modal
@@ -28,21 +31,22 @@ interface ICreateModal<T> extends React.FC<T> {
  * @param ModalComponent
  * @param modalOptions
  */
-const createModal = <T = unknown>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> => {
+function createModal<T = undefined>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> {
     /**
      * Add framer motion
      * @param args
      */
-    const MotionModal: React.FC<T> & { show: TShowMulti<T> } = (args?: T) => {
+    const MotionModal: React.FC<T> & { show: TModalShowMulti<T> } = (args?: T) => {
         return (
             <MotionDrawer modalOptions={modalOptions}>
-                <ModalComponent {...(args as T)} />
+                {ModalComponent(args as T)}
+                {/*<ModalComponent {...(args as T & {})} />*/}
             </MotionDrawer>
         );
     };
 
     // Overload signatures
-    function show(): void;
+    function show();
     function show(args: T): void;
     function show(args?: T): void {
         if (args) {
@@ -53,9 +57,9 @@ const createModal = <T = unknown>(ModalComponent: React.FC<T>, modalOptions?: IM
     }
 
     // Assign the overloaded function to MotionModal.show
-    MotionModal.show = show as TShowMulti<T>;
+    MotionModal.show = show as TModalShowMulti<T>;
 
     return MotionModal as ICreateModal<T>;
-};
+}
 
 export default createModal;

@@ -19,7 +19,7 @@ interface ICreateStateModal<T> extends React.FC<T>{
  * @param ModalComponent
  * @param modalOptions
  */
-const createStateModal = <T = unknown>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateStateModal<T> => {
+const createStateModal = <T = undefined>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateStateModal<T> => {
     /**
      * Add framer motion
      * Add state
@@ -51,12 +51,6 @@ const createStateModal = <T = unknown>(ModalComponent: React.FC<T>, modalOptions
             });
         }, []);
 
-        /**
-         * 選取傳送點
-         */
-        const rootSelector = useCallback(() => {
-            return document.getElementById(rootId);
-        }, []);
 
 
         return <ModalProviderContext.Provider
@@ -65,13 +59,14 @@ const createStateModal = <T = unknown>(ModalComponent: React.FC<T>, modalOptions
             }}
         >
             <ReactDidMountPortal
-                rootSelector={rootSelector}
+                containerId={rootId}
             >
                 <AnimatePresence onExitComplete={handleOnExitComplete}>
                     {isVisible &&
-                    <MotionDrawer modalOptions={modalOptions}>
-                        <ModalComponent {...args}/>
-                    </MotionDrawer>
+                        <MotionDrawer modalOptions={modalOptions}>
+                            {ModalComponent(args)}
+                            {/*<ModalComponent {...args}/>*/}
+                        </MotionDrawer>
                     }
                 </AnimatePresence>
             </ReactDidMountPortal>

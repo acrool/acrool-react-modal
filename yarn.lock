@@ -2,15 +2,17 @@
 # yarn lockfile v1
 
 
-"@acrool/js-logger@1.0.23":
+"@acrool/js-logger@^1.x":
   version "1.0.23"
   resolved "https://registry.yarnpkg.com/@acrool/js-logger/-/js-logger-1.0.23.tgz#2dd951fc3142cef0a9a050f02aaa4d94eab09042"
   integrity sha512-UW4mXflIYYIKx4CaptY6HZmY+I2fRY76Eb/E4ACpEm7LXsZPdbgKwpGlzkky7212us8sPP8PyJnhWU7ftMhLXA==
 
-"@acrool/react-portal@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-0.0.4.tgz#a43cd948ed365878e4429a510f36b19bfb341efe"
-  integrity sha512-vDZtEGF6gRK3ZaeJHdrqvghh4KPwCDmGEbULCtkn9mWztC7Q8bs6qd+6wy4uGvHVYqVVJe6bDHRR+AzpH2joqQ==
+"@acrool/react-portal@^0.0.x":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-0.0.5.tgz#5a8f39bc4bdbefe1b4a1f917ece03b054e5ea5d8"
+  integrity sha512-HB9Wd3JLjx1aUP7fCtcPzOOh2T7rJHMPwrS7yKFoMGTbdk7xJaB8BVCxMlgk0JOb9D6FGvsxa4uS8n6MEZT5HQ==
+  dependencies:
+    clsx "^2.x"
 
 "@ampproject/remapping@^2.2.0":
   version "2.3.0"
@@ -3995,10 +3997,10 @@ form-data@^4.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
-framer-motion@11.2.14:
-  version "11.2.14"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.2.14.tgz#739aa2eb7bcd4fe49f4cd9b88d352eb85d6cda8b"
-  integrity sha512-0Nwg++Jymj4Yn7LFKH/nKuGrgVZTEIgIbLjl+LBBFBEzNd4rX+n3z/doqjEbvjk1xcmsim9h7du2+LTYdQTULw==
+framer-motion@^11.x:
+  version "11.3.17"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.3.17.tgz#47bd13fe3af660e4e3eebaf21f3a0d9d32c7939b"
+  integrity sha512-LZcckvZL8Rjod03bud8LQcp+R0PLmWIlOSu+NVc+v6Uh43fQr4IBsEAX7sSn7CdBQ1L0fZ/IqSXZVPnGFSMxHw==
   dependencies:
     tslib "^2.4.0"
 
@@ -6957,7 +6959,7 @@ uglify-js@^3.1.4:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.18.0.tgz#73b576a7e8fda63d2831e293aeead73e0a270deb"
   integrity sha512-SyVVbcNBCk0dzr9XL/R/ySrmYf0s372K6/hFklzgcp2lBFyXtw4I7BOdDjlLhE1aVqaI/SHWXWmYdlZxuyF38A==
 
-ulid@^2.3.0:
+ulid@^2.x:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/ulid/-/ulid-2.3.0.tgz#93063522771a9774121a84d126ecd3eb9804071f"
   integrity sha512-keqHubrlpvT6G2wH0OEfSW4mquYRcbe/J8NMmveoQOjUqmo+hXtO+ORCpWhdbZ7k72UtY61BL7haGxW6enBnjw==
