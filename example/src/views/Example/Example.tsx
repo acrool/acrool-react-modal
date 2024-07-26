@@ -2,7 +2,7 @@ import {modal} from '@acrool/react-modal';
 import AcroolTable from '@acrool/react-table';
 import {useNavigate} from 'react-router-dom';
 
-import {PromotionModal, PromotionModalArgs, PromotionModalArgs2} from '../../viewModal/PromotionModal';
+import {PromotionModal, PromotionModalArgs, PromotionModalPartialArgs} from '../../viewModal/PromotionModal';
 import SliderRight from '../../viewModal/SliderRight';
 import SliderLeft from '../../viewModal/SliderLeft';
 import SliderUp from '../../viewModal/SliderUp';
@@ -51,10 +51,10 @@ const Example = () => {
                 {
                     id: 3,
                     onClickRow: () => {
-                        PromotionModalArgs2.show({myVar: 'x'});
+                        PromotionModalPartialArgs.show({myVar: 'x'});
                     },
                     field: {
-                        name: 'Origin Show Args (Not All Required)',
+                        name: 'Origin Show Partial Args',
                         use: 'modal.show(PromotionModal.FC, {myVar: \'Imagine\'})',
                     }
                 },

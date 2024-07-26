@@ -10,7 +10,7 @@ interface IProps {
 
 
 const modalOptions: IModalOptions = {
-    variants: animation.fadeInDown,
+    variants: animation.zoomInDown,
     className: 'p-3',
     // isEnableClickMaskHide: true,
 };
@@ -20,7 +20,7 @@ const modalOptions: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const PromotionModalArgs2 = createModal(
+const PromotionModalPartialArgs = createModal(
     ({myVar}: IProps) => {
         const {hide} = useModal();
 
@@ -34,7 +34,7 @@ const PromotionModalArgs2 = createModal(
     }
     , modalOptions);
 
-export default PromotionModalArgs2;
+export default PromotionModalPartialArgs;
 
 
 

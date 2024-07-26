@@ -9,6 +9,7 @@ import styled from 'styled-components';
 
 const modalProps: IModalOptions = {
     variants: animation.slideInUp,
+    isEnableHideWithClickMask: true
     // variants: {
     //     initial: {transform: 'scale(0)'},
     //     show: {transform: 'scale(1)'},
@@ -45,8 +46,6 @@ const SliderUpRoot = styled.div`
   height: 200px;
 
 
-  position: absolute;
-  bottom: 0;
   
   background-color: #2b3035;
   padding: 40px 20px;

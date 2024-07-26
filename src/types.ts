@@ -4,8 +4,8 @@ import React from 'react';
 
 export interface IRow<T = any> {
     queueKey?: string
-    ModalComponent: React.FC<T>,
-    args?: T,
+    ModalComponent: React.FC<T>
+    args?: T
 }
 
 export interface IModal {
@@ -29,8 +29,9 @@ export type TAnimationVariants = Record<TVariantKey, Variant>;
 
 
 export interface IModalOptions {
-    variants?: TAnimationVariants,
-    transition?: Transition,
+    variants?: TAnimationVariants
+    transition?: Transition
     className?: string
+    isEnableHideWithClickMask?: boolean
 }
 

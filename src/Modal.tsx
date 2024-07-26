@@ -75,7 +75,9 @@ class Modal extends React.Component<IModalPortalProps, IState> {
                     key={row.queueKey}
                     value={{
                         queueKey: row.queueKey,
-                        hide: async () => this.hide(row.queueKey)
+                        hide: async () => {
+                            this.hide(row.queueKey);
+                        }
                     }}>
                     <row.ModalComponent
                         key={row.queueKey}
