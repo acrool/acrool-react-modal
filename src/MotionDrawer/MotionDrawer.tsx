@@ -43,9 +43,7 @@ const MotionDrawer = ({
 
     return <div className={styles.motionDrawer}>
         <motion.div
-            transition={{type: 'spring', duration: 0.5}}
             className={styles.motionMaskWrapper}
-            variants={animation.fadeInDown}
             {...maskMotionProps}
             initial="initial"
             animate="show"
