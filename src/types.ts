@@ -1,18 +1,12 @@
-import {Transition, Variant, Variants} from 'framer-motion';
-import React, {ReactNode} from 'react';
+import {Transition, Variant} from 'framer-motion';
+import React from 'react';
 
 
 export interface IRow<T = any> {
     queueKey?: string
-    ModalComponent: React.FC<T>,
-    args?: T,
+    ModalComponent: React.FC<T>
+    args?: T
 }
-
-// export enum EVisible {
-//     hidden= 'hidden',
-//     visible = 'visible',
-//     none= 'none',
-// }
 
 export interface IModal {
     show: TShow
@@ -24,7 +18,6 @@ export interface IModal {
 export type TShow = <T>(children: React.FC<T>, args?: T) => void
 export type THidden = (queueKey?: string) => void;
 
-// export type TOnExitComplete = () => void;
 
 export interface IModalPortalProps {
     id?: string
@@ -36,9 +29,9 @@ export type TAnimationVariants = Record<TVariantKey, Variant>;
 
 
 export interface IModalOptions {
-    variants?: TAnimationVariants,
-    transition?: Transition,
+    variants?: TAnimationVariants
+    transition?: Transition
     className?: string
+    isEnableHideWithClickMask?: boolean
 }
 
-// export type TShowMulti = TShow & TShowStatus;

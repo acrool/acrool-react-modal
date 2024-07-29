@@ -9,6 +9,7 @@ import styled from 'styled-components';
 
 const modalProps: IModalOptions = {
     variants: animation.slideInRight,
+    isEnableHideWithClickMask: true
     // variants: {
     //     initial: {transform: 'scale(0)'},
     //     show: {transform: 'scale(1)'},
@@ -35,7 +36,8 @@ const SliderLeft = createModal(
 
         </SliderLeftRoot>;
     }
-    ,modalProps);
+    ,modalProps
+);
 
 export default SliderLeft;
 
@@ -43,8 +45,7 @@ export default SliderLeft;
 const SliderLeftRoot = styled.div`
   width: 300px;
   height: 100vh;
-  
-  margin-right: auto;
+
   background-color: #2b3035;
   padding: 40px 20px;
 `;

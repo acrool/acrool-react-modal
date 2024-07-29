@@ -2,19 +2,23 @@
     overflow: hidden;
     margin: 0 auto;
 
-    z-index: 998;
-    background: rgba(0, 0, 0, 0.6);
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
 
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-
 }
 
-.motion-animation-wrapper {
+.motion-mask-wrapper {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    inset: 0;
 
+    z-index: 0;
+    pointer-events: auto;
+}
+
+
+.motion-animation-wrapper {
+    z-index: 1;
 }

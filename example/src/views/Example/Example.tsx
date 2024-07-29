@@ -2,7 +2,7 @@ import {modal} from '@acrool/react-modal';
 import AcroolTable from '@acrool/react-table';
 import {useNavigate} from 'react-router-dom';
 
-import {PromotionModal, PromotionModalArgs} from '../../viewModal/PromotionModal';
+import {PromotionModal, PromotionModalArgs, PromotionModalPartialArgs} from '../../viewModal/PromotionModal';
 import SliderRight from '../../viewModal/SliderRight';
 import SliderLeft from '../../viewModal/SliderLeft';
 import SliderUp from '../../viewModal/SliderUp';
@@ -41,7 +41,7 @@ const Example = () => {
                 {
                     id: 2,
                     onClickRow: () => {
-                        PromotionModalArgs.show({myVar: 'Imagine'});
+                        PromotionModalArgs.show({myVar: 'xx'});
                     },
                     field: {
                         name: 'Fast Show Args',
@@ -51,7 +51,17 @@ const Example = () => {
                 {
                     id: 3,
                     onClickRow: () => {
-                        modal.show(PromotionModal);
+                        PromotionModalPartialArgs.show({myVar: 'x'});
+                    },
+                    field: {
+                        name: 'Origin Show Partial Args',
+                        use: 'modal.show(PromotionModal.FC, {myVar: \'Imagine\'})',
+                    }
+                },
+                {
+                    id: 4,
+                    onClickRow: () => {
+                        modal.show(PromotionModal, undefined);
                     },
                     field: {
                         name: 'Origin Show',
@@ -59,7 +69,7 @@ const Example = () => {
                     }
                 },
                 {
-                    id: 4,
+                    id: 5,
                     onClickRow: () => {
                         modal.show(PromotionModalArgs, {myVar: 'Imagine'});
                     },
@@ -69,7 +79,7 @@ const Example = () => {
                     }
                 },
                 {
-                    id: 5,
+                    id: 6,
                     onClickRow: () => {
                         navigate({hash: '/control/editAccount/1'});
                     },
@@ -79,7 +89,7 @@ const Example = () => {
                     }
                 },
                 {
-                    id: 6,
+                    id: 7,
                     onClickRow: () => {
                         navigate({hash: '/control/editAccount/2'});
                     },
@@ -89,7 +99,7 @@ const Example = () => {
                     }
                 },
                 {
-                    id: 7,
+                    id: 8,
                     onClickRow: () => {
                         navigate({hash: '/control/editPassword'});
                     },
@@ -99,7 +109,7 @@ const Example = () => {
                     }
                 },
                 {
-                    id: 8,
+                    id: 9,
                     onClickRow: SliderRight.show,
                     field: {
                         name: 'Slider Right Show',
@@ -107,7 +117,7 @@ const Example = () => {
                     }
                 },
                 {
-                    id: 9,
+                    id: 10,
                     onClickRow: SliderLeft.show,
                     field: {
                         name: ' Slider Left Show',
@@ -115,8 +125,8 @@ const Example = () => {
                     }
                 },
                 {
-                    id: 10,
-                    onClickRow: SliderUp.show,
+                    id: 11,
+                    onClickRow: () => SliderUp.show(),
                     field: {
                         name: ' Slider Up Show',
                         use: 'SliderUp.show',

@@ -2,19 +2,20 @@ import {clsx} from 'clsx';
 import {motion} from 'framer-motion';
 import {ReactNode} from 'react';
 
+import animation from '../animation';
+import {useModal} from '../ModalProvider';
 import {IModalOptions} from '../types';
 import styles from './motion-drawer.module.scss';
-import animation from '../animation';
 
 
 const maskMotionProps: IModalOptions = {
     variants: {
         initial: {opacity: 0, transition: {type:'spring'}},
-        show: {opacity: 1},
+        show: {opacity: 1, transition: {type: 'just'}},
         exit: {opacity: 0},
     },
     transition: {
-        damping: .2,
+        duration: .3,
     }
 };
 
@@ -36,26 +37,33 @@ const MotionDrawer = ({
     modalOptions,
     children,
 }: IProps) => {
-    const {className, ...motionProps} = modalOptions ?? {className: ''};
+    const {className, isEnableHideWithClickMask, ...motionProps} = modalOptions ?? {className: ''};
+    
+    const {hide} = useModal();
 
-
-    return <motion.div
-        className={styles.motionDrawer}
-        {...maskMotionProps}
-        initial="initial"
-        animate="show"
-        exit="exit"
-    >
+    return <div className={styles.motionDrawer}>
         <motion.div
-            transition={{type: 'spring', duration: 0.5}}
+            className={styles.motionMaskWrapper}
+            {...maskMotionProps}
+            initial="initial"
+            animate="show"
+            exit="exit"
+            data-enable-click={isEnableHideWithClickMask}
+            onClick={isEnableHideWithClickMask ? hide: undefined}
+        />
+
+        <motion.div
+            transition={{type: 'spring', duration: .2}}
             className={clsx(styles.motionAnimationWrapper, className)}
             variants={animation.fadeInDown}
             {...motionProps}
+            initial="initial"
+            animate="show"
+            exit="exit"
         >
             {children}
         </motion.div>
-    </motion.div>;
-
+    </div>;
 };
 
 

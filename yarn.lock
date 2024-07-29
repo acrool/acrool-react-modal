@@ -2,15 +2,17 @@
 # yarn lockfile v1
 
 
-"@acrool/js-logger@1.0.23":
+"@acrool/js-logger@^1.0.23":
   version "1.0.23"
   resolved "https://registry.yarnpkg.com/@acrool/js-logger/-/js-logger-1.0.23.tgz#2dd951fc3142cef0a9a050f02aaa4d94eab09042"
   integrity sha512-UW4mXflIYYIKx4CaptY6HZmY+I2fRY76Eb/E4ACpEm7LXsZPdbgKwpGlzkky7212us8sPP8PyJnhWU7ftMhLXA==
 
-"@acrool/react-portal@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-0.0.4.tgz#a43cd948ed365878e4429a510f36b19bfb341efe"
-  integrity sha512-vDZtEGF6gRK3ZaeJHdrqvghh4KPwCDmGEbULCtkn9mWztC7Q8bs6qd+6wy4uGvHVYqVVJe6bDHRR+AzpH2joqQ==
+"@acrool/react-portal@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-1.0.1.tgz#2f8a11098aa9ec8786d2cde85261093eb571e2aa"
+  integrity sha512-oigaMgp/KJ8rd8WJtdVhlHSVI7+jzHV3ItyyUH6c0UqX1uW4m8fgqqxx1nVb3buY+MRLnVAbP6jLaObfZsz6Lw==
+  dependencies:
+    clsx "^2.1.1"
 
 "@ampproject/remapping@^2.2.0":
   version "2.3.0"
@@ -2780,7 +2782,7 @@ cliui@^8.0.1:
     strip-ansi "^6.0.1"
     wrap-ansi "^7.0.0"
 
-clsx@^2.x:
+clsx@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.1.tgz#eed397c9fd8bd882bfb18deab7102049a2f32999"
   integrity sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==
@@ -3995,10 +3997,10 @@ form-data@^4.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
-framer-motion@11.2.14:
-  version "11.2.14"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.2.14.tgz#739aa2eb7bcd4fe49f4cd9b88d352eb85d6cda8b"
-  integrity sha512-0Nwg++Jymj4Yn7LFKH/nKuGrgVZTEIgIbLjl+LBBFBEzNd4rX+n3z/doqjEbvjk1xcmsim9h7du2+LTYdQTULw==
+framer-motion@^11.3.19:
+  version "11.3.19"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.3.19.tgz#7a2bd72ed1dd04a47d8ecb8444447cfc47c70984"
+  integrity sha512-+luuQdx4AsamyMcvzW7jUAJYIKvQs1KE7oHvKkW3eNzmo0S+3PSDWjBuQkuIP9WyneGnKGMLUSuHs8OP7jKpQg==
   dependencies:
     tslib "^2.4.0"
 
