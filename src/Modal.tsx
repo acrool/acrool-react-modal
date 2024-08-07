@@ -20,10 +20,18 @@ interface IState {
 }
 
 class Modal extends React.Component<IModalPortalProps, IState> {
-
     state: IState = {
         rows: []
     };
+
+    static defaultProps = {
+        id: rootId,
+    };
+
+    get typeProps(){
+        return this.props as IModalPortalProps & typeof Modal.defaultProps;
+    }
+
 
     constructor(props) {
         super(props);
@@ -93,8 +101,9 @@ class Modal extends React.Component<IModalPortalProps, IState> {
     render() {
         return (
             <ReactPortal
-                id={this.props.id || rootId}
+                id={this.typeProps.id}
                 className={styles.root}
+                containerId={this.typeProps.containerId}
             >
                 <AnimatePresence>
                     {this.renderItems()}
