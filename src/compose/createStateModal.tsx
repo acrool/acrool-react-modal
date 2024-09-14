@@ -59,7 +59,7 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IModalO
             }}
         >
             <ReactDidMountPortal
-                containerId={rootId}
+                containerSelector={() => document.getElementById(rootId)}
             >
                 <AnimatePresence onExitComplete={handleOnExitComplete}>
                     {isVisible &&

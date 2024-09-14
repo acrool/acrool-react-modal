@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@acrool/js-logger/-/js-logger-1.0.23.tgz#2dd951fc3142cef0a9a050f02aaa4d94eab09042"
   integrity sha512-UW4mXflIYYIKx4CaptY6HZmY+I2fRY76Eb/E4ACpEm7LXsZPdbgKwpGlzkky7212us8sPP8PyJnhWU7ftMhLXA==
 
-"@acrool/react-portal@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-1.0.1.tgz#2f8a11098aa9ec8786d2cde85261093eb571e2aa"
-  integrity sha512-oigaMgp/KJ8rd8WJtdVhlHSVI7+jzHV3ItyyUH6c0UqX1uW4m8fgqqxx1nVb3buY+MRLnVAbP6jLaObfZsz6Lw==
+"@acrool/react-portal@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@acrool/react-portal/-/react-portal-1.0.3.tgz#8c717393b6b92bfa7e9a97574034b565a92fe4d0"
+  integrity sha512-y2/ooRSOza0mCnFrv69Zac/jTOJSzV5DMrdIkoi6DzeRlfHM8ryAVikhtwAoMQTfquMs7Us3NNqLrCzSncYYeQ==
   dependencies:
     clsx "^2.1.1"
 

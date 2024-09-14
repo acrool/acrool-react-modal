@@ -1,4 +1,6 @@
 .motion-drawer {
+    --default-portal-index: 900;
+
     overflow: hidden;
     margin: 0 auto;
 
@@ -7,6 +9,8 @@
 
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+
+    z-index: var(--modal-portal-index, var(--default-portal-index));
 }
 
 .motion-mask-wrapper {

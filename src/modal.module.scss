@@ -7,19 +7,5 @@
 }
 
 .root{
-    --default-portal-index: 900;
-    --default-success-color: #07bc0c;
-    --default-warning-color: #f1c40f;
-    --default-danger-color: #e74c3c;
-    --default-info-color: #3498db;
-}
-
-.root{
-    position: fixed;
-
-    max-width: 100%;
-    width: auto;
-
-    margin: 0 auto;
-    z-index: var(--modal-portal-index, var(--default-portal-index));
+    display: contents;
 }

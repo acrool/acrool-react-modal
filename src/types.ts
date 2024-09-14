@@ -20,8 +20,8 @@ export type THidden = (queueKey?: string) => void;
 
 
 export interface IModalPortalProps {
-    containerId?: string
     id?: string
+    containerSelector?: () => HTMLElement | null;
 }
 
 

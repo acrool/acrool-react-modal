@@ -103,7 +103,7 @@ class Modal extends React.Component<IModalPortalProps, IState> {
             <ReactPortal
                 id={this.typeProps.id}
                 className={styles.root}
-                containerId={this.typeProps.containerId}
+                containerSelector={this.typeProps.containerSelector}
             >
                 <AnimatePresence>
                     {this.renderItems()}
