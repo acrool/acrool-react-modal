@@ -1,11 +1,12 @@
 import {ReactDidMountPortal} from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 import {rootId} from '../config';
 import {ModalProviderContext} from '../ModalProvider';
 import MotionDrawer from '../MotionDrawer';
-import {IModalOptions} from '../types';
+import {IStageModalOptions} from '../types';
+import {createQueueKey} from "../utils";
 
 
 interface ICreateStateModal<T> extends React.FC<T>{
@@ -19,7 +20,7 @@ interface ICreateStateModal<T> extends React.FC<T>{
  * @param ModalComponent
  * @param modalOptions
  */
-function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateStateModal<T>{
+function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageModalOptions): ICreateStateModal<T>{
     /**
      * Add framer motion
      * Add state
@@ -30,7 +31,14 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IModalO
         const [isVisible, setVisible] = useState(true);
 
         const resolveRef = useRef<() => void>();
+        const queueKey = modalOptions?.queueKey ?? createQueueKey();
 
+        useEffect(() => {
+            if(modalOptions?.onShow) modalOptions.onShow(queueKey);
+            return () => {
+                if(modalOptions?.onHide) modalOptions.onHide(queueKey);
+            };
+        }, []);
 
         /**
          * 當動畫結束時通知
@@ -52,10 +60,10 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IModalO
         }, []);
 
 
-
         return <ModalProviderContext.Provider
             value={{
                 hide: handleHide,
+                queueKey,
             }}
         >
             <ReactDidMountPortal

@@ -1,13 +1,12 @@
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
 import React from 'react';
-import {ulid} from 'ulid';
 
 import {rootId} from './config';
 import styles from './modal.module.scss';
 import {ModalProviderContext} from './ModalProvider';
 import {IModal, IModalPortalProps, IRow, THidden, TShow} from './types';
-import {removeByIndex} from './utils';
+import {createQueueKey, removeByIndex} from './utils';
 
 
 /**
@@ -48,12 +47,15 @@ class Modal extends React.Component<IModalPortalProps, IState> {
      * @param args
      */
     show: TShow = (ModalComponent, args) => {
-        const queueKey = ulid().toLowerCase();
+        const queueKey = createQueueKey();
         this.setState(prev => {
             return {
                 rows: [...prev.rows, {queueKey, ModalComponent, args}],
             };
         });
+        if(this.typeProps.onShow){
+            this.typeProps.onShow(queueKey);
+        }
     };
 
 
@@ -69,6 +71,9 @@ class Modal extends React.Component<IModalPortalProps, IState> {
             };
         });
 
+        if(this.typeProps.onHide){
+            this.typeProps.onHide(queueKey);
+        }
     };
 
 

@@ -1,3 +1,4 @@
+import {ulid} from 'ulid';
 
 /**
  * 刪除陣列中的一筆資料 (immutable)
@@ -10,4 +11,12 @@
 export function removeByIndex<T>(arrayData: T[], index: number): T[] {
     if(index === -1 || index > arrayData.length - 1) return arrayData;
     return [...arrayData.slice(0, index), ...arrayData.slice(index + 1)];
+}
+
+
+/**
+ * 產生 queueKey
+ */
+export function createQueueKey() {
+    return ulid().toLowerCase();
 }

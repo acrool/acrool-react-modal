@@ -3,7 +3,7 @@ import React from 'react';
 
 
 export interface IRow<T = any> {
-    queueKey?: string
+    queueKey: string
     ModalComponent: React.FC<T>
     args?: T
 }
@@ -16,13 +16,19 @@ export interface IModal {
 
 
 export type TShow = <T>(children: React.FC<T>, args?: T) => void
-export type THidden = (queueKey?: string) => void;
+export type THidden = (queueKey: string) => void;
 
 
-export interface IModalPortalProps {
+interface IControlVisibleStatus {
+    onShow?: (queueKey: string) => void
+    onHide?: (queueKey: string) => void
+}
+
+export interface IModalPortalProps extends IControlVisibleStatus{
     id?: string
     containerSelector?: () => HTMLElement | null;
 }
+
 
 
 type TVariantKey = 'initial'|'show'|'exit'
@@ -33,6 +39,10 @@ export interface IModalOptions {
     variants?: TAnimationVariants
     transition?: Transition
     className?: string
-    isEnableHideWithClickMask?: boolean
+    isEnableHideWithClickMask?: boolean,
+}
+
+export interface IStageModalOptions extends IModalOptions, IControlVisibleStatus{
+    queueKey?: string
 }
 
