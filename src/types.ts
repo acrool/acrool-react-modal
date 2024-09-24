@@ -3,7 +3,7 @@ import React from 'react';
 
 
 export interface IRow<T = any> {
-    queueKey?: string
+    queueKey: string
     ModalComponent: React.FC<T>
     args?: T
 }
@@ -16,12 +16,14 @@ export interface IModal {
 
 
 export type TShow = <T>(children: React.FC<T>, args?: T) => void
-export type THidden = (queueKey?: string) => void;
+export type THidden = (queueKey: string) => void;
 
 
 export interface IModalPortalProps {
     id?: string
     containerSelector?: () => HTMLElement | null;
+    onShow?: (queueKey: string) => void
+    onHide?: (queueKey: string) => void
 }
 
 

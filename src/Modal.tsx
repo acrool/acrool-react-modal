@@ -54,6 +54,9 @@ class Modal extends React.Component<IModalPortalProps, IState> {
                 rows: [...prev.rows, {queueKey, ModalComponent, args}],
             };
         });
+        if(this.typeProps.onShow){
+            this.typeProps.onShow(queueKey);
+        }
     };
 
 
@@ -69,6 +72,9 @@ class Modal extends React.Component<IModalPortalProps, IState> {
             };
         });
 
+        if(this.typeProps.onHide){
+            this.typeProps.onHide(queueKey);
+        }
     };
 
 
