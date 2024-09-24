@@ -2,7 +2,7 @@ import './index.css';
 
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React from 'react';
+import React, {createElement} from 'react';
 
 import {rootId} from './config';
 import styles from './modal.module.scss';
@@ -104,9 +104,18 @@ class Modal extends React.Component<IModalPortalProps, IState> {
     };
 
 
+    /**
+     * 渲染 Outlet
+     * 預留給 react-router-dom 使用
+     */
+    renderOutlet = () => {
+        if(!this.typeProps.Outlet) return;
+        return createElement(this.typeProps.Outlet, null, null);
+    };
+
 
     render() {
-        return (
+        return (<>
             <ReactPortal
                 id={this.typeProps.id}
                 className={styles.root}
@@ -116,6 +125,8 @@ class Modal extends React.Component<IModalPortalProps, IState> {
                     {this.renderItems()}
                 </AnimatePresence>
             </ReactPortal>
+            {this.renderOutlet()}
+        </>
         );
     }
 }

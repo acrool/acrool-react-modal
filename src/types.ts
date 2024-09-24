@@ -1,5 +1,5 @@
 import {Transition, Variant} from 'framer-motion';
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 
 
 export interface IRow<T = any> {
@@ -27,6 +27,7 @@ interface IControlVisibleStatus {
 export interface IModalPortalProps extends IControlVisibleStatus{
     id?: string
     containerSelector?: () => HTMLElement | null;
+    Outlet?: FunctionComponent;
 }
 
 

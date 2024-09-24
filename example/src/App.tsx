@@ -4,7 +4,7 @@ import {GridThemeProvider} from '@acrool/react-grid';
 import {ModalPortal} from '@acrool/react-modal';
 import {HashRoute,HashRoutes} from '@acrool/react-router-hash';
 import {createBrowserHistory} from 'history';
-import {BrowserRouter as Router,Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Outlet, Route, Routes} from 'react-router-dom';
 
 import Banner from './components/Banner';
 import EditAccountModal from './viewModal/EditAccountModal';
@@ -20,7 +20,11 @@ const MainRouter = () => {
     return <Router>
 
         <Routes>
-            <Route path="/" element={<Example/>} />
+            <Route path="/" element={<ModalPortal Outlet={Outlet}/>}>
+
+                <Route path="/profile/:id" element={<Example/>} />
+            </Route>
+
 
             {/* NotFound */}
             <Route path="*" element={<NotFound/>}/>
@@ -36,7 +40,6 @@ const MainRouter = () => {
             </HashRoute>
         </HashRoutes>
 
-        <ModalPortal/>
 
     </Router>;
 };
