@@ -27,7 +27,6 @@ interface IControlVisibleStatus {
 export interface IModalPortalProps extends IControlVisibleStatus{
     id?: string
     containerSelector?: () => HTMLElement | null;
-    Outlet?: FunctionComponent;
 }
 
 

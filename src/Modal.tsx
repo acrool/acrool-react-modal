@@ -104,30 +104,16 @@ class Modal extends React.Component<IModalPortalProps, IState> {
     };
 
 
-    /**
-     * 渲染 Outlet
-     * 預留給 react-router-dom 使用
-     */
-    renderOutlet = () => {
-        if(!this.typeProps.Outlet) return;
-        return createElement(this.typeProps.Outlet, null, null);
-    };
-
-
     render() {
-        return (<>
-            <ReactPortal
-                id={this.typeProps.id}
-                className={styles.root}
-                containerSelector={this.typeProps.containerSelector}
-            >
-                <AnimatePresence>
-                    {this.renderItems()}
-                </AnimatePresence>
-            </ReactPortal>
-            {this.renderOutlet()}
-        </>
-        );
+        return <ReactPortal
+            id={this.typeProps.id}
+            className={styles.root}
+            containerSelector={this.typeProps.containerSelector}
+        >
+            <AnimatePresence>
+                {this.renderItems()}
+            </AnimatePresence>
+        </ReactPortal>
     }
 }
 
