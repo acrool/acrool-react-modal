@@ -1,4 +1,4 @@
-import {addClass, hasClass, removeClass} from '../utils';
+import {addClass, hasClass, removeClass} from './utils';
 
 
 let disableBodyModalCount = 0;

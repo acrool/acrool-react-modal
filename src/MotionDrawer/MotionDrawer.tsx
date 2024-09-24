@@ -3,9 +3,9 @@ import {motion} from 'framer-motion';
 import {ReactNode, useEffect} from 'react';
 
 import animation from '../animation';
+import BodyScroll from '../bodyScroll';
 import {useModal} from '../ModalProvider';
 import {IModalOptions} from '../types';
-import bodyScroll from './bodyScroll';
 import styles from './motion-drawer.module.scss';
 
 
@@ -45,9 +45,9 @@ const MotionDrawer = ({
 
     useEffect(() => {
         // 鎖背景
-        bodyScroll.disableBodyScroll();
+        BodyScroll.disableBodyScroll();
         return () => {
-            bodyScroll.enableBodyScroll();
+            BodyScroll.enableBodyScroll();
         };
     }, []);
 
