@@ -19,11 +19,14 @@ export type TShow = <T>(children: React.FC<T>, args?: T) => void
 export type THidden = (queueKey: string) => void;
 
 
-export interface IModalPortalProps{
-    id?: string
-    containerSelector?: () => HTMLElement | null;
+interface IControlVisibleStatus {
     onShow?: (queueKey: string) => void
     onHide?: (queueKey: string) => void
+}
+
+export interface IModalPortalProps extends IControlVisibleStatus{
+    id?: string
+    containerSelector?: () => HTMLElement | null;
 }
 
 
@@ -39,8 +42,7 @@ export interface IModalOptions {
     isEnableHideWithClickMask?: boolean,
 }
 
-export interface IStageModalOptions extends IModalOptions{
-    onShow?: () => void
-    onHide?: () => void
+export interface IStageModalOptions extends IModalOptions, IControlVisibleStatus{
+    queueKey?: string
 }
 

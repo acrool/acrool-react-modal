@@ -7,10 +7,11 @@ const EditPasswordModal = createStateModal(
     () => {
         const navigate = useNavigate();
         const pathname = useHashPathname();
-        const {hide} = useModal();
+        const {hide, queueKey} = useModal();
 
         return <>
             <p>hash pathname: {pathname}</p>
+            <p>queueKey: {queueKey}</p>
 
             <button type="button" onClick={async () => {
                 await hide();

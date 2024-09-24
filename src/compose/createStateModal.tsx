@@ -6,6 +6,7 @@ import {rootId} from '../config';
 import {ModalProviderContext} from '../ModalProvider';
 import MotionDrawer from '../MotionDrawer';
 import {IStageModalOptions} from '../types';
+import {createQueueKey} from "../utils";
 
 
 interface ICreateStateModal<T> extends React.FC<T>{
@@ -30,11 +31,12 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
         const [isVisible, setVisible] = useState(true);
 
         const resolveRef = useRef<() => void>();
+        const queueKey = modalOptions?.queueKey ?? createQueueKey();
 
         useEffect(() => {
-            if(modalOptions?.onShow) modalOptions.onShow();
+            if(modalOptions?.onShow) modalOptions.onShow(queueKey);
             return () => {
-                if(modalOptions?.onHide) modalOptions.onHide();
+                if(modalOptions?.onHide) modalOptions.onHide(queueKey);
             };
         }, []);
 
@@ -58,10 +60,10 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
         }, []);
 
 
-
         return <ModalProviderContext.Provider
             value={{
                 hide: handleHide,
+                queueKey,
             }}
         >
             <ReactDidMountPortal
