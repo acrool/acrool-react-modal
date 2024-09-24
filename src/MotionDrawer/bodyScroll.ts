@@ -2,6 +2,7 @@ import {addClass, hasClass, removeClass} from '../utils';
 
 
 let disableBodyModalCount = 0;
+const modalOpenClassName = 'acrool__modal-open';
 
 /**
  * @Deprecated 計畫與
@@ -16,8 +17,8 @@ function disableBodyScroll(printLog = false){
     if(disableBodyModalCount >= 0){
         disableBodyModalCount += 1;
 
-        if(!hasClass(document.body, 'modal-open')){
-            addClass(document.body, 'modal-open');
+        if(!hasClass(document.body, modalOpenClassName)){
+            addClass(document.body, modalOpenClassName);
         }
     }
 
@@ -28,7 +29,7 @@ function enableBodyScroll(printLog = false){
         disableBodyModalCount -= 1;
 
         if(disableBodyModalCount === 0){
-            removeClass(document.body, 'modal-open');
+            removeClass(document.body, modalOpenClassName);
         }
     }
 }
