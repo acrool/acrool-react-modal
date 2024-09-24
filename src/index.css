@@ -1,0 +1,5 @@
+body.acrool__modal-open {
+    overflow: hidden;
+    overscroll-behavior-x: contain;
+    max-width: 100vw;
+}

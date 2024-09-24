@@ -6,7 +6,7 @@ import {rootId} from '../config';
 import {ModalProviderContext} from '../ModalProvider';
 import MotionDrawer from '../MotionDrawer';
 import {IStageModalOptions} from '../types';
-import {createQueueKey} from "../utils";
+import {createQueueKey} from '../utils';
 
 
 interface ICreateStateModal<T> extends React.FC<T>{

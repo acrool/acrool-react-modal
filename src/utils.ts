@@ -15,8 +15,42 @@ export function removeByIndex<T>(arrayData: T[], index: number): T[] {
 
 
 /**
+ * 判斷 elements 中的 css class
+ * @param dom elements
+ * @param className css class
+ * @returns {boolean}
+ */
+export function hasClass(dom: any, className: string): boolean {
+    return !!dom.className.match(new RegExp(`(\\s|^)${className}(\\s|$)`));
+}
+
+/**
+ * 在 elements 中新增 css class
+ * @param dom elements
+ * @param className
+ */
+export function addClass(dom: any, className: string):void {
+    if (!hasClass(dom, className)) {
+        dom.classList.add(className);
+    }
+}
+
+/**
+ * 刪除 elements 中的 css class
+ * @param dom elements
+ * @param className
+ */
+export function removeClass(dom: any, className: string):void {
+    dom.classList.remove(className);
+}
+
+
+
+/**
  * 產生 queueKey
  */
 export function createQueueKey() {
     return ulid().toLowerCase();
 }
+
+

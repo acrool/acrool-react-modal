@@ -1,3 +1,5 @@
+import './index.css';
+
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
 import React from 'react';
