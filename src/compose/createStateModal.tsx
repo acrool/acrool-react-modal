@@ -1,6 +1,6 @@
 import {ReactDidMountPortal} from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 
 import {rootId} from '../config';
 import {ModalProviderContext} from '../ModalProvider';
@@ -33,17 +33,17 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
         const resolveRef = useRef<() => void>();
         const queueKey = modalOptions?.queueKey ?? createQueueKey();
 
-        useEffect(() => {
+        useLayoutEffect(() => {
             if(modalOptions?.onShow){
                 modalOptions.onShow(queueKey);
             }
 
             return () => {
-                if(modalOptions?.onHide){
-                    modalOptions.onHide(queueKey);
-                }
+                // if(modalOptions?.onHide){
+                //     modalOptions.onHide(queueKey);
+                // }
             };
-        }, [modalOptions?.onShow, modalOptions?.onHide]);
+        }, []);
 
         /**
          * 當動畫結束時通知
