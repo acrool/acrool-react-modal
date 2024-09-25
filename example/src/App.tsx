@@ -25,6 +25,7 @@ const MainRouter = () => {
                 <Outlet/>
             </>}>
 
+                <Route path="" element={<Example/>}/>
                 <Route path="/profile/:id" element={<Example/>}/>
             </Route>
 

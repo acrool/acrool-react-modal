@@ -20,8 +20,8 @@ export type THidden = (queueKey: string) => void;
 
 
 interface IControlVisibleStatus {
-    onShow?: (queueKey: string) => void
-    onHide?: (queueKey: string) => void
+    _onShow?: (queueKey: string) => void
+    _onHide?: (queueKey: string) => void
 }
 
 export interface IModalPortalProps extends IControlVisibleStatus{

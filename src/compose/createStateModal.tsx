@@ -1,9 +1,9 @@
 import {ReactDidMountPortal} from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 import {rootId} from '../config';
-import {ModalProviderContext, useModal} from '../ModalProvider';
+import {ModalProviderContext} from '../ModalProvider';
 import MotionDrawer from '../MotionDrawer';
 import {IStageModalOptions} from '../types';
 import {createQueueKey} from '../utils';
@@ -11,33 +11,6 @@ import {createQueueKey} from '../utils';
 
 interface ICreateStateModal<T> extends React.FC<T>{
 }
-
-interface IOnVisibleProps {
-    onShow: IStageModalOptions['onShow']
-    onHide: IStageModalOptions['onHide']
-}
-
-const OnVisible = ({
-    onShow,
-    onHide,
-}: IOnVisibleProps) => {
-    const {queueKey} = useModal();
-
-    useEffect(() => {
-        if(queueKey && onShow){
-            onShow(queueKey);
-        }
-
-        return () => {
-            if(queueKey && onHide){
-                onHide(queueKey);
-            }
-        };
-    }, [queueKey, onShow, onHide]);
-    
-    return null;
-};
-
 
 /**
  * 產生帶 framer-motion 功能的Modal Component
@@ -59,7 +32,13 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
         const resolveRef = useRef<() => void>();
         const queueKey = modalOptions?.queueKey ?? createQueueKey();
 
-        
+        useEffect(() => {
+            if(modalOptions?._onShow) modalOptions._onShow(queueKey);
+            return () => {
+                if(modalOptions?._onHide) modalOptions._onHide(queueKey);
+            };
+        }, []);
+
 
         /**
          * 當動畫結束時通知
@@ -91,11 +70,6 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
                 containerSelector={() => document.getElementById(rootId)}
             >
                 <AnimatePresence onExitComplete={handleOnExitComplete}>
-                    {isVisible && <OnVisible
-                        onShow={modalOptions?.onShow}
-                        onHide={modalOptions?.onHide}
-                    />
-                    }
                     {isVisible &&
                         <MotionDrawer modalOptions={modalOptions}>
                             <ModalComponent {...args as T & {}} />

@@ -2,7 +2,7 @@ import './index.css';
 
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React, {createElement} from 'react';
+import React from 'react';
 
 import {rootId} from './config';
 import styles from './modal.module.scss';
@@ -55,8 +55,8 @@ class Modal extends React.Component<IModalPortalProps, IState> {
                 rows: [...prev.rows, {queueKey, ModalComponent, args}],
             };
         });
-        if(this.typeProps.onShow){
-            this.typeProps.onShow(queueKey);
+        if(this.typeProps._onShow){
+            this.typeProps._onShow(queueKey);
         }
     };
 
@@ -73,8 +73,8 @@ class Modal extends React.Component<IModalPortalProps, IState> {
             };
         });
 
-        if(this.typeProps.onHide){
-            this.typeProps.onHide(queueKey);
+        if(this.typeProps._onHide){
+            this.typeProps._onHide(queueKey);
         }
     };
 
