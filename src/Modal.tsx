@@ -113,7 +113,7 @@ class Modal extends React.Component<IModalPortalProps, IState> {
             <AnimatePresence>
                 {this.renderItems()}
             </AnimatePresence>
-        </ReactPortal>
+        </ReactPortal>;
     }
 }
 

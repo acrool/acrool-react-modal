@@ -34,11 +34,16 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
         const queueKey = modalOptions?.queueKey ?? createQueueKey();
 
         useEffect(() => {
-            if(modalOptions?.onShow) modalOptions.onShow(queueKey);
+            if(modalOptions?.onShow){
+                modalOptions.onShow(queueKey);
+            }
+
             return () => {
-                if(modalOptions?.onHide) modalOptions.onHide(queueKey);
+                if(modalOptions?.onHide){
+                    modalOptions.onHide(queueKey);
+                }
             };
-        }, []);
+        }, [modalOptions?.onShow, modalOptions?.onHide]);
 
         /**
          * 當動畫結束時通知
