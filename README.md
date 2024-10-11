@@ -29,6 +29,8 @@
 - Plug and unplug using `@acrool/react-portal` and `framer-motion`
 - Quickly create light box effects and send them to the outside to avoid hierarchical problems
 - Support [@acrool/react-router-hash](https://github.com/acrool/acrool-react-router-hash) lightbox (using createControlledModal)
+- Modal open auto add `acrool_model-open` body overflow style class
+- export BodyScroll utils (state control)
 
 ## Install
 

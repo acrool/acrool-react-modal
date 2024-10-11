@@ -1,3 +1,5 @@
+import './index.css';
+
 import ReactPortal from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
 import React from 'react';
@@ -53,8 +55,8 @@ class Modal extends React.Component<IModalPortalProps, IState> {
                 rows: [...prev.rows, {queueKey, ModalComponent, args}],
             };
         });
-        if(this.typeProps.onShow){
-            this.typeProps.onShow(queueKey);
+        if(this.typeProps._onShow){
+            this.typeProps._onShow(queueKey);
         }
     };
 
@@ -71,8 +73,8 @@ class Modal extends React.Component<IModalPortalProps, IState> {
             };
         });
 
-        if(this.typeProps.onHide){
-            this.typeProps.onHide(queueKey);
+        if(this.typeProps._onHide){
+            this.typeProps._onHide(queueKey);
         }
     };
 
@@ -102,19 +104,16 @@ class Modal extends React.Component<IModalPortalProps, IState> {
     };
 
 
-
     render() {
-        return (
-            <ReactPortal
-                id={this.typeProps.id}
-                className={styles.root}
-                containerSelector={this.typeProps.containerSelector}
-            >
-                <AnimatePresence>
-                    {this.renderItems()}
-                </AnimatePresence>
-            </ReactPortal>
-        );
+        return <ReactPortal
+            id={this.typeProps.id}
+            className={styles.root}
+            containerSelector={this.typeProps.containerSelector}
+        >
+            <AnimatePresence>
+                {this.renderItems()}
+            </AnimatePresence>
+        </ReactPortal>;
     }
 }
 

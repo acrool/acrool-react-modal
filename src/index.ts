@@ -1,4 +1,5 @@
 export {default as ModalPortal, modal} from './Modal';
+export {default as BodyScroll} from './bodyScroll';
 export * from './compose';
 
 export {useModal} from './ModalProvider';

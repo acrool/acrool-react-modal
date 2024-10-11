@@ -1,8 +1,9 @@
 import {clsx} from 'clsx';
 import {motion} from 'framer-motion';
-import {ReactNode} from 'react';
+import {ReactNode, useEffect} from 'react';
 
 import animation from '../animation';
+import BodyScroll from '../bodyScroll';
 import {useModal} from '../ModalProvider';
 import {IModalOptions} from '../types';
 import styles from './motion-drawer.module.scss';
@@ -40,6 +41,16 @@ const MotionDrawer = ({
     const {className, isEnableHideWithClickMask, ...motionProps} = modalOptions ?? {className: ''};
     
     const {hide} = useModal();
+
+
+    useEffect(() => {
+        // 鎖背景
+        BodyScroll.disableBodyScroll();
+        return () => {
+            BodyScroll.enableBodyScroll();
+        };
+    }, []);
+
 
     return <div className={styles.motionDrawer}>
         <motion.div

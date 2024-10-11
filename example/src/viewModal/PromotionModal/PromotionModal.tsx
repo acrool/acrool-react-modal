@@ -1,6 +1,6 @@
 import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Card from '../../components/Card';
@@ -28,9 +28,11 @@ const PromotionModal = createModal(
     () => {
         const {hide} = useModal();
         const navigate = useNavigate();
+        const {id} = useParams();
 
         return <CreateTaskModalRoot>
             <Card title="Create Modal" direction="column">
+                <div>id {id}</div>
                 <div>Test2 content</div>
                 <div>Test2 content</div>
                 <div>Test2 content</div>

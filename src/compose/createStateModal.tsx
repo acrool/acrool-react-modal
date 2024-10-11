@@ -6,12 +6,11 @@ import {rootId} from '../config';
 import {ModalProviderContext} from '../ModalProvider';
 import MotionDrawer from '../MotionDrawer';
 import {IStageModalOptions} from '../types';
-import {createQueueKey} from "../utils";
+import {createQueueKey} from '../utils';
 
 
 interface ICreateStateModal<T> extends React.FC<T>{
 }
-
 
 /**
  * 產生帶 framer-motion 功能的Modal Component
@@ -34,11 +33,12 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
         const queueKey = modalOptions?.queueKey ?? createQueueKey();
 
         useEffect(() => {
-            if(modalOptions?.onShow) modalOptions.onShow(queueKey);
+            if(modalOptions?._onShow) modalOptions._onShow(queueKey);
             return () => {
-                if(modalOptions?.onHide) modalOptions.onHide(queueKey);
+                if(modalOptions?._onHide) modalOptions._onHide(queueKey);
             };
         }, []);
+
 
         /**
          * 當動畫結束時通知
