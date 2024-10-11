@@ -14,10 +14,10 @@
   dependencies:
     dayjs "^1.11.12"
 
-"@acrool/react-grid@5.2.3":
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/@acrool/react-grid/-/react-grid-5.2.3.tgz#524586ba990e01f3280d906f8a548cdbe02b5dcc"
-  integrity sha512-3q7PFtXbqEq2YfbcGG6ce3nUpAg05RIlWwCy7bi5zzSMh3bjbMfr5wQs21rIS3REfocBm6Fm/DGB+cMqBna6Qg==
+"@acrool/react-grid@5.2.4":
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/@acrool/react-grid/-/react-grid-5.2.4.tgz#8ad917b1270170bef18f3cf264fdd15364eb516b"
+  integrity sha512-ywv43YWf1pJDPZMqKApq4CYz9saoTO3w03EaEd0din88gThNJXs9J2+MpGoeAVvsAmfulODephWLu5rqD2G0rg==
 
 "@acrool/react-modal@link:..":
   version "0.0.0"
