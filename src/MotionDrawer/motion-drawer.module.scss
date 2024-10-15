@@ -11,10 +11,6 @@
     -webkit-overflow-scrolling: touch;
 
     z-index: var(--modal-portal-index, var(--default-portal-index));
-
-    > * {
-        z-index: 1;
-    }
 }
 
 .motion-mask-wrapper {
