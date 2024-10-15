@@ -26,12 +26,10 @@ const modalProps: IModalOptions = {
 const SliderUp = createModal(
     () => {
         const {hide} = useModal();
-        const navigate = useNavigate();
 
         return <SliderUpRoot>
             <div>RightSlider content</div>
 
-            <button type="button" onClick={() => navigate({hash: '/control/editAccount/1'})}>navigate HashModal 1</button>
             <button type="button" onClick={hide}>X </button>
 
         </SliderUpRoot>;
