@@ -1,5 +1,5 @@
 import {clsx} from 'clsx';
-import {motion} from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
 import {ReactNode, useEffect} from 'react';
 
 import animation from '../animation';
@@ -63,18 +63,10 @@ const MotionDrawer = ({
             onClick={isEnableHideWithClickMask ? hide: undefined}
         />
 
-
-        <motion.div
-            transition={{type: 'spring', duration: .2}}
-            className={clsx(styles.motionAnimationWrapper, className)}
-            // variants={animation.fadeInDown}
-            {...motionProps}
-            initial="initial"
-            animate="show"
-            exit="exit"
-        >
+        <AnimatePresence>
             {children}
-        </motion.div>
+        </AnimatePresence>
+
     </div>;
 };
 
