@@ -52,6 +52,29 @@ const MotionDrawer = ({
     }, []);
 
 
+    /**
+     * 渲染主內容
+     */
+    const renderMain = () => {
+        if(motionProps){
+            return <motion.div
+                transition={{type: 'spring', duration: .2}}
+                className={clsx(styles.motionAnimationWrapper, className)}
+                // variants={animation.fadeInDown}
+                {...motionProps}
+                initial="initial"
+                animate="show"
+                exit="exit"
+            >
+                {children}
+            </motion.div>;
+        }
+
+        return children;
+
+    };
+
+
     return <div className={styles.motionDrawer}>
         <motion.div
             className={styles.motionMaskWrapper}
@@ -63,9 +86,7 @@ const MotionDrawer = ({
             onClick={isEnableHideWithClickMask ? hide: undefined}
         />
 
-        <AnimatePresence>
-            {children}
-        </AnimatePresence>
+        {renderMain()}
 
     </div>;
 };
