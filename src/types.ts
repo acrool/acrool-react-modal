@@ -32,7 +32,7 @@ export interface IModalPortalProps extends IControlVisibleStatus{
 
 
 type TVariantKey = 'initial'|'show'|'exit'
-export type TAnimationVariants = Record<TVariantKey, Variant>;
+export type TAnimationVariants = Partial<Record<TVariantKey, Variant>>;
 
 
 export interface IModalOptions {
