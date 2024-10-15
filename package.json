@@ -57,7 +57,7 @@
     "@acrool/js-logger": "^1.0.23",
     "clsx": "^2.1.1",
     "ulid": "^2.3.0",
-    "framer-motion": "^11.3.19"
+    "framer-motion": "^11.x"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
