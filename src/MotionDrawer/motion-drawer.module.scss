@@ -11,6 +11,10 @@
     -webkit-overflow-scrolling: touch;
 
     z-index: var(--modal-portal-index, var(--default-portal-index));
+
+    > * {
+        z-index: 1;
+    }
 }
 
 .motion-mask-wrapper {
@@ -18,7 +22,7 @@
     position: fixed;
     inset: 0;
 
-    z-index: 0;
+    z-index: 0 !important;
     pointer-events: auto;
 }
 
