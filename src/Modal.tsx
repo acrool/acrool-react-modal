@@ -44,6 +44,13 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         };
     }
 
+    // componentDidUpdate() {
+    //     modal = {
+    //         show: this.show,
+    //         hide: this.hide,
+    //     };
+    // }
+
     /**
      * 顯示 Toaster
      * @param ModalComponent
@@ -86,12 +93,16 @@ class Modal extends React.Component<IModalPortalProps, IState> {
     renderItems() {
         const {rows} = this.state;
         return rows.map(row => {
-            return (
-                <OriginCreateModalWithFetchWait
-                    key={row.queueKey}
-                    {...row.args}
-                />
-            );
+            return <row.ModalComponent
+                key={row.queueKey}
+                {...row.args}
+            />;
+            // return (
+            //     <OriginCreateModalWithFetchWait
+            //         key={row.queueKey}
+            //         {...row.args}
+            //     />
+            // );
         });
     };
 
