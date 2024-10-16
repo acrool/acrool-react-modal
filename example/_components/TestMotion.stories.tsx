@@ -1,19 +1,16 @@
-import {ModalPortal} from '@acrool/react-modal';
 import {Flex} from '@acrool/react-grid';
 import type {Meta, StoryObj} from '@storybook/react';
-import {createElement, useEffect} from 'react';
+import {useRef, useState} from 'react';
 import Button from "../src/components/Button";
-import {CreateModalPrimary, CreateModalWithArgs} from "./CreateModal";
-import CreateModalWithClickMaskClose from "./CreateModal/CreateModalWithClickMaskClose";
-import CreateModalWithFetchWait from "./CreateModal/CreateModalWithFetchWait";
-import ParentComponent from "./TestMotion/TestMotion";
+import {OriginCreateModalWithFetchWait} from "./CreateModal/CreateModalWithFetchWait";
+import {TestMotionWithSubChildren, TestMotionPrimary, TestMotionWithPropsComponent} from "./TestMotion";
 
 
 
 
 const meta = {
     title: 'Test/TestMotion',
-    component: ParentComponent,
+    component: TestMotionPrimary,
     parameters: {
         layout: 'centered',
         actions: {argTypesRegex: '^on.*'},
@@ -27,7 +24,7 @@ const meta = {
     argTypes: {},
     args: {
     },
-} satisfies Meta<typeof ParentComponent>;
+} satisfies Meta<typeof TestMotionPrimary>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -38,3 +35,37 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
     args: {},
 };
+
+
+
+export const WithSubChildren: Story = {
+    args: {},
+    render: function Render(args) {
+
+        const [Modal, setModal] = useState(OriginCreateModalWithFetchWait);
+        const ModalRef = useRef(OriginCreateModalWithFetchWait);
+
+        return <Flex column>
+            <TestMotionWithSubChildren />
+        </Flex>
+    },
+};
+
+
+export const WithPropsComponent: Story = {
+    args: {},
+    render: function Render(args) {
+
+        const [Modal, setModal] = useState(OriginCreateModalWithFetchWait);
+        const ModalRef = useRef(OriginCreateModalWithFetchWait);
+
+        return <Flex>
+            <Button color="primary" onClick={() => setModal(OriginCreateModalWithFetchWait)}>
+                Mo
+            </Button>
+            <TestMotionWithPropsComponent ModalComponent={OriginCreateModalWithFetchWait} />
+        </Flex>
+    },
+};
+
+

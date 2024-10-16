@@ -24,7 +24,7 @@ const modalProps: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const CreateModalWithFetchWait = (props: undefined, ref: any) => {
+const OriginCreateModalWithFetchWait = (props: undefined, ref: any) => {
     const {hide} = useModal();
     const [isPresent, safeToRemove] = usePresence();
 
@@ -48,8 +48,10 @@ const CreateModalWithFetchWait = (props: undefined, ref: any) => {
 };
 
 
+export {OriginCreateModalWithFetchWait};
+
 export default createModal(
-    CreateModalWithFetchWait,
+    OriginCreateModalWithFetchWait,
     modalProps,
 );
 

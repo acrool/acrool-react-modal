@@ -43,25 +43,27 @@ const ChildComponent = () => {
                 }}
             >
             子元件
-            </motion.div>
 
+            </motion.div>
             <SubChildComponent/>
         </MotionDrawer>
     );
 };
 
 interface IData {
-    ModalComponent: React.FC<T>
-    key: string
+    ModalComponent: React.FC
 }
 
-const ParentComponent3 = () => {
+
+const ParentComponent3 = ({
+    ModalComponent,
+}: IData) => {
     const [data, setData] = useState<IData[]>([]);
 
 
     const handleToggle = () => {
         if(data.length === 0){
-            setData(curr => [...curr, {key: '2', ModalComponent: ChildComponent}]);
+            setData(curr => [...curr, {key: '2', ModalComponent}]);
         }else{
             setData([]);
         }
