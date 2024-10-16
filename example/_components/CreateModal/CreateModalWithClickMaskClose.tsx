@@ -26,7 +26,7 @@ const CreateModalWithClickMaskClose = createModal(
 
 
         return <CreateTaskModalRoot>
-            <Card title="Create Modal" direction="column">
+            <Card title="With Click MaskClose" direction="column">
                 <p>
                     Acrool is an developer driven platform to visually design and manage project infrastructure, collaboratively.
                     It's the solution for any provider

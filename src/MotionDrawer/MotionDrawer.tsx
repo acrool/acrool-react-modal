@@ -12,7 +12,7 @@ import styles from './motion-drawer.module.scss';
 const maskMotionProps: IModalOptions = {
     variants: {
         initial: {opacity: 0, transition: {type:'spring'}},
-        show: {opacity: 1, transition: {type: 'just'}},
+        animate: {opacity: 1, transition: {type: 'just'}},
         exit: {opacity: 0},
     },
     transition: {
@@ -63,7 +63,7 @@ const MotionDrawer = ({
                 // variants={animation.fadeInDown}
                 {...motionProps}
                 initial="initial"
-                animate="show"
+                animate="animate"
                 exit="exit"
             >
                 {children}
@@ -80,7 +80,7 @@ const MotionDrawer = ({
             className={styles.motionMaskWrapper}
             {...maskMotionProps}
             initial="initial"
-            animate="show"
+            animate="animate"
             exit="exit"
             data-enable-click={isEnableHideWithClickMask}
             onClick={isEnableHideWithClickMask ? hide: undefined}

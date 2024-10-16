@@ -5,6 +5,7 @@ import {createElement, useEffect} from 'react';
 import Button from "../src/components/Button";
 import {CreateModalPrimary, CreateModalWithArgs} from "./CreateModal";
 import CreateModalWithClickMaskClose from "./CreateModal/CreateModalWithClickMaskClose";
+import CreateModalWithFetchWait from "./CreateModal/CreateModalWithFetchWait";
 
 
 
@@ -77,6 +78,19 @@ export const WithClickMaskClose: Story = {
         return <Button
             color="primary"
             onClick={CreateModalWithClickMaskClose.show}
+        >
+            Open
+        </Button>;
+    },
+};
+
+export const WithFetchWait: Story = {
+    args: {},
+    render: function Render(args) {
+
+        return <Button
+            color="primary"
+            onClick={CreateModalWithFetchWait.show}
         >
             Open
         </Button>;

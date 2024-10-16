@@ -44,7 +44,7 @@ const CreateModalWithArgs = createModal(
         };
 
         return <CreateTaskModalRoot>
-            <Card title="Create Modal" direction="column">
+            <Card title="With Args" direction="column">
                 <h2>Promotion Id: {args?.promotionId}</h2>
 
                 <p dangerouslySetInnerHTML={{__html: getData()}}/>

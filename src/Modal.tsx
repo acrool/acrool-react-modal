@@ -110,7 +110,7 @@ class Modal extends React.Component<IModalPortalProps, IState> {
             className={styles.root}
             containerSelector={this.typeProps.containerSelector}
         >
-            <AnimatePresence>
+            <AnimatePresence mode="popLayout">
                 {this.renderItems()}
             </AnimatePresence>
         </ReactPortal>;

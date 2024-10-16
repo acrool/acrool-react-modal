@@ -5,18 +5,18 @@ import styled from 'styled-components';
 
 import Card from '../../src/components/Card';
 import Button from "../../src/components/Button";
+import {motion} from "framer-motion";
 
 
 
 
 const modalProps: IModalOptions = {
-    ...animation.fadeInDown,
     // variants: {
     //     initial: {transform: 'scale(0)'},
     //     show: {transform: 'scale(1)'},
     //     exit: {transform: 'scale(0)'},
     // },
-    className: 'p-3'
+    // className: 'p-3'
 };
 // const modalPropsUndefined: IModalProps|undefined = undefined;
 
@@ -25,12 +25,15 @@ const modalProps: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const CreateModalPrimary = createModal(
+const CreateModalWithFetchWait = createModal(
     () => {
         const {hide} = useModal();
 
-        return <CreateTaskModalRoot>
-            <Card title="Primary" direction="column">
+        return <motion.div
+            {...animation.fadeInDown}
+            layout
+        >
+            <Card title="With Fetch Wait" direction="column">
                 <p>
                     Acrool is an developer driven platform to visually design and manage project infrastructure, collaboratively.
                     It's the solution for any provider
@@ -41,13 +44,13 @@ const CreateModalPrimary = createModal(
             </Card>
 
 
-        </CreateTaskModalRoot>;
+        </motion.div>;
     }
     ,modalProps);
 
-export default CreateModalPrimary;
+export default CreateModalWithFetchWait;
 
 
-const CreateTaskModalRoot = styled.div`
+const CreateTaskModalRoot = styled(motion.div)`
   width: 400px;
 `;
