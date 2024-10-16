@@ -105,15 +105,19 @@ class Modal extends React.Component<IModalPortalProps, IState> {
 
 
     render() {
-        return <ReactPortal
-            id={this.typeProps.id}
-            className={styles.root}
-            containerSelector={this.typeProps.containerSelector}
-        >
-            <AnimatePresence mode="popLayout">
-                {this.renderItems()}
-            </AnimatePresence>
-        </ReactPortal>;
+        return <AnimatePresence>
+            {this.renderItems()}
+        </AnimatePresence>;
+
+        // return <ReactPortal
+        //     id={this.typeProps.id}
+        //     className={styles.root}
+        //     containerSelector={this.typeProps.containerSelector}
+        // >
+        //     <AnimatePresence mode="wait">
+        //         {this.renderItems()}
+        //     </AnimatePresence>
+        // </ReactPortal>;
     }
 }
 

@@ -1,6 +1,6 @@
 import {clsx} from 'clsx';
 import {AnimatePresence, motion} from 'framer-motion';
-import {ReactNode, useEffect} from 'react';
+import React, {ForwardedRef, ReactNode, useEffect} from 'react';
 
 import animation from '../animation';
 import BodyScroll from '../bodyScroll';
@@ -33,15 +33,17 @@ interface IProps {
  * Motion 動畫
  * @param modalOptions
  * @param children
+ * @param ref
  */
 const MotionDrawer = ({
     modalOptions,
     children,
-}: IProps) => {
+}: IProps, ref?: ForwardedRef<HTMLDivElement>) => {
     const {className, isEnableHideWithClickMask, ...motionProps} = modalOptions ?? {className: ''};
     
     const {hide} = useModal();
 
+    console.log('xxxx');
 
     useEffect(() => {
         // 鎖背景
@@ -56,26 +58,29 @@ const MotionDrawer = ({
      * 渲染主內容
      */
     const renderMain = () => {
-        if(motionProps){
-            return <motion.div
-                transition={{type: 'spring', duration: .2}}
-                className={clsx(styles.motionAnimationWrapper, className)}
-                // variants={animation.fadeInDown}
-                {...motionProps}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-            >
-                {children}
-            </motion.div>;
-        }
+        // if(motionProps){
+        //     return <motion.div
+        //         transition={{type: 'spring', duration: .2}}
+        //         className={clsx(styles.motionAnimationWrapper, className)}
+        //         // variants={animation.fadeInDown}
+        //         {...motionProps}
+        //         initial="initial"
+        //         animate="animate"
+        //         exit="exit"
+        //     >
+        //         {children}
+        //     </motion.div>;
+        // }
 
         return children;
+        // return  <AnimatePresence mode="wait">
+        //     {children}
+        // </AnimatePresence>;
 
     };
 
 
-    return <div className={styles.motionDrawer}>
+    return <div className={styles.motionDrawer} ref={ref}>
         <motion.div
             className={styles.motionMaskWrapper}
             {...maskMotionProps}
@@ -92,5 +97,5 @@ const MotionDrawer = ({
 };
 
 
-export default MotionDrawer;
+export default React.forwardRef(MotionDrawer);
 

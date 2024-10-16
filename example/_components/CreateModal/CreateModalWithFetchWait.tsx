@@ -1,11 +1,10 @@
 import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
+import {motion, usePresence} from 'framer-motion';
 import React from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
+import Button from '../../src/components/Button';
 import Card from '../../src/components/Card';
-import Button from "../../src/components/Button";
-import {motion} from "framer-motion";
 
 
 
@@ -25,30 +24,37 @@ const modalProps: IModalOptions = {
  *
  * PS: 示範用客製化光箱
  */
-const CreateModalWithFetchWait = createModal(
-    () => {
-        const {hide} = useModal();
+const CreateModalWithFetchWait = (props: undefined, ref: any) => {
+    const {hide} = useModal();
+    const [isPresent, safeToRemove] = usePresence();
 
-        return <motion.div
-            {...animation.fadeInDown}
-            layout
-        >
-            <Card title="With Fetch Wait" direction="column">
-                <p>
+    console.log('ref', ref);
+    return <motion.div
+        {...animation.fadeInDown}
+    >
+        {String(isPresent)}
+        <Card title="With Fetch Wait" direction="column">
+            <p>
                     Acrool is an developer driven platform to visually design and manage project infrastructure, collaboratively.
                     It's the solution for any provider
-                    <a href="https://acrool.com" target="_blank">Link</a>
-                </p>
+                <a href="https://acrool.com" target="_blank" rel="noreferrer">Link</a>
+            </p>
 
-                <Button color="grayDanger" onClick={hide}>Close</Button>
-            </Card>
+            <Button color="grayDanger" onClick={hide}>Close</Button>
+        </Card>
 
 
-        </motion.div>;
-    }
-    ,modalProps);
+    </motion.div>;
+};
 
-export default CreateModalWithFetchWait;
+
+export default createModal(
+    CreateModalWithFetchWait,
+    modalProps,
+);
+
+
+
 
 
 const CreateTaskModalRoot = styled(motion.div)`

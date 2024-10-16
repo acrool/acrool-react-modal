@@ -12,7 +12,7 @@ import CreateModalWithFetchWait from "./CreateModal/CreateModalWithFetchWait";
 
 const meta = {
     title: 'Components/CreateModal',
-    component: ModalPortal,
+    component: CreateModalPrimary,
     parameters: {
         layout: 'centered',
         actions: {argTypesRegex: '^on.*'},
@@ -25,9 +25,8 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {},
     args: {
-        message: 'loading...'
     },
-} satisfies Meta<typeof ModalPortal>;
+} satisfies Meta<typeof CreateModalPrimary>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
