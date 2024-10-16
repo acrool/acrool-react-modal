@@ -88,7 +88,7 @@ const MotionDrawer = ({
             animate="animate"
             exit="exit"
             data-enable-click={isEnableHideWithClickMask}
-            onClick={isEnableHideWithClickMask ? hide: undefined}
+            // onClick={isEnableHideWithClickMask ? hide: undefined}
         />
 
         {renderMain()}

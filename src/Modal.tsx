@@ -5,6 +5,7 @@ import {AnimatePresence} from 'framer-motion';
 import React from 'react';
 
 import {rootId} from './config';
+import {OriginCreateModalWithFetchWait} from './CreateModalWithFetchWait';
 import styles from './modal.module.scss';
 import {ModalProviderContext} from './ModalProvider';
 import {IModal, IModalPortalProps, IRow, THidden, TShow} from './types';
@@ -52,12 +53,12 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         const queueKey = createQueueKey();
         this.setState(prev => {
             return {
-                rows: [...prev.rows, {queueKey, ModalComponent, args}],
+                rows: [{queueKey: 'xx', ModalComponent, args}],
             };
         });
-        if(this.typeProps._onShow){
-            this.typeProps._onShow(queueKey);
-        }
+        // if(this.typeProps._onShow){
+        //     this.typeProps._onShow(queueKey);
+        // }
     };
 
 
@@ -69,13 +70,13 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         this.setState(prev => {
             const index = prev.rows.findIndex(row => row.queueKey === queueKey);
             return {
-                rows: removeByIndex(prev.rows, index),
+                rows: [],
             };
         });
 
-        if(this.typeProps._onHide){
-            this.typeProps._onHide(queueKey);
-        }
+        // if(this.typeProps._onHide){
+        //     this.typeProps._onHide(queueKey);
+        // }
     };
 
 
@@ -86,28 +87,25 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         const {rows} = this.state;
         return rows.map(row => {
             return (
-                <ModalProviderContext.Provider
+                <OriginCreateModalWithFetchWait
                     key={row.queueKey}
-                    value={{
-                        queueKey: row.queueKey,
-                        hide: async () => {
-                            this.hide(row.queueKey);
-                        }
-                    }}>
-                    <row.ModalComponent
-                        key={row.queueKey}
-                        {...row.args}
-                    />
-                </ModalProviderContext.Provider>
+                    {...row.args}
+                />
             );
         });
     };
 
 
     render() {
-        return <AnimatePresence>
-            {this.renderItems()}
-        </AnimatePresence>;
+        return <ModalProviderContext.Provider
+            value={{
+                // queueKey: row.queueKey,
+                hide: this.hide,
+            }}>
+            <AnimatePresence>
+                {this.renderItems()}
+            </AnimatePresence>
+        </ModalProviderContext.Provider>;
 
         // return <ReactPortal
         //     id={this.typeProps.id}

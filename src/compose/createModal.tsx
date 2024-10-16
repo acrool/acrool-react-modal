@@ -37,8 +37,8 @@ function createModal<P = undefined>(
     modalOptions?: IModalOptions
 ): ICreateModal<P> {
 
-    const RefMainComponent = forwardRef(MainComponent as React.ForwardRefRenderFunction<P>) as React.ForwardRefExoticComponent<React.RefAttributes<P>>;
-    const MotionRefMainComponent = motion.create(RefMainComponent);
+    // const RefMainComponent = forwardRef(MainComponent as React.ForwardRefRenderFunction<P>) as React.ForwardRefExoticComponent<React.RefAttributes<P>>;
+    // const MotionRefMainComponent = motion.create(RefMainComponent);
 
     /**
      * Add framer motion
@@ -47,7 +47,7 @@ function createModal<P = undefined>(
     const MotionModal: React.FC<P> & { show: TModalShowMulti<P> } = (args?: P) => {
         return (
             <MotionDrawer modalOptions={modalOptions}>
-                <MotionRefMainComponent {...args as P & {}} />
+                <MainComponent {...args as P & {}} />
             </MotionDrawer>
         );
     };
