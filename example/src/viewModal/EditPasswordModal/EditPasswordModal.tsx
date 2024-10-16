@@ -20,7 +20,7 @@ const EditPasswordModal = createStateModal(
         </>;
     },
     {
-        variants: animation.fadeInDown
+        ...animation.fadeInDown
     }
 );
 
