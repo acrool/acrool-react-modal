@@ -6,6 +6,7 @@ import animation from '../animation';
 import BodyScroll from '../bodyScroll';
 import {useModal} from '../ModalProvider';
 import {IModalOptions} from '../types';
+import {isEmpty} from '../utils';
 import styles from './motion-drawer.module.scss';
 
 
@@ -43,7 +44,6 @@ const MotionDrawer = ({
     
     const {hide} = useModal();
 
-    console.log('xxxx');
 
     useEffect(() => {
         // 鎖背景
@@ -58,24 +58,22 @@ const MotionDrawer = ({
      * 渲染主內容
      */
     const renderMain = () => {
-        // if(motionProps){
-        //     return <motion.div
-        //         transition={{type: 'spring', duration: .2}}
-        //         className={clsx(styles.motionAnimationWrapper, className)}
-        //         // variants={animation.fadeInDown}
-        //         {...motionProps}
-        //         initial="initial"
-        //         animate="animate"
-        //         exit="exit"
-        //     >
-        //         {children}
-        //     </motion.div>;
-        // }
+        if(isEmpty(motionProps)) {
+            return children;
+        }
+        
+        return <motion.div
+            transition={{type: 'spring', duration: .2}}
+            className={clsx(styles.motionAnimationWrapper, className)}
+            // variants={animation.fadeInDown}
+            {...motionProps}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+        >
+            {children}
+        </motion.div>;
 
-        return children;
-        // return  <AnimatePresence mode="wait">
-        //     {children}
-        // </AnimatePresence>;
 
     };
 
@@ -88,11 +86,10 @@ const MotionDrawer = ({
             animate="animate"
             exit="exit"
             data-enable-click={isEnableHideWithClickMask}
-            // onClick={isEnableHideWithClickMask ? hide: undefined}
+            onClick={isEnableHideWithClickMask ? hide: undefined}
         />
 
         {renderMain()}
-
     </div>;
 };
 

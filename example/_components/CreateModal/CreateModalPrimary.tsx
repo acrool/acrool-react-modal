@@ -1,51 +1,46 @@
 import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 import React from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
+import Button from '../../src/components/Button';
 import Card from '../../src/components/Card';
-import Button from "../../src/components/Button";
 
 
 
 
 const modalProps: IModalOptions = {
     ...animation.fadeInDown,
-    // variants: {
-    //     initial: {transform: 'scale(0)'},
-    //     show: {transform: 'scale(1)'},
-    //     exit: {transform: 'scale(0)'},
-    // },
     className: 'p-3'
 };
-// const modalPropsUndefined: IModalProps|undefined = undefined;
 
 /**
  * 優惠活動光箱2
  *
  * PS: 示範用客製化光箱
  */
-const CreateModalPrimary = createModal(
-    () => {
-        const {hide} = useModal();
+const CreateModalPrimary = () => {
+    const {hide} = useModal();
 
-        return <CreateTaskModalRoot>
-            <Card title="Primary" direction="column">
-                <p>
+    return <CreateTaskModalRoot>
+        <Card title="Primary" direction="column">
+            <p>
                     Acrool is an developer driven platform to visually design and manage project infrastructure, collaboratively.
                     It's the solution for any provider
-                    <a href="https://acrool.com" target="_blank">Link</a>
-                </p>
+                <a href="https://acrool.com" target="_blank" rel="noreferrer">Link</a>
+            </p>
 
-                <Button color="grayDanger" onClick={hide}>Close</Button>
-            </Card>
+            <Button color="grayDanger" onClick={hide}>Close</Button>
+        </Card>
 
 
-        </CreateTaskModalRoot>;
-    }
-    ,modalProps);
+    </CreateTaskModalRoot>;
+};
 
-export default CreateModalPrimary;
+export default createModal(
+    CreateModalPrimary,
+    modalProps,
+);
+
 
 
 const CreateTaskModalRoot = styled.div`

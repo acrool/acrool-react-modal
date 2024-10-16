@@ -1,11 +1,10 @@
 import Logger from '@acrool/js-logger';
 import React, {createContext, useContext} from 'react';
-import {THidden} from "./types";
 
 
 interface IContextProps {
     queueKey?: string,
-    hide: THidden
+    hide: () => Promise<void>
 }
 
 export const ModalProviderContext = createContext<IContextProps>({

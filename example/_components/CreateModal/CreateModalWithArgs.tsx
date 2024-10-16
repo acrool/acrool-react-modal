@@ -11,12 +11,6 @@ interface IProps {
 }
 
 
-const modalOptions: IModalOptions = {
-    ...animation.fadeInDown,
-    className: 'p-3',
-    // isEnableClickMaskHide: true,
-};
-
 
 const data = {
     '1b9d6bcd': `A Gantt chart is a bar chart used to display the internal relationships of projects, schedules, and other time-related system progress over time. It was developed by Henry Gantt in 1910. In project management, the Gantt chart displays the start and end of the terminal elements of the project, as well as the dependencies of summary elements or terminal elements. Managers can monitor the progress of each current task of the project through the Gantt chart.
@@ -31,33 +25,41 @@ const data = {
 
 
 /**
- * 優惠活動光箱
- *
- * PS: 示範用客製化光箱
+ * 待參數光箱
  */
-const CreateModalWithArgs = createModal(
-    (args: IProps) => {
-        const {hide} = useModal();
+const CreateModalWithArgs = (args: IProps) => {
+    const {hide} = useModal();
 
-        const getData = () => {
-            return data[args?.promotionId];
-        };
+    const getData = () => {
+        return data[args?.promotionId];
+    };
 
-        return <CreateTaskModalRoot>
-            <Card title="With Args" direction="column">
-                <h2>Promotion Id: {args?.promotionId}</h2>
+    return <CreateTaskModalRoot>
+        <Card title="With Args" direction="column">
+            <h2>Promotion Id: {args?.promotionId}</h2>
 
-                <p dangerouslySetInnerHTML={{__html: getData()}}/>
+            <p dangerouslySetInnerHTML={{__html: getData()}}/>
 
-                <Button color="grayDanger" onClick={hide}>Close</Button>
-            </Card>
+            <Button color="grayDanger" onClick={hide}>Close</Button>
+        </Card>
 
 
-        </CreateTaskModalRoot>;
-    }
-    , modalOptions);
+    </CreateTaskModalRoot>;
+};
 
-export default CreateModalWithArgs;
+
+const modalOptions: IModalOptions = {
+    ...animation.fadeInDown,
+    className: 'p-3',
+};
+
+
+export default createModal(
+    CreateModalWithArgs,
+    modalOptions,
+);
+
+
 
 
 

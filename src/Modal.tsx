@@ -5,7 +5,6 @@ import {AnimatePresence} from 'framer-motion';
 import React from 'react';
 
 import {rootId} from './config';
-import {OriginCreateModalWithFetchWait} from './CreateModalWithFetchWait';
 import styles from './modal.module.scss';
 import {ModalProviderContext} from './ModalProvider';
 import {IModal, IModalPortalProps, IRow, THidden, TShow} from './types';
@@ -44,13 +43,6 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         };
     }
 
-    // componentDidUpdate() {
-    //     modal = {
-    //         show: this.show,
-    //         hide: this.hide,
-    //     };
-    // }
-
     /**
      * 顯示 Toaster
      * @param ModalComponent
@@ -60,12 +52,12 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         const queueKey = createQueueKey();
         this.setState(prev => {
             return {
-                rows: [{queueKey: 'xx', ModalComponent, args}],
+                rows: [...prev.rows, {queueKey, ModalComponent, args}],
             };
         });
-        // if(this.typeProps._onShow){
-        //     this.typeProps._onShow(queueKey);
-        // }
+        if(this.typeProps._onShow){
+            this.typeProps._onShow(queueKey);
+        }
     };
 
 
@@ -77,13 +69,13 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         this.setState(prev => {
             const index = prev.rows.findIndex(row => row.queueKey === queueKey);
             return {
-                rows: [],
+                rows: removeByIndex(prev.rows, index),
             };
         });
 
-        // if(this.typeProps._onHide){
-        //     this.typeProps._onHide(queueKey);
-        // }
+        if(this.typeProps._onHide){
+            this.typeProps._onHide(queueKey);
+        }
     };
 
 
@@ -93,40 +85,35 @@ class Modal extends React.Component<IModalPortalProps, IState> {
     renderItems() {
         const {rows} = this.state;
         return rows.map(row => {
-            return <row.ModalComponent
-                key={row.queueKey}
-                {...row.args}
-            />;
-            // return (
-            //     <OriginCreateModalWithFetchWait
-            //         key={row.queueKey}
-            //         {...row.args}
-            //     />
-            // );
+            return (
+                <ModalProviderContext.Provider
+                    key={row.queueKey}
+                    value={{
+                        queueKey: row.queueKey,
+                        hide: async () => {
+                            this.hide(row.queueKey);
+                        }
+                    }}>
+                    <row.ModalComponent
+                        key={row.queueKey}
+                        {...row.args}
+                    />
+                </ModalProviderContext.Provider>
+            );
         });
     };
 
 
     render() {
-        return <ModalProviderContext.Provider
-            value={{
-                // queueKey: row.queueKey,
-                hide: this.hide,
-            }}>
+        return <ReactPortal
+            id={this.typeProps.id}
+            className={styles.root}
+            containerSelector={this.typeProps.containerSelector}
+        >
             <AnimatePresence>
                 {this.renderItems()}
             </AnimatePresence>
-        </ModalProviderContext.Provider>;
-
-        // return <ReactPortal
-        //     id={this.typeProps.id}
-        //     className={styles.root}
-        //     containerSelector={this.typeProps.containerSelector}
-        // >
-        //     <AnimatePresence mode="wait">
-        //         {this.renderItems()}
-        //     </AnimatePresence>
-        // </ReactPortal>;
+        </ReactPortal>;
     }
 }
 

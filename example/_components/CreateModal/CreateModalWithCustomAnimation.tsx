@@ -1,11 +1,8 @@
-import {delay} from '@acrool/js-utils/promise';
-import {Flex} from '@acrool/react-grid';
 import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 import {motion, usePresence} from 'framer-motion';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import Loader from '../../assets/loader.svg?react';
 import Button from '../../src/components/Button';
 import Card from '../../src/components/Card';
 
@@ -16,31 +13,13 @@ import Card from '../../src/components/Card';
  *
  * PS: 示範用客製化光箱
  */
-const CreateModalWithFetchWait = () => {
+const CreateModalWithCustomAnimation = () => {
     const {hide} = useModal();
-    
-    const [isPending, setPending] = useState(true);
-    
-    
-    useEffect(() => {
-        delay(1500).then(() => {
-            setPending(false); 
-        });
-        
-        
-    }, []);
-    
-    
-    if(isPending){
-        return <Flex className="align-items-center justify-content-center w-100 h-100 position-relative">
-            <Loader/>
-        </Flex>;
-    }
 
     return <CreateTaskModalRoot
         {...animation.fadeInDown}
     >
-        <Card title="With Fetch Wait" direction="column">
+        <Card title="With Custom Animation" direction="column">
             <p>
                     Acrool is an developer driven platform to visually design and manage project infrastructure, collaboratively.
                     It's the solution for any provider
@@ -54,7 +33,7 @@ const CreateModalWithFetchWait = () => {
 };
 
 export default createModal(
-    CreateModalWithFetchWait,
+    CreateModalWithCustomAnimation,
 );
 
 

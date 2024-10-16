@@ -1,9 +1,8 @@
-import React, {forwardRef} from 'react';
+import React from 'react';
 
 import {modal} from '../Modal';
 import MotionDrawer from '../MotionDrawer';
 import {IModalOptions} from '../types';
-import {motion} from "framer-motion";
 
 
 
@@ -29,33 +28,26 @@ type TModalShowMulti<T> = T extends undefined ? TModalShow :
  * 產生帶 framer-motion 功能的Modal
  *
  * 需要呼叫 show 才會傳送到 portal
- * @param MainComponent
+ * @param ModalComponent
  * @param modalOptions
  */
-function createModal<P = undefined>(
-    MainComponent: React.FC<P>,
-    modalOptions?: IModalOptions
-): ICreateModal<P> {
-
-    // const RefMainComponent = forwardRef(MainComponent as React.ForwardRefRenderFunction<P>) as React.ForwardRefExoticComponent<React.RefAttributes<P>>;
-    // const MotionRefMainComponent = motion.create(RefMainComponent);
-
+function createModal<T = undefined>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> {
     /**
      * Add framer motion
      * @param args
      */
-    const MotionModal: React.FC<P> & { show: TModalShowMulti<P> } = (args?: P) => {
+    const MotionModal: React.FC<T> & { show: TModalShowMulti<T> } = (args?: T) => {
         return (
             <MotionDrawer modalOptions={modalOptions}>
-                <MainComponent {...args as P & {}} />
+                <ModalComponent {...args as T & {}} />
             </MotionDrawer>
         );
     };
 
     // Overload signatures
     function show();
-    function show(args: P): void;
-    function show(args?: P): void {
+    function show(args: T): void;
+    function show(args?: T): void {
         if (args) {
             modal.show(MotionModal, args);
         } else {
@@ -64,9 +56,9 @@ function createModal<P = undefined>(
     }
 
     // Assign the overloaded function to MotionModal.show
-    MotionModal.show = show as TModalShowMulti<P>;
+    MotionModal.show = show as TModalShowMulti<T>;
 
-    return MotionModal as ICreateModal<P>;
+    return MotionModal as ICreateModal<T>;
 }
 
 export default createModal;

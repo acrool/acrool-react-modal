@@ -3,16 +3,14 @@ import {Flex} from '@acrool/react-grid';
 import type {Meta, StoryObj} from '@storybook/react';
 import {createElement, useEffect} from 'react';
 import Button from "../src/components/Button";
-import {CreateModalPrimary, CreateModalWithArgs} from "./CreateModal";
-import CreateModalWithClickMaskClose from "./CreateModal/CreateModalWithClickMaskClose";
-import CreateModalWithFetchWait from "./CreateModal/CreateModalWithFetchWait";
+import {CreateModalPrimary, CreateModalWithArgs, CreateModalWithCustomAnimation, CreateModalWithClickMaskClose, CreateModalWithFetchWait} from "./CreateModal";
 
 
 
 
 const meta = {
     title: 'Components/CreateModal',
-    component: CreateModalPrimary,
+    // component: CreateModalPrimary,
     parameters: {
         layout: 'centered',
         actions: {argTypesRegex: '^on.*'},
@@ -24,9 +22,8 @@ const meta = {
     },
     tags: ['autodocs'],
     argTypes: {},
-    args: {
-    },
-} satisfies Meta<typeof CreateModalPrimary>;
+    args: {},
+} satisfies Meta;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -35,9 +32,7 @@ type Story = StoryObj<typeof meta>;
 
 
 export const Primary: Story = {
-    args: {},
     render: function Render(args) {
-
         return <Button
             color="primary"
             onClick={CreateModalPrimary.show}
@@ -48,7 +43,6 @@ export const Primary: Story = {
 };
 
 export const WithArgs: Story = {
-    args: {},
     render: function Render(args) {
 
 
@@ -71,7 +65,6 @@ export const WithArgs: Story = {
 
 
 export const WithClickMaskClose: Story = {
-    args: {},
     render: function Render(args) {
 
         return <Button
@@ -83,8 +76,20 @@ export const WithClickMaskClose: Story = {
     },
 };
 
+export const WithCustomAnimation: Story = {
+    render: function Render(args) {
+
+        return <Button
+            color="primary"
+            onClick={CreateModalWithCustomAnimation.show}
+        >
+            Open
+        </Button>;
+    },
+};
+
+
 export const WithFetchWait: Story = {
-    args: {},
     render: function Render(args) {
 
         return <Button
