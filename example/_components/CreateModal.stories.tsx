@@ -4,6 +4,7 @@ import type {Meta, StoryObj} from '@storybook/react';
 import {createElement, useEffect} from 'react';
 import Button from "../src/components/Button";
 import {CreateModalPrimary, CreateModalWithArgs} from "./CreateModal";
+import CreateModalWithClickMaskClose from "./CreateModal/CreateModalWithClickMaskClose";
 
 
 
@@ -68,3 +69,16 @@ export const WithArgs: Story = {
     },
 };
 
+
+export const WithClickMaskClose: Story = {
+    args: {},
+    render: function Render(args) {
+
+        return <Button
+            color="primary"
+            onClick={CreateModalWithClickMaskClose.show}
+        >
+            Open
+        </Button>;
+    },
+};
