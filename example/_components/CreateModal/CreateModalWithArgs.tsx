@@ -1,9 +1,9 @@
 import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
+import React from 'react';
 import styled from 'styled-components';
 
+import Button from '../../src/components/Button';
 import Card from '../../src/components/Card';
-import Button from "../../src/components/Button";
-import React from "react";
 
 
 interface IProps {
@@ -12,7 +12,7 @@ interface IProps {
 
 
 const modalOptions: IModalOptions = {
-    variants: animation.fadeInDown,
+    ...animation.fadeInDown,
     className: 'p-3',
     // isEnableClickMaskHide: true,
 };
@@ -63,5 +63,4 @@ export default CreateModalWithArgs;
 
 const CreateTaskModalRoot = styled.div`
   width: 600px;
-  margin: 0 auto;
 `;

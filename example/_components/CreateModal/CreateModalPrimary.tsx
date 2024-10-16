@@ -10,7 +10,7 @@ import Button from "../../src/components/Button";
 
 
 const modalProps: IModalOptions = {
-    variants: animation.fadeInDown,
+    ...animation.fadeInDown,
     // variants: {
     //     initial: {transform: 'scale(0)'},
     //     show: {transform: 'scale(1)'},
@@ -50,5 +50,4 @@ export default CreateModalPrimary;
 
 const CreateTaskModalRoot = styled.div`
   width: 400px;
-  margin: 0 auto;
 `;
