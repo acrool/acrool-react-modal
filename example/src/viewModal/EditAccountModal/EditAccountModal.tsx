@@ -28,7 +28,7 @@ const EditAccountModal = createStateModal(
             </div>
         </>;
     }, {
-        variants: animation.fadeInDown,
+        ...animation.fadeInDown,
     }
 );
 

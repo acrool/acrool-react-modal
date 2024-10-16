@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 
 const modalProps: IModalOptions = {
-    variants: animation.slideInUp,
+    ...animation.slideInUp,
     isEnableHideWithClickMask: true
     // variants: {
     //     initial: {transform: 'scale(0)'},

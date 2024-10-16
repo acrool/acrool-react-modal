@@ -10,7 +10,7 @@ interface IProps {
 
 
 const modalOptions: IModalOptions = {
-    variants: animation.zoomInDown,
+    ...animation.zoomInDown,
     className: 'p-3',
     // isEnableClickMaskHide: true,
 };
