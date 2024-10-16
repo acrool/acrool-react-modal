@@ -9,12 +9,7 @@ import Card from '../../components/Card';
 
 
 const modalProps: IModalOptions = {
-    variants: animation.fadeInDown,
-    // variants: {
-    //     initial: {transform: 'scale(0)'},
-    //     show: {transform: 'scale(1)'},
-    //     exit: {transform: 'scale(0)'},
-    // },
+    ...animation.fadeInDown,
     className: 'p-3'
 };
 // const modalPropsUndefined: IModalProps|undefined = undefined;

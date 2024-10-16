@@ -10,7 +10,7 @@ interface IProps {
 
 
 const modalOptions: IModalOptions = {
-    variants: animation.fadeInDown,
+    ...animation.fadeInDown,
     className: 'p-3',
     // isEnableClickMaskHide: true,
 };

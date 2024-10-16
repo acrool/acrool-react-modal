@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 
 const modalProps: IModalOptions = {
-    variants: animation.slideInRight,
+    ...animation.slideInRight,
     isEnableHideWithClickMask: true
     // variants: {
     //     initial: {transform: 'scale(0)'},
