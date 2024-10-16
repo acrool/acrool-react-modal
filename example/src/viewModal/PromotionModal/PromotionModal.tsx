@@ -27,7 +27,7 @@ const modalProps: IModalOptions = {
 const PromotionModal = createModal(
     () => {
         const {hide} = useModal();
-        const navigate = useNavigate();
+        // const navigate = useNavigate();
         const {id} = useParams();
 
         return <CreateTaskModalRoot>
@@ -67,7 +67,7 @@ const PromotionModal = createModal(
                 <div>Test2 content</div>
             </Card>
 
-            <button type="button" onClick={() => navigate({hash: '/control/editAccount/1'})}>navigate HashModal 1</button>
+            {/*<button type="button" onClick={() => navigate({hash: '/control/editAccount/1'})}>navigate HashModal 1</button>*/}
             <button type="button" onClick={hide}>X </button>
 
         </CreateTaskModalRoot>;
