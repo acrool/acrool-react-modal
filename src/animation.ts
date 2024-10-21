@@ -19,7 +19,6 @@ const fadeInDown: TAnimationConfig = {
     style: {
         position: 'absolute',
         left: '50%',
-        transform: 'translateX(-50%)',
     }
 };
 
@@ -27,14 +26,13 @@ const fadeInDownFn = (formY = 20, toY = 40): TAnimationConfig => {
     return {
         ...defaultVariant,
         variants: {
-            initial: {opacity: 0, y: formY},
+            initial: {opacity: 0, x: '-50%', y: formY},
             animate: {opacity: 1, y: toY, transition: {type: 'just', duration: .2}},
             exit: {opacity: 0, y: formY},
         },
         style: {
             position: 'absolute',
             left: '50%',
-            transform: 'translateX(-50%)',
         }
     };
 };
