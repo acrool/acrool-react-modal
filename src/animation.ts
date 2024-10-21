@@ -23,7 +23,7 @@ const fadeInDown: TAnimationConfig = {
     }
 };
 
-const fadeInDownFn = (formY = 20, toY = 40) => {
+const fadeInDownFn = (formY = 20, toY = 40): TAnimationConfig => {
     return {
         ...defaultVariant,
         variants: {
