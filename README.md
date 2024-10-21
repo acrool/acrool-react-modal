@@ -221,7 +221,7 @@ const ExamplePage = () => {
 
 
 
-- animation
+- [animation](src/animation.ts)
   - fadeInDown: (default), ex Base modal style
   - zoomInDown
   - slideInLeft: ex Drawer slider

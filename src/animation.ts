@@ -17,9 +17,26 @@ const fadeInDown: TAnimationConfig = {
         exit: {opacity: 0, y: 20},
     },
     style: {
-        position: 'absolute', // 或 "fixed"，依照需求調整
-        left: '50%',           // 將元素的 left 移到 50% (水平置中)
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)',
     }
+};
+
+const fadeInDownFn = (formY = 20, toY = 40) => {
+    return {
+        ...defaultVariant,
+        variants: {
+            initial: {opacity: 0, y: formY},
+            animate: {opacity: 1, y: toY, transition: {type: 'just', duration: .2}},
+            exit: {opacity: 0, y: formY},
+        },
+        style: {
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+        }
+    };
 };
 
 const zoomInDown: TAnimationConfig = {
@@ -34,26 +51,35 @@ const zoomInDown: TAnimationConfig = {
 const slideInLeft: TAnimationConfig = {
     ...defaultVariant,
     variants: {
-        initial: {position: 'absolute', right: 0, translateX: '100%', opacity: .8},
+        initial: {right: 0, translateX: '100%', opacity: .8},
         animate: {translateX: 0, opacity: 1, transition: {type: 'just', duration: .2}},
         exit: {translateX: '100%', opacity: .8},
+    },
+    style: {
+        position: 'fixed',
     }
 };
 
 const slideInRight: TAnimationConfig = {
     ...defaultVariant,
     variants: {
-        initial: {position: 'absolute', left: 0, translateX: '-100%', opacity: .8},
+        initial: {left: 0, translateX: '-100%', opacity: .8},
         animate: {translateX: 0, opacity: 1, transition: {type: 'just', duration: .2}},
         exit: {translateX: '-100%', opacity: .8},
+    },
+    style: {
+        position: 'fixed',
     }
 };
 const slideInUp: TAnimationConfig = {
     ...defaultVariant,
     variants: {
-        initial: {position: 'absolute', bottom: 0, translateY: '100%', opacity: .8},
+        initial: {bottom: 0, translateY: '100%', opacity: .8},
         animate: {translateY: 0, opacity: 1, transition: {type: 'just', duration: .2}},
         exit: {translateY: '100%', opacity: .8},
+    },
+    style: {
+        position: 'fixed',
     }
 };
 
@@ -61,6 +87,7 @@ const slideInUp: TAnimationConfig = {
 export default {
     zoomInDown,
     fadeInDown,
+    fadeInDownFn,
     slideInLeft,
     slideInRight,
     slideInUp,

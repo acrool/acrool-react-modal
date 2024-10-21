@@ -1,6 +1,6 @@
+import CSS from 'csstype';
 import {Transition, Variant} from 'framer-motion';
 import React from 'react';
-import CSS from 'csstype';
 
 
 export interface IRow<T = any> {
