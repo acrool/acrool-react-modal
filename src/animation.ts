@@ -1,4 +1,4 @@
-import {IModalOptions, TAnimationConfig} from './types';
+import {TAnimationConfig} from './types';
 
 
 
@@ -9,31 +9,15 @@ const defaultVariant = {
     exit: 'exit',
 };
 
-const fadeInDown: TAnimationConfig = {
-    ...defaultVariant,
-    variants: {
-        initial: {opacity: 0, x: '-50%', y: 20},
-        animate: {opacity: 1, y: 40, transition: {type: 'just', duration: .2}},
-        exit: {opacity: 0, y: 20},
-    },
-    style: {
-        position: 'absolute',
-        left: '50%',
-    }
-};
 
-const fadeInDownFn = (formY = 20, toY = 40): TAnimationConfig => {
+const generateFadeIn = (formY = 20, toY = 40): TAnimationConfig => {
     return {
         ...defaultVariant,
         variants: {
-            initial: {opacity: 0, x: '-50%', y: formY},
+            initial: {position: 'relative',left: '50%', opacity: 0, x: '-50%', y: formY},
             animate: {opacity: 1, y: toY, transition: {type: 'just', duration: .2}},
             exit: {opacity: 0, y: formY},
         },
-        style: {
-            position: 'absolute',
-            left: '50%',
-        }
     };
 };
 
@@ -84,8 +68,7 @@ const slideInUp: TAnimationConfig = {
 
 export default {
     zoomInDown,
-    fadeInDown,
-    fadeInDownFn,
+    generateFadeIn,
     slideInLeft,
     slideInRight,
     slideInUp,
