@@ -14,7 +14,7 @@ const generateFadeIn = (formY = 20, toY = 40): TAnimationConfig => {
     return {
         ...defaultVariant,
         variants: {
-            initial: {position: 'relative',left: '50%', opacity: 0, x: '-50%', y: formY},
+            initial: {position: 'absolute', left: '50%', opacity: 0, x: '-50%', y: formY},
             animate: {opacity: 1, y: toY, transition: {type: 'just', duration: .2}},
             exit: {opacity: 0, y: formY},
         },
@@ -33,36 +33,28 @@ const zoomInDown: TAnimationConfig = {
 const slideInLeft: TAnimationConfig = {
     ...defaultVariant,
     variants: {
-        initial: {right: 0, translateX: '100%', opacity: .8},
+        initial: {position: 'fixed', right: 0, translateX: '100%', opacity: .8},
         animate: {translateX: 0, opacity: 1, transition: {type: 'just', duration: .2}},
         exit: {translateX: '100%', opacity: .8},
     },
-    style: {
-        position: 'fixed',
-    }
 };
 
 const slideInRight: TAnimationConfig = {
     ...defaultVariant,
     variants: {
-        initial: {left: 0, translateX: '-100%', opacity: .8},
+        initial: {position: 'fixed', left: 0, translateX: '-100%', opacity: .8},
         animate: {translateX: 0, opacity: 1, transition: {type: 'just', duration: .2}},
         exit: {translateX: '-100%', opacity: .8},
     },
-    style: {
-        position: 'fixed',
-    }
 };
+
 const slideInUp: TAnimationConfig = {
     ...defaultVariant,
     variants: {
-        initial: {bottom: 0, translateY: '100%', opacity: .8},
+        initial: {position: 'fixed', bottom: 0, translateY: '100%', opacity: .8},
         animate: {translateY: 0, opacity: 1, transition: {type: 'just', duration: .2}},
         exit: {translateY: '100%', opacity: .8},
     },
-    style: {
-        position: 'fixed',
-    }
 };
 
 
