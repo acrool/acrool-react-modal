@@ -17,6 +17,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Wait for npm publish
+        run: sleep 30  # 延遲30秒，可根據實際情況調整
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
