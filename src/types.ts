@@ -1,5 +1,6 @@
+import CSS from 'csstype';
 import {Transition, Variant} from 'framer-motion';
-import React, {FunctionComponent} from 'react';
+import React from 'react';
 
 
 export interface IRow<T = any> {
@@ -31,14 +32,17 @@ export interface IModalPortalProps extends IControlVisibleStatus{
 
 
 
-type TVariantKey = 'initial'|'show'|'exit'
-export type TAnimationVariants = Record<TVariantKey, Variant>;
+type TVariantKey = 'initial'|'animate'|'exit';
+type TVariantKeys = Record<TVariantKey, string>;
+export type TAnimationVariants = Partial<Record<TVariantKey, Variant>>;
 
+export type TAnimationConfig = Pick<IModalOptions, 'variants'|'style'> & TVariantKeys;
 
 export interface IModalOptions {
     variants?: TAnimationVariants
     transition?: Transition
     className?: string
+    style?: CSS.Properties
     isEnableHideWithClickMask?: boolean,
 }
 

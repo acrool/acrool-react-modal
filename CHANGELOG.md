@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.6](https://github.com/acrool/acrool-react-modal/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2024-10-22)
+
+## [1.0.0-alpha.5](https://github.com/acrool/acrool-react-modal/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2024-10-22)
+
+## [1.0.0-alpha.4](https://github.com/acrool/acrool-react-modal/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2024-10-21)
+
+## [1.0.0-alpha.3](https://github.com/acrool/acrool-react-modal/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2024-10-21)
+
+## [1.0.0-alpha.2](https://github.com/acrool/acrool-react-modal/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2024-10-21)
+
+## [1.0.0-alpha.1](https://github.com/acrool/acrool-react-modal/compare/v1.0.0-alpha.0...v1.0.0-alpha.1) (2024-10-18)
+
+## [1.0.0-alpha.0](https://github.com/acrool/acrool-react-modal/compare/v0.0.9...v1.0.0-alpha.0) (2024-10-16)
+
+### [0.0.9-test.3](https://github.com/acrool/acrool-react-modal/compare/v0.0.9-test.2...v0.0.9-test.3) (2024-10-15)
+
+### [0.0.9-test.2](https://github.com/acrool/acrool-react-modal/compare/v0.0.9-test.1...v0.0.9-test.2) (2024-10-15)
+
+### [0.0.9-test.1](https://github.com/acrool/acrool-react-modal/compare/v0.0.9-test.0...v0.0.9-test.1) (2024-10-15)
+
+### [0.0.9-alpha.0](https://github.com/acrool/acrool-react-modal/compare/v0.0.9-test.0...v0.0.9-alpha.0) (2024-10-15)
+
+### [0.0.9-test.0](https://github.com/acrool/acrool-react-modal/compare/v0.0.9...v0.0.9-test.0) (2024-10-15)
+
 ### [0.0.9](https://github.com/acrool/acrool-react-modal/compare/v0.0.9-alpha.10...v0.0.9) (2024-10-11)
 
 ### [0.0.9-alpha.10](https://github.com/acrool/acrool-react-modal/compare/v0.0.9-alpha.9...v0.0.9-alpha.10) (2024-09-25)
