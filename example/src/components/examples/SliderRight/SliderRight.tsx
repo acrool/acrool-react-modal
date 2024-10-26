@@ -1,6 +1,7 @@
 import {animation, createStateModal, useModal} from '@acrool/react-modal';
 import React from 'react';
 import styled from 'styled-components';
+import Button, {RoundButton} from "../../atoms/Button";
 
 
 
@@ -16,7 +17,7 @@ const SliderRight = () => {
     return <SliderRightRoot>
         <div>RightSlider content</div>
 
-        <button type="button" onClick={hide}>CLOSE</button>
+        <Button color="danger" onClick={hide}>CLOSE</Button>
 
     </SliderRightRoot>;
 };
