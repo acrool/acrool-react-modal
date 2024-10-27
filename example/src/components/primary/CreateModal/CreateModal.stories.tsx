@@ -11,7 +11,7 @@ import CreateModalWithFetchWait from "./CreateModalWithFetchWait";
 
 
 const meta = {
-    title: 'Components/CreateModal',
+    title: 'Primary/CreateModal',
     // component: CreateModalPrimary,
     parameters: {
         layout: 'centered',

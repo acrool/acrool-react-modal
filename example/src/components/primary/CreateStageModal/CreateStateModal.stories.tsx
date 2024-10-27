@@ -5,7 +5,7 @@ import CreateStageModalPrimary from "./CreateStateModalPrimary";
 
 
 const meta = {
-    title: 'Components/CreateStageModal',
+    title: 'Primary/CreateStageModal',
     // component: CreateStageModalPrimary,
     parameters: {
         layout: 'centered',
