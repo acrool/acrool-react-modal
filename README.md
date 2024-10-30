@@ -85,28 +85,23 @@ Add the lightbox to the display column list by throwing the Show method
 ```tsx
 import {animation, createModal, IModalOptions, useModal} from '@acrool/react-modal';
 
-const modalProps: IModalOptions = {
-    variants: animation.fadeInDown,
-    className: 'p-3'
-};
-
 interface IProps {
     myVar: string
 }
 
-const PromotionModal = createModal(
-    (args: IProps) => {
-        const {hide} = useModal();
+const PromotionModal = (args: IProps) => {
+    const {hide} = useModal();
 
-        return <div>
-            <div>Test2 content</div>
-            <button type="button" onClick={hide}>X </button>
-        </div>;
-    }
-    , modalProps
+    return <div>
+        <div>Test2 content</div>
+        <button type="button" onClick={hide}>X </button>
+    </div>;
+}
+
+export default createModal(
+    PromotionModal,
+    animation.generateFadeIn(),
 );
-
-export default PromotionModal;
 ```
 
 ***Use Modal***
@@ -139,36 +134,28 @@ The inside of the light box is controlled by its own state, which is displayed t
 import {animation, createStateModal, IModalOptions, useModal} from '@acrool/react-modal';
 import {useHashParams} from '@acrool/react-router-hash';
 
-const modalProps: IModalOptions = {
-    variants: animation.fadeInDown,
-    className: 'p-3'
-};
 
-interface IProps {
-    myVar: string
+const PromotionHashModal = () => {
+      const {hide} = useModal();
+      const navigate = useNavigate();
+      const {id} = useHashParams<{id: string}>();
+      
+      const handleOnClose = () => {
+          hide().then(() => {
+              navigate({hash: undefined});
+          })
+      }
+
+      return <div>
+          <div>Test2 content</div>
+          <button type="button" onClick={handleOnClose}>Close Modal</button>
+      </div>;
 }
 
-const PromotionHashModal = createStateModal(
-    () => {
-        const {hide} = useModal();
-        const navigate = useNavigate();
-        const {id} = useHashParams<{id: string}>();
-        
-        const handleOnClose = () => {
-            hide().then(() => {
-                navigate({hash: undefined});
-            })
-        }
-
-        return <div>
-            <div>Test2 content</div>
-            <button type="button" onClick={handleOnClose}>Close Modal</button>
-        </div>;
-    }
-    , modalProps
+export default createStateModal(
+    PromotionHashModal,
+    animation.generateFadeIn(),
 );
-
-export default PromotionHashModal;
 ```
 
 
@@ -230,9 +217,9 @@ const ExamplePage = () => {
   - custom (ref; https://www.framer.com/motion/animate-presence/#usage)
    ```tsx
   variants = {
-    initial: {opacity: 0, y: -20, transition: {type:'spring'}},
-    show: {opacity: 1, y: 0},
-    exit: {opacity: 0, y: -40}
+     initial: {opacity: 0, y: -20, transition: {type:'spring'}},
+     animate: {opacity: 1, y: 0},
+     exit: {opacity: 0, y: -40}
   }
   ```
 
