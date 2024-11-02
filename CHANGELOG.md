@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/acrool/acrool-react-modal/compare/v1.0.0...v1.0.1) (2024-11-02)
+
 ## [1.0.0](https://github.com/acrool/acrool-react-modal/compare/v1.0.0-alpha.6...v1.0.0) (2024-10-26)
 
 ## [1.0.0-alpha.6](https://github.com/acrool/acrool-react-modal/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2024-10-22)
