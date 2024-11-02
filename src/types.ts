@@ -36,7 +36,7 @@ type TVariantKey = 'initial'|'animate'|'exit';
 type TVariantKeys = Record<TVariantKey, string>;
 export type TAnimationVariants = Partial<Record<TVariantKey, Variant>>;
 
-export type TAnimationConfig = Pick<IModalOptions, 'variants'|'style'> & TVariantKeys;
+export type TAnimationConfig = Pick<IModalOptions, 'variants'|'style'|'transition'> & TVariantKeys;
 
 export interface IModalOptions {
     variants?: TAnimationVariants

@@ -24,7 +24,7 @@ const SliderUp = () => {
 export default createStateModal(
     SliderUp,
     {
-        ...animation.slideInUp,
+        ...animation.slideInBottom,
         isEnableHideWithClickMask: true
     }
 );
