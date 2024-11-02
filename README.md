@@ -139,14 +139,24 @@ const PromotionHashModal = () => {
       const {hide} = useModal();
       const navigate = useNavigate();
       const {id} = useHashParams<{id: string}>();
-      
-      const handleOnClose = () => {
-          hide().then(() => {
-              navigate({hash: undefined});
-          })
-      }
 
-      return <div>
+      useEffect(() => {
+        return () => {
+          navigate({...location, hash: undefined});
+        };
+      }, []);
+
+      const handleOnHide = () => {
+        hide();
+      };
+      
+      // const handleOnClose = () => {
+      //     hide().then(() => {
+      //         navigate({hash: undefined});
+      //     })
+      // }
+
+  return <div>
           <div>Test2 content</div>
           <button type="button" onClick={handleOnClose}>Close Modal</button>
       </div>;
@@ -154,7 +164,10 @@ const PromotionHashModal = () => {
 
 export default createStateModal(
     PromotionHashModal,
-    animation.generateFadeIn(),
+    {
+      ...animation.generateFadeIn(),
+      isEnableHideWithClickMask: true,
+    },
 );
 ```
 
