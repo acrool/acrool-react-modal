@@ -1,5 +1,5 @@
 import CSS from 'csstype';
-import {Transition, Variant} from 'framer-motion';
+import {AnimatePresenceProps, Transition, Variant} from 'framer-motion';
 import React from 'react';
 
 
@@ -28,6 +28,7 @@ interface IControlVisibleStatus {
 export interface IModalPortalProps extends IControlVisibleStatus{
     id?: string
     containerSelector?: () => HTMLElement | null;
+    animatePresenceMode?: AnimatePresenceProps['mode'];
 }
 
 
@@ -48,5 +49,6 @@ export interface IModalOptions {
 
 export interface IStageModalOptions extends IModalOptions, IControlVisibleStatus{
     queueKey?: string
+    animatePresenceMode?: AnimatePresenceProps['mode'],
 }
 
