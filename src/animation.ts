@@ -56,9 +56,10 @@ const slideInRight: TAnimationConfig = {
 
 const slideInBottom: TAnimationConfig = {
     ...defaultVariant,
+    style: {maxWidth: 'inherit'},
     variants: {
         initial: {position: 'fixed', bottom: 0, left: 0, right: 0, translateY: '100%', opacity: .9},
-        animate: {translateY: 0, opacity: 1},
+        animate: {translateY: 0, opacity: 1,  transition: {type: 'just'}},
         exit: {translateY: '100%', opacity: .9},
     },
     transition: {
