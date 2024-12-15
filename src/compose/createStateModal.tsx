@@ -70,7 +70,10 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
             <ReactDidMountPortal
                 containerSelector={() => document.getElementById(rootId)}
             >
-                <AnimatePresence onExitComplete={handleOnExitComplete}>
+                <AnimatePresence
+                    mode={modalOptions?.animatePresenceMode}
+                    onExitComplete={handleOnExitComplete}
+                >
                     {isVisible &&
                         <MotionDrawer modalOptions={modalOptions}>
                             <ModalComponent {...args as T & {}} />
