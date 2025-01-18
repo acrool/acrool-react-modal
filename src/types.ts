@@ -11,12 +11,14 @@ export interface IRow<T = any> {
 
 export interface IModal {
     show: TShow
+    showWithKey: TShowWithKey
     hide: THidden
 }
 
 
 
 export type TShow = <T>(children: React.FC<T>, args?: T) => void
+export type TShowWithKey = <T>(children: React.FC<T>, queueKey: string, args?: T) => void
 export type THidden = (queueKey: string) => void;
 
 
@@ -29,6 +31,7 @@ export interface IModalPortalProps extends IControlVisibleStatus{
     id?: string
     containerSelector?: () => HTMLElement | null;
     animatePresenceMode?: AnimatePresenceProps['mode'];
+    children: React.ReactNode,
 }
 
 

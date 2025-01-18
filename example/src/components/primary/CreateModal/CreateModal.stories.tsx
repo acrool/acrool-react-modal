@@ -1,11 +1,13 @@
 import {Flex} from '@acrool/react-grid';
 import type {Meta, StoryObj} from '@storybook/react';
 import Button from "../../atoms/Button";
-import CreateModalPrimary from "./CreateModalPrimary";
+import CreateModalPrimary, {PrimaryWithHideMask} from "./CreateModalPrimary";
 import CreateModalWithArgs from "./CreateModalWithArgs";
 import CreateModalWithClickMaskClose from "./CreateModalWithClickMaskClose";
 import CreateModalWithCustomAnimation from "./CreateModalWithCustomAnimation";
 import CreateModalWithFetchWait from "./CreateModalWithFetchWait";
+import {useGlobalModal} from "../../../../../src";
+import MyPage from "./MyPage";
 
 
 
@@ -61,6 +63,16 @@ export const WithArgs: Story = {
                 Open (Args: 2c0e7cde)
             </Button>
         </Flex>;
+    },
+};
+
+
+export const WithQueueKeyGlobalHidden: Story = {
+    render: function Render(args) {
+
+
+
+        return <MyPage/>
     },
 };
 

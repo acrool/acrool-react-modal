@@ -43,6 +43,18 @@ export default createModal(
 );
 
 
+export const PrimaryWithHideMask = createModal(
+    CreateModalPrimary,
+    {
+        ...animation.generateFadeIn(),
+        className: 'p-3',
+        isBodyScrollEnable: true,
+        isHideWithMaskClick: true,
+        isMaskHidden: true
+    },
+);
+
+
 
 const CreateTaskModalRoot = styled.div`
   width: 400px;
