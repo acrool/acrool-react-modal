@@ -44,7 +44,9 @@ export interface IModalOptions {
     transition?: Transition
     className?: string
     style?: CSS.Properties
-    isEnableHideWithClickMask?: boolean,
+    isMaskHidden?: boolean
+    isHideWithMaskClick?: boolean
+    isBodyScrollDisabled?: boolean
 }
 
 export interface IStageModalOptions extends IModalOptions, IControlVisibleStatus{

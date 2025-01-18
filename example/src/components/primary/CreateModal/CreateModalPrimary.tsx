@@ -35,7 +35,10 @@ export default createModal(
     CreateModalPrimary,
     {
         ...animation.generateFadeIn(),
-        className: 'p-3'
+        className: 'p-3',
+        isBodyScrollDisabled: true,
+        isHideWithMaskClick: true,
+        isMaskHidden: false
     },
 );
 

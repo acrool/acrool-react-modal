@@ -11,6 +11,14 @@
     -webkit-overflow-scrolling: touch;
 
     z-index: var(--modal-portal-index, var(--default-portal-index));
+
+    &.mask-hidden {
+      pointer-events: none;
+    }
+
+    > * {
+      pointer-events: auto;
+    }
 }
 
 .motion-mask-wrapper {
