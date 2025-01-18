@@ -47,11 +47,11 @@ const MotionDrawer = ({
 
     useEffect(() => {
         // 鎖背景
-        if(!isBodyScrollDisabled){
+        if(isBodyScrollDisabled){
             BodyScroll.disableBodyScroll();
         }
         return () => {
-            if(!isBodyScrollDisabled) {
+            if(isBodyScrollDisabled) {
                 BodyScroll.enableBodyScroll();
             }
         };
