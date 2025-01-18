@@ -40,22 +40,22 @@ const MotionDrawer = ({
     modalOptions,
     children,
 }: IProps, ref?: ForwardedRef<HTMLDivElement>) => {
-    const {className, isMaskHidden, isHideWithMaskClick, isBodyScrollDisabled, ...motionProps} = modalOptions ?? {className: ''};
+    const {className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, ...motionProps} = modalOptions ?? {className: ''};
 
     const {hide} = useModal();
 
 
     useEffect(() => {
         // 鎖背景
-        if(isBodyScrollDisabled){
+        if(!isBodyScrollEnable){
             BodyScroll.disableBodyScroll();
         }
         return () => {
-            if(isBodyScrollDisabled) {
+            if(!isBodyScrollEnable) {
                 BodyScroll.enableBodyScroll();
             }
         };
-    }, [isBodyScrollDisabled]);
+    }, [isBodyScrollEnable]);
 
 
     /**
@@ -98,7 +98,7 @@ const MotionDrawer = ({
     };
 
 
-    return <div className={clsx(styles.motionDrawer, {[styles.maskHidden]: !isMaskHidden})} ref={ref}>
+    return <div className={clsx(styles.motionDrawer, {[styles.maskHidden]: isMaskHidden})} ref={ref}>
         {renderMask()}
         {renderMain()}
     </div>;

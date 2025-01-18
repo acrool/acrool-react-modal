@@ -46,7 +46,7 @@ export interface IModalOptions {
     style?: CSS.Properties
     isMaskHidden?: boolean
     isHideWithMaskClick?: boolean
-    isBodyScrollDisabled?: boolean
+    isBodyScrollEnable?: boolean
 }
 
 export interface IStageModalOptions extends IModalOptions, IControlVisibleStatus{
