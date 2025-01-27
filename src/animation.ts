@@ -30,6 +30,15 @@ const zoomInDown: TAnimationConfig = {
     }
 };
 
+const zoomInCenter: TAnimationConfig = {
+    ...defaultVariant,
+    variants: {
+        initial: {position: 'absolute', top: '50%', left: '50%', scaleX: .5, scaleY: .5, scaleZ: .8, translateX: '-50%', translateY: '-50%', translateZ: 0, opacity: 0},
+        animate: {scaleX: 1, scaleY: 1, scaleZ: 1, translateZ: 0, opacity: 1, transition: {type: 'just', duration: .2}},
+        exit: {scaleX: .8, scaleY: .8, scaleZ: .8, translateZ: 0, opacity: 0, transition: {type:'spring'}},
+    }
+};
+
 const slideInLeft: TAnimationConfig = {
     ...defaultVariant,
     variants: {
@@ -70,6 +79,7 @@ const slideInBottom: TAnimationConfig = {
 
 export default {
     zoomInDown,
+    zoomInCenter,
     generateFadeIn,
     slideInLeft,
     slideInRight,
