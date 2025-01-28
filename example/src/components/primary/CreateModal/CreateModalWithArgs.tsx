@@ -52,7 +52,7 @@ const CreateModalWithArgs = (args: IProps) => {
 export default createModal(
     CreateModalWithArgs,
     {
-        ...animation.generateFadeIn(),
+        animation: animation.generateFadeIn(),
         className: 'p-3',
         isBodyScrollEnable: true,
         isHideWithMaskClick: true,

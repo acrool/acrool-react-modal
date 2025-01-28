@@ -26,7 +26,7 @@ const SlideRightInLeft = () => {
 export default createModal(
     SlideRightInLeft,
     {
-        ...animation.slideRightInLeft,
+        animation: animation.slideRightInLeft,
         isHideWithMaskClick: true
     }
 );

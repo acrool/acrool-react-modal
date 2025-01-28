@@ -1,8 +1,7 @@
 import {clsx} from 'clsx';
-import {AnimatePresence, motion} from 'framer-motion';
+import {motion} from 'framer-motion';
 import React, {ForwardedRef, ReactNode, useEffect} from 'react';
 
-import animation from '../animation';
 import BodyScroll from '../bodyScroll';
 import {useModal} from '../ModalProvider';
 import {IModalOptions} from '../types';
@@ -11,14 +10,17 @@ import styles from './motion-drawer.module.scss';
 
 
 const maskMotionProps: IModalOptions = {
-    variants: {
-        initial: {opacity: 0, transition: {type:'spring'}},
-        animate: {opacity: 1, transition: {type: 'just'}},
-        exit: {opacity: 0},
-    },
-    transition: {
-        duration: .3,
+    animation: {
+        variants: {
+            initial: {opacity: 0, transition: {type:'spring'}},
+            animate: {opacity: 1},
+            exit: {opacity: 0},
+        },
+        transition: {
+            duration: .2,
+        }
     }
+
 };
 
 
@@ -40,7 +42,7 @@ const MotionDrawer = ({
     modalOptions,
     children,
 }: IProps, ref?: ForwardedRef<HTMLDivElement>) => {
-    const {className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, ...motionProps} = modalOptions ?? {className: ''};
+    const {className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, animation} = modalOptions ?? {className: ''};
 
     const {hide} = useModal();
 
@@ -62,15 +64,15 @@ const MotionDrawer = ({
      * 渲染主內容
      */
     const renderMain = () => {
-        if(isEmpty(motionProps)) {
+        if(isEmpty(animation)) {
             return children;
         }
-        
+
         return <motion.div
             transition={{type: 'spring', duration: .2}}
             className={clsx(styles.motionAnimationWrapper, className)}
             // variants={animation.fadeInDown}
-            {...motionProps}
+            {...animation}
             initial="initial"
             animate="animate"
             exit="exit"
@@ -88,7 +90,7 @@ const MotionDrawer = ({
 
         return <motion.div
             className={styles.motionMaskWrapper}
-            {...maskMotionProps}
+            {...maskMotionProps.animation}
             initial="initial"
             animate="animate"
             exit="exit"

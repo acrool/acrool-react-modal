@@ -25,7 +25,7 @@ const ZoomInCenter = () => {
 export default createModal(
     ZoomInCenter,
     {
-        ...animation.zoomInCenter,
+        animation: animation.zoomInCenter,
         isHideWithMaskClick: true
     }
 );

@@ -40,11 +40,14 @@ type TVariantKey = 'initial'|'animate'|'exit';
 type TVariantKeys = Record<TVariantKey, string>;
 export type TAnimationVariants = Partial<Record<TVariantKey, Variant>>;
 
-export type TAnimationConfig = Pick<IModalOptions, 'variants'|'style'|'transition'> & TVariantKeys;
-
-export interface IModalOptions {
+// export type TAnimationConfig = Pick<IModalOptions, 'variants'|'style'|'transition'> & TVariantKeys;
+export type TAnimationConfig = {
     variants?: TAnimationVariants
     transition?: Transition
+}
+
+export interface IModalOptions {
+    animation: TAnimationConfig
     className?: string
     style?: CSS.Properties
     isMaskHidden?: boolean

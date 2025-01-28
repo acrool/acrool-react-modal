@@ -1,7 +1,8 @@
 .motion-drawer {
     display: contents;
 
-    --default-portal-index: 900;
+    --default-modal-msak-index: 899;
+    --default-modal-main-index: 900;
     //
     //
     //overflow: hidden;
@@ -29,12 +30,12 @@
     position: fixed;
     inset: 0;
 
-    z-index: 0 !important;
+    z-index: var(--modal-msak-index, var(--default-modal-msak-index));
     pointer-events: auto;
 }
 
 
 .motion-animation-wrapper {
     position: relative;
-    z-index: 1;
+  z-index: var(--modal-main-index, var(--default-modal-main-index));
 }

@@ -13,17 +13,18 @@ const SlideUpInBottom = () => {
     const {hide} = useModal();
 
     return <SlideUpInBottomRoot>
-        <div>RightSlider content</div>
+        <div>Content</div>
 
         <Button color="danger" onClick={hide}>CLOSE</Button>
 
     </SlideUpInBottomRoot>;
 };
 
+console.log('animation.slideUpInBottom', animation.slideUpInBottom);
 export default createModal(
     SlideUpInBottom,
     {
-        ...animation.slideUpInBottom,
+        animation: animation.slideUpInBottom,
         isHideWithMaskClick: true
     }
 );
