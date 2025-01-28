@@ -42,7 +42,7 @@ const MotionDrawer = ({
     modalOptions,
     children,
 }: IProps, ref?: ForwardedRef<HTMLDivElement>) => {
-    const {className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, animation} = modalOptions ?? {className: ''};
+    const {style, className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, animation} = modalOptions ?? {className: ''};
 
     const {hide} = useModal();
 
@@ -71,6 +71,7 @@ const MotionDrawer = ({
         return <motion.div
             transition={{type: 'spring', duration: .2}}
             className={clsx(styles.motionAnimationWrapper, className)}
+            style={style}
             // variants={animation.fadeInDown}
             {...animation}
             initial="initial"
