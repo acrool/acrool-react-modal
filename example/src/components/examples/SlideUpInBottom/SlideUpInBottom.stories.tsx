@@ -1,20 +1,20 @@
 import type {Meta, StoryObj} from '@storybook/react';
-import ZoomInCenter from './ZoomInCenter';
+import SlideUpInBottom from './SlideUpInBottom';
 import Button from '../../atoms/Button';
 
 
 
 
 const meta = {
-    title: 'Animation/ZoomInCenter',
-    component: ZoomInCenter,
+    title: 'Animation/SlideUpInBottom',
+    component: SlideUpInBottom,
     parameters: {
         layout: 'centered',
     },
     argTypes: {},
     args: {},
     render: function Render(args) {
-        return <Button color="primary" onClick={ZoomInCenter.show}>
+        return <Button color="primary" onClick={SlideUpInBottom.show}>
             Open
         </Button>
     }

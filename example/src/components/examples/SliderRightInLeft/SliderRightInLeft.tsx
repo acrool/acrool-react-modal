@@ -1,7 +1,8 @@
-import {animation, createStateModal, useModal} from '@acrool/react-modal';
+import {animation, createModal, useModal} from '@acrool/react-modal';
 import React from 'react';
 import styled from 'styled-components';
-import Button, {RoundButton} from "../../atoms/Button";
+
+import Button from '../../atoms/Button';
 
 
 
@@ -11,22 +12,22 @@ import Button, {RoundButton} from "../../atoms/Button";
  *
  * PS: 示範用客製化光箱
  */
-const SliderRight = () => {
+const SlideRightInLeft = () => {
     const {hide} = useModal();
 
     return <SliderRightRoot>
-        <div>RightSlider content</div>
+        <div>Content</div>
 
         <Button color="danger" onClick={hide}>CLOSE</Button>
 
     </SliderRightRoot>;
 };
 
-export default createStateModal(
-    SliderRight,
+export default createModal(
+    SlideRightInLeft,
     {
-        ...animation.slideInLeft,
-        isEnableHideWithClickMask: true
+        ...animation.slideRightInLeft,
+        isHideWithMaskClick: true
     }
 );
 

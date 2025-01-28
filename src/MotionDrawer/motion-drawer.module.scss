@@ -1,24 +1,27 @@
 .motion-drawer {
-    --default-portal-index: 900;
+    display: contents;
 
-    overflow: hidden;
-    margin: 0 auto;
-
-    position: fixed;
-    inset: 0;
-
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-
-    z-index: var(--modal-portal-index, var(--default-portal-index));
-
-    &.mask-hidden {
-      pointer-events: none;
-    }
-
-    > * {
-      pointer-events: auto;
-    }
+    //--default-portal-index: 900;
+    //
+    //
+    //overflow: hidden;
+    //margin: 0 auto;
+    //
+    //position: fixed;
+    //inset: 0;
+    //
+    //overflow-y: auto;
+    //-webkit-overflow-scrolling: touch;
+    //
+    //z-index: var(--modal-portal-index, var(--default-portal-index));
+    //
+    //&.mask-hidden {
+    //  pointer-events: none;
+    //}
+    //
+    //> * {
+    //  pointer-events: auto;
+    //}
 }
 
 .motion-mask-wrapper {

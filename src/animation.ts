@@ -34,12 +34,16 @@ const zoomInCenter: TAnimationConfig = {
     ...defaultVariant,
     variants: {
         initial: {position: 'absolute', top: '50%', left: '50%', scaleX: .5, scaleY: .5, scaleZ: .8, translateX: '-50%', translateY: '-50%', translateZ: 0, opacity: 0},
-        animate: {scaleX: 1, scaleY: 1, scaleZ: 1, translateZ: 0, opacity: 1, transition: {type: 'just', duration: .2}},
-        exit: {scaleX: .8, scaleY: .8, scaleZ: .8, translateZ: 0, opacity: 0, transition: {type:'spring'}},
+        animate: {scaleX: 1, scaleY: 1, scaleZ: 1, translateZ: 0, opacity: 1, transition: {type: 'spring', duration: .2}},
+        exit: {scaleX: .8, scaleY: .8, scaleZ: .8, translateZ: 0, opacity: 0},
+    },
+    transition: {
+        damping: 0,
+        duration: .2,
     }
 };
 
-const slideInLeft: TAnimationConfig = {
+const slideLeftInRight: TAnimationConfig = {
     ...defaultVariant,
     variants: {
         initial: {position: 'fixed', top: 0, bottom: 0, right: 0, translateX: '100%', opacity: .9},
@@ -51,7 +55,7 @@ const slideInLeft: TAnimationConfig = {
     }
 };
 
-const slideInRight: TAnimationConfig = {
+const slideRightInLeft: TAnimationConfig = {
     ...defaultVariant,
     variants: {
         initial: {position: 'fixed', top: 0, bottom: 0, left: 0, translateX: '-100%', opacity: .9},
@@ -63,16 +67,17 @@ const slideInRight: TAnimationConfig = {
     }
 };
 
-const slideInBottom: TAnimationConfig = {
+const slideUpInBottom: TAnimationConfig = {
     ...defaultVariant,
     style: {maxWidth: 'inherit'},
     variants: {
         initial: {position: 'fixed', bottom: 0, left: 0, right: 0, translateY: '100%', opacity: .9},
-        animate: {translateY: 0, opacity: 1,  transition: {type: 'just'}},
+        animate: {translateY: 0, opacity: 1},
         exit: {translateY: '100%', opacity: .9},
     },
     transition: {
         damping: 0,
+        duration: .2,
     }
 };
 
@@ -81,7 +86,7 @@ export default {
     zoomInDown,
     zoomInCenter,
     generateFadeIn,
-    slideInLeft,
-    slideInRight,
-    slideInBottom,
+    slideRightInLeft,
+    slideLeftInRight,
+    slideUpInBottom,
 };

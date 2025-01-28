@@ -37,7 +37,7 @@ export default createModal(
     CreateModalWithClickMaskClose,
     {
         ...animation.generateFadeIn(),
-        isEnableHideWithClickMask: true,
+        isHideWithMaskClick: true,
         className: 'p-3',
     },
 );

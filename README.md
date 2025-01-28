@@ -166,7 +166,7 @@ export default createStateModal(
     PromotionHashModal,
     {
       ...animation.generateFadeIn(),
-      isEnableHideWithClickMask: true,
+      isHideWithMaskClick: true,
     },
 );
 ```
