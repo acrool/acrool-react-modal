@@ -69,7 +69,6 @@ const slideRightInLeft: TAnimationConfig = {
 
 const slideUpInBottom: TAnimationConfig = {
     ...defaultVariant,
-    // style: {maxWidth: 'inherit'},
     variants: {
         initial: {position: 'fixed', bottom: 0, left: 0, right: 0, translateY: '100%', opacity: .9},
         animate: {translateY: 0, opacity: 1},
@@ -79,7 +78,19 @@ const slideUpInBottom: TAnimationConfig = {
         damping: 0,
         duration: .2,
     },
+};
 
+
+const slideUpEndInBottom: TAnimationConfig = {
+    ...defaultVariant,
+    variants: {
+        initial: {position: 'fixed', top: '100%', left: 0, right: 0, opacity: .9},
+        animate: {top: 0, opacity: 1,  transition: {type: 'just'}},
+        exit: {top: '100%', opacity: .9},
+    },
+    transition: {
+        damping: 0,
+    }
 };
 
 
@@ -90,4 +101,5 @@ export default {
     slideRightInLeft,
     slideLeftInRight,
     slideUpInBottom,
+    slideUpEndInBottom,
 };
