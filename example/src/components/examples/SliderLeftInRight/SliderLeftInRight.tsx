@@ -29,7 +29,8 @@ export default createModal(
     SliderLeftInRight,
     {
         animation: animation.slideLeftInRight,
-        isHideWithMaskClick: true
+        isHideWithMaskClick: true,
+        isFixedDisabled: true,
     }
 );
 

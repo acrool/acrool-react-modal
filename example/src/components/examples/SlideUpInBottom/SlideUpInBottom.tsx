@@ -20,12 +20,12 @@ const SlideUpInBottom = () => {
     </SlideUpInBottomRoot>;
 };
 
-console.log('animation.slideUpInBottom', animation.slideUpInBottom);
 export default createModal(
     SlideUpInBottom,
     {
         animation: animation.slideUpInBottom,
-        isHideWithMaskClick: true
+        isHideWithMaskClick: true,
+        isFixedDisabled: true,
     }
 );
 

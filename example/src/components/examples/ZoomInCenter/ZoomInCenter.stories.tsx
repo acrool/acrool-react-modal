@@ -14,9 +14,19 @@ const meta = {
     argTypes: {},
     args: {},
     render: function Render(args) {
-        return <Button color="primary" onClick={ZoomInCenter.show}>
-            Open
-        </Button>
+        return <div>
+            <Button color="primary" onClick={ZoomInCenter.show}>
+                Open
+            </Button>
+
+            {Array.from({length: 50}).map((_, i) => {
+                return <div key={i}>Test fill space</div>;
+            })}
+
+            <Button color="primary" onClick={ZoomInCenter.show}>
+                Open
+            </Button>
+        </div>
     }
 } satisfies Meta;
 

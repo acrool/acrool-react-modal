@@ -53,6 +53,7 @@ export interface IModalOptions {
     isMaskHidden?: boolean
     isHideWithMaskClick?: boolean
     isBodyScrollEnable?: boolean
+    isFixedDisabled?: boolean
 }
 
 export interface IStageModalOptions extends IModalOptions, IControlVisibleStatus{

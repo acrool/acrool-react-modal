@@ -1,28 +1,24 @@
 .motion-drawer {
-    display: contents;
 
     --default-modal-msak-index: 900;
     --default-modal-main-index: 900;
-    //
-    //
-    //overflow: hidden;
-    //margin: 0 auto;
-    //
-    //position: fixed;
-    //inset: 0;
-    //
-    //overflow-y: auto;
-    //-webkit-overflow-scrolling: touch;
-    //
-    //z-index: var(--modal-portal-index, var(--default-portal-index));
-    //
-    //&.mask-hidden {
-    //  pointer-events: none;
-    //}
-    //
-    //> * {
-    //  pointer-events: auto;
-    //}
+
+
+  overflow: hidden;
+  margin: 0 auto;
+
+  position: fixed;
+  inset: 0;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: var(--modal-portal-index, var(--default-portal-index));
+
+
+  &.fixedDisabled{
+    display: contents;
+  }
+
 }
 
 .motion-mask-wrapper {

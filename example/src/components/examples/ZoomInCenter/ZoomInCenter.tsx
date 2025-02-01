@@ -26,7 +26,8 @@ export default createModal(
     ZoomInCenter,
     {
         animation: animation.zoomInCenter,
-        isHideWithMaskClick: true
+        isHideWithMaskClick: true,
+        // isFixedDisabled: false,
     }
 );
 

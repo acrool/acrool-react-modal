@@ -42,7 +42,7 @@ const MotionDrawer = ({
     modalOptions,
     children,
 }: IProps, ref?: ForwardedRef<HTMLDivElement>) => {
-    const {style, className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, animation} = modalOptions ?? {className: ''};
+    const {style, className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, isFixedDisabled, animation} = modalOptions ?? {className: ''};
 
     const {hide} = useModal();
 
@@ -101,7 +101,7 @@ const MotionDrawer = ({
     };
 
 
-    return <div className={clsx(styles.motionDrawer, {[styles.maskHidden]: isMaskHidden})} ref={ref}>
+    return <div className={clsx(styles.motionDrawer, {[styles.fixedDisabled]: isFixedDisabled})} ref={ref}>
         {renderMask()}
         {renderMain()}
     </div>;
