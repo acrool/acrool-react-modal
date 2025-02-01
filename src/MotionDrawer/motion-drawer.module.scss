@@ -2,7 +2,9 @@
 
     --default-modal-msak-index: 900;
     --default-modal-main-index: 900;
+    --default-modal-drawer-index: 900;
 
+  z-index: var(--modal-drawer-index, var(--default-modal-drawer-index));
 
   overflow: hidden;
   margin: 0 auto;
@@ -12,7 +14,6 @@
 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  z-index: var(--modal-portal-index, var(--default-portal-index));
 
 
   &.fixedDisabled{
