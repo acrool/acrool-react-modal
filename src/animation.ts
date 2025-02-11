@@ -15,7 +15,7 @@ const defaultVariant = {
  * @param formY
  * @param toY
  */
-const generateFadeInBottomInTop = (formY = 20, toY = 40): TAnimationConfig => {
+const generateFadeInFromTop = (formY = 20, toY = 40): TAnimationConfig => {
     return {
         ...defaultVariant,
         variants: {
@@ -31,7 +31,7 @@ const generateFadeInBottomInTop = (formY = 20, toY = 40): TAnimationConfig => {
  * 淡入從上到下(中心點位置為中間)
  * @param formY
  */
-const generateFadeInBottomInCenter = (formY = 20): TAnimationConfig => {
+const generateFadeInFromTopCentered = (formY = 20): TAnimationConfig => {
     return {
         ...defaultVariant,
         variants: {
@@ -118,8 +118,8 @@ const slideUpEndInBottom: TAnimationConfig = {
 export default {
     zoomInDown,
     zoomInCenter,
-    generateFadeInBottomInTop,
-    generateFadeInBottomInCenter,
+    generateFadeInFromTop,
+    generateFadeInFromTopCentered,
     slideRightInLeft,
     slideLeftInRight,
     slideUpInBottom,

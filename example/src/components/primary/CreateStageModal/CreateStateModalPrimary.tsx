@@ -34,7 +34,7 @@ const CreateStateModalPrimary = () => {
 export default createStateModal(
     CreateStateModalPrimary,
     {
-        animation: animation.generateFadeInBottomInTop(),
+        animation: animation.generateFadeInFromTop(),
         className: 'p-3'
     },
 );

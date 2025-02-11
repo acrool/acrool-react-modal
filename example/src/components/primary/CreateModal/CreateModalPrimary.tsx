@@ -34,7 +34,7 @@ const CreateModalPrimary = () => {
 export default createModal(
     CreateModalPrimary,
     {
-        animation: animation.generateFadeInBottomInTop(),
+        animation: animation.generateFadeInFromTop(),
         className: 'p-3',
         isBodyScrollEnable: true,
         isHideWithMaskClick: true,
@@ -46,7 +46,7 @@ export default createModal(
 export const PrimaryWithHideMask = createModal(
     CreateModalPrimary,
     {
-        animation: animation.generateFadeInBottomInTop(),
+        animation: animation.generateFadeInFromTop(),
         className: 'p-3',
         isBodyScrollEnable: true,
         isHideWithMaskClick: true,

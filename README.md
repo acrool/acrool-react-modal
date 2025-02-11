@@ -100,7 +100,7 @@ const PromotionModal = (args: IProps) => {
 
 export default createModal(
     PromotionModal,
-    animation.generateFadeInBottomInTop(),
+    animation.generateFadeInFromTop(),
 );
 ```
 
@@ -165,7 +165,7 @@ const PromotionHashModal = () => {
 export default createStateModal(
     PromotionHashModal,
     {
-      ...animation.generateFadeInBottomInTop(),
+      ...animation.generateFadeInFromTop(),
       isHideWithMaskClick: true,
     },
 );
