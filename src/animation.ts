@@ -10,13 +10,34 @@ const defaultVariant = {
 };
 
 
-const generateFadeIn = (formY = 20, toY = 40): TAnimationConfig => {
+/**
+ * 淡入從上到下(中心點位置為上方)
+ * @param formY
+ * @param toY
+ */
+const generateFadeInBottomInTop = (formY = 20, toY = 40): TAnimationConfig => {
     return {
         ...defaultVariant,
         variants: {
             initial: {position: 'absolute', left: '50%', opacity: 0, x: '-50%', y: formY},
             animate: {opacity: 1, y: toY, transition: {type: 'just', duration: .2}},
             exit: {opacity: 0, y: formY},
+        },
+    };
+};
+
+
+/**
+ * 淡入從上到下(中心點位置為中間)
+ * @param formY
+ */
+const generateFadeInBottomInCenter = (formY = 20): TAnimationConfig => {
+    return {
+        ...defaultVariant,
+        variants: {
+            initial: {position: 'absolute', left: '50%', top: '50%', opacity: 0, x: '-50%', y: `calc(-50% - ${formY}px)`},
+            animate: {opacity: 1, y: '-50%', transition: {type: 'just', duration: .2}},
+            exit: {opacity: 0, y: '-50%'},
         },
     };
 };
@@ -97,7 +118,8 @@ const slideUpEndInBottom: TAnimationConfig = {
 export default {
     zoomInDown,
     zoomInCenter,
-    generateFadeIn,
+    generateFadeInBottomInTop,
+    generateFadeInBottomInCenter,
     slideRightInLeft,
     slideLeftInRight,
     slideUpInBottom,

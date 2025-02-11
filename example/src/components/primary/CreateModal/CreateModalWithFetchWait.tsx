@@ -38,7 +38,7 @@ const CreateModalWithFetchWait = () => {
     }
 
     return <CreateTaskModalRoot
-        {...animation.generateFadeIn()}
+        {...animation.generateFadeInBottomInTop()}
     >
         <Card title="With Fetch Wait" direction="column">
             <p>
