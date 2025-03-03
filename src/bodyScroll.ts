@@ -3,6 +3,7 @@ import {addClass, hasClass, removeClass} from './utils';
 
 let disableBodyModalCount = 0;
 const modalOpenClassName = 'acrool__modal-open';
+const modalOpenFixedClassName = 'acrool__modal-open-fixed';
 
 /**
  * @Deprecated 計畫與
@@ -13,23 +14,26 @@ const modalOpenClassName = 'acrool__modal-open';
  *     max-width: 100vw;
  * }
  */
-function disableBodyScroll(printLog = false){
+function disableBodyScroll(isFixed = false){
     if(disableBodyModalCount >= 0){
         disableBodyModalCount += 1;
 
-        if(!hasClass(document.body, modalOpenClassName)){
-            addClass(document.body, modalOpenClassName);
+        if(!hasClass(document.body, modalOpenClassName) &&
+            !hasClass(document.body, modalOpenFixedClassName)
+        ){
+            addClass(document.body, isFixed ? modalOpenFixedClassName : modalOpenClassName);
         }
     }
 
 }
 
-function enableBodyScroll(printLog = false){
+function enableBodyScroll(fixed = false){
     if(disableBodyModalCount > 0){
         disableBodyModalCount -= 1;
 
         if(disableBodyModalCount === 0){
             removeClass(document.body, modalOpenClassName);
+            removeClass(document.body, modalOpenFixedClassName);
         }
     }
 }
