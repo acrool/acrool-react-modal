@@ -1,12 +1,11 @@
 import {Flex} from '@acrool/react-grid';
 import type {Meta, StoryObj} from '@storybook/react';
 import Button from "../../atoms/Button";
-import CreateModalPrimary, {PrimaryWithHideMask} from "./CreateModalPrimary";
+import CreateModalPrimary, {PrimaryWithDisabledBodyScroll} from "./CreateModalPrimary";
 import CreateModalWithArgs from "./CreateModalWithArgs";
 import CreateModalWithClickMaskClose from "./CreateModalWithClickMaskClose";
 import CreateModalWithCustomAnimation from "./CreateModalWithCustomAnimation";
 import CreateModalWithFetchWait from "./CreateModalWithFetchWait";
-import {useGlobalModal} from "../../../../../src";
 import MyPage from "./MyPage";
 
 
@@ -111,5 +110,26 @@ export const WithFetchWait: Story = {
         >
             Open
         </Button>;
+    },
+};
+
+
+export const WithDisabledBodyScroll: Story = {
+    render: function Render(args) {
+
+        return <>
+            <Button color="primary" onClick={PrimaryWithDisabledBodyScroll.show}>
+                Open
+            </Button>
+
+            {Array.from({length: 50}).map((_, i) => {
+                return <div key={i}>Test fill space</div>;
+            })}
+
+            <Button color="primary" onClick={PrimaryWithDisabledBodyScroll.show}>
+                Open
+            </Button>
+        </>;
+
     },
 };

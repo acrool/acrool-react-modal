@@ -1,6 +1,6 @@
 import {clsx} from 'clsx';
 import {motion} from 'framer-motion';
-import React, {ForwardedRef, ReactNode, useEffect} from 'react';
+import React, {ForwardedRef, ReactNode, useEffect, useId} from 'react';
 
 import BodyScroll from '../bodyScroll';
 import {useModal} from '../ModalProvider';
@@ -43,6 +43,7 @@ const MotionDrawer = ({
     children,
 }: IProps, ref?: ForwardedRef<HTMLDivElement>) => {
     const {style, className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, isFixedDisabled, animation} = modalOptions ?? {className: ''};
+    const id = useId();
 
     const {hide} = useModal();
 
@@ -50,11 +51,11 @@ const MotionDrawer = ({
     useEffect(() => {
         // 鎖背景
         if(!isBodyScrollEnable){
-            BodyScroll.disableBodyScroll();
+            BodyScroll.disableBodyScroll(id);
         }
         return () => {
             if(!isBodyScrollEnable) {
-                BodyScroll.enableBodyScroll();
+                BodyScroll.enableBodyScroll(id);
             }
         };
     }, [isBodyScrollEnable]);
