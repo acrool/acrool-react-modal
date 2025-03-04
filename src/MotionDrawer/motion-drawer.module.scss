@@ -1,16 +1,25 @@
 .motion-drawer {
-    --default-portal-index: 900;
 
-    overflow: hidden;
-    margin: 0 auto;
+    --default-modal-msak-index: 900;
+    --default-modal-main-index: 900;
+    --default-modal-drawer-index: 900;
 
-    position: fixed;
-    inset: 0;
+  z-index: var(--modal-drawer-index, var(--default-modal-drawer-index));
 
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  margin: 0 auto;
 
-    z-index: var(--modal-portal-index, var(--default-portal-index));
+  position: fixed;
+  inset: 0;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+
+  &.fixedDisabled{
+    display: contents;
+  }
+
 }
 
 .motion-mask-wrapper {
@@ -18,12 +27,12 @@
     position: fixed;
     inset: 0;
 
-    z-index: 0 !important;
+    z-index: var(--modal-msak-index, var(--default-modal-msak-index));
     pointer-events: auto;
 }
 
 
 .motion-animation-wrapper {
     position: relative;
-    z-index: 1;
+    z-index: var(--modal-main-index, var(--default-modal-main-index));
 }

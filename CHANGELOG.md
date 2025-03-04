@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.14...v1.0.3) (2025-03-04)
+
+### [1.0.3-alpha.14](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.13...v1.0.3-alpha.14) (2025-03-04)
+
+### [1.0.3-alpha.13](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.12...v1.0.3-alpha.13) (2025-03-03)
+
+### [1.0.3-alpha.12](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.11...v1.0.3-alpha.12) (2025-02-11)
+
+### [1.0.3-alpha.11](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.10...v1.0.3-alpha.11) (2025-02-11)
+
+### [1.0.3-alpha.10](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.9...v1.0.3-alpha.10) (2025-02-01)
+
+### [1.0.3-alpha.9](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.8...v1.0.3-alpha.9) (2025-02-01)
+
+### [1.0.3-alpha.8](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.7...v1.0.3-alpha.8) (2025-02-01)
+
+### [1.0.3-alpha.7](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.6...v1.0.3-alpha.7) (2025-01-28)
+
+### [1.0.3-alpha.6](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.5...v1.0.3-alpha.6) (2025-01-28)
+
+### [1.0.3-alpha.5](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.4...v1.0.3-alpha.5) (2025-01-28)
+
+### [1.0.3-alpha.4](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.3...v1.0.3-alpha.4) (2025-01-28)
+
+### [1.0.3-alpha.3](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.2...v1.0.3-alpha.3) (2025-01-18)
+
+### [1.0.3-alpha.2](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.1...v1.0.3-alpha.2) (2025-01-18)
+
+### [1.0.3-alpha.1](https://github.com/acrool/acrool-react-modal/compare/v1.0.3-alpha.0...v1.0.3-alpha.1) (2025-01-18)
+
+### [1.0.3-alpha.0](https://github.com/acrool/acrool-react-modal/compare/v1.0.2...v1.0.3-alpha.0) (2025-01-18)
+
 ### [1.0.2](https://github.com/acrool/acrool-react-modal/compare/v1.0.1...v1.0.2) (2024-12-15)
 
 ### [1.0.1](https://github.com/acrool/acrool-react-modal/compare/v1.0.0...v1.0.1) (2024-11-02)

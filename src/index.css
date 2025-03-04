@@ -1,5 +1,15 @@
-body.acrool__modal-open {
+body[class*="acrool__modal-open__"] {
     overflow: hidden;
     overscroll-behavior-x: contain;
     max-width: 100vw;
+}
+body[class*="acrool__modal-open-fixed__"] {
+    overflow: hidden;
+    overscroll-behavior-x: contain;
+    max-width: 100vw;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }

@@ -36,8 +36,8 @@ const CreateModalWithClickMaskClose = () => {
 export default createModal(
     CreateModalWithClickMaskClose,
     {
-        ...animation.generateFadeIn(),
-        isEnableHideWithClickMask: true,
+        animation: animation.generateFadeInFromTop(),
+        isHideWithMaskClick: true,
         className: 'p-3',
     },
 );

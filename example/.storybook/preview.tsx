@@ -5,7 +5,7 @@ import { themes } from '@storybook/theming';
 
 import '@acrool/react-grid/dist/index.css';
 import {GridThemeProvider} from "@acrool/react-grid";
-import {ModalPortal} from "@acrool/react-modal";
+import {ModalProvider} from "@acrool/react-modal";
 
 
 const preview: Preview = {
@@ -24,8 +24,9 @@ const preview: Preview = {
   decorators: [
       (Story) => (
           <GridThemeProvider>
-            <Story />
-            <ModalPortal/>
+            <ModalProvider>
+                <Story />
+            </ModalProvider>
           </GridThemeProvider>
       ),
   ],

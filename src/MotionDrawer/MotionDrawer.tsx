@@ -1,8 +1,7 @@
 import {clsx} from 'clsx';
-import {AnimatePresence, motion} from 'framer-motion';
-import React, {ForwardedRef, ReactNode, useEffect} from 'react';
+import {motion} from 'framer-motion';
+import React, {ForwardedRef, ReactNode, useEffect, useId} from 'react';
 
-import animation from '../animation';
 import BodyScroll from '../bodyScroll';
 import {useModal} from '../ModalProvider';
 import {IModalOptions} from '../types';
@@ -11,14 +10,17 @@ import styles from './motion-drawer.module.scss';
 
 
 const maskMotionProps: IModalOptions = {
-    variants: {
-        initial: {opacity: 0, transition: {type:'spring'}},
-        animate: {opacity: 1, transition: {type: 'just'}},
-        exit: {opacity: 0},
-    },
-    transition: {
-        duration: .3,
+    animation: {
+        variants: {
+            initial: {opacity: 0, transition: {type:'spring'}},
+            animate: {opacity: 1},
+            exit: {opacity: 0},
+        },
+        transition: {
+            duration: .2,
+        }
     }
+
 };
 
 
@@ -40,55 +42,68 @@ const MotionDrawer = ({
     modalOptions,
     children,
 }: IProps, ref?: ForwardedRef<HTMLDivElement>) => {
-    const {className, isEnableHideWithClickMask, ...motionProps} = modalOptions ?? {className: ''};
-    
+    const {style, className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, isFixedDisabled, animation} = modalOptions ?? {className: ''};
+    const id = useId();
+
     const {hide} = useModal();
 
 
     useEffect(() => {
         // 鎖背景
-        BodyScroll.disableBodyScroll();
+        if(!isBodyScrollEnable){
+            BodyScroll.disableBodyScroll(id);
+        }
         return () => {
-            BodyScroll.enableBodyScroll();
+            if(!isBodyScrollEnable) {
+                BodyScroll.enableBodyScroll(id);
+            }
         };
-    }, []);
+    }, [isBodyScrollEnable]);
 
 
     /**
      * 渲染主內容
      */
     const renderMain = () => {
-        if(isEmpty(motionProps)) {
+        if(isEmpty(animation)) {
             return children;
         }
-        
+
         return <motion.div
             transition={{type: 'spring', duration: .2}}
             className={clsx(styles.motionAnimationWrapper, className)}
+            style={style}
             // variants={animation.fadeInDown}
-            {...motionProps}
+            {...animation}
             initial="initial"
             animate="animate"
             exit="exit"
         >
             {children}
         </motion.div>;
-
-
     };
 
 
-    return <div className={styles.motionDrawer} ref={ref}>
-        <motion.div
+    const renderMask = () => {
+
+        if(isMaskHidden){
+            return;
+        }
+
+        return <motion.div
             className={styles.motionMaskWrapper}
-            {...maskMotionProps}
+            {...maskMotionProps.animation}
             initial="initial"
             animate="animate"
             exit="exit"
-            data-enable-click={isEnableHideWithClickMask}
-            onClick={isEnableHideWithClickMask ? hide: undefined}
-        />
+            data-enable-click={isHideWithMaskClick}
+            onClick={isHideWithMaskClick ? hide : undefined}
+        />;
+    };
 
+
+    return <div className={clsx(styles.motionDrawer, {[styles.fixedDisabled]: isFixedDisabled})} ref={ref}>
+        {renderMask()}
         {renderMain()}
     </div>;
 };
