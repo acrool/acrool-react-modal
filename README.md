@@ -20,7 +20,7 @@
 </div>
 
 
-
+`^1.1.0 support react >=19.0.0 <20.0.0`
 
 
 ## Features
@@ -35,16 +35,11 @@
 ## Install
 
 ```bash
-yarn add framer-motion @acrool/react-modal
+yarn add @acrool/react-modal
 ```
 
 in your packages. (Make the version of styled-component you use match the version of styled-component used in acrool-react-gird)
 
-```json
-"resolutions": {
-    "framer-motion": "^11.x"
-}
-```
 
 ## Usage
 

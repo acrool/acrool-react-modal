@@ -29,7 +29,7 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
 
         const [isVisible, setVisible] = useState(true);
 
-        const resolveRef = useRef<() => void>();
+        const resolveRef = useRef<() => void>(null);
         const queueKey = modalOptions?.queueKey ?? createQueueKey();
 
 
