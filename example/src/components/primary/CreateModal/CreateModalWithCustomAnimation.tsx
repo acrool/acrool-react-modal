@@ -17,7 +17,7 @@ const CreateModalWithCustomAnimation = () => {
     const {hide} = useModal();
 
     return <CreateTaskModalRoot
-        {...animation.generateFadeIn()}
+        {...animation.generateFadeInFromTop()}
     >
         <Card title="With Custom Animation" direction="column">
             <p>

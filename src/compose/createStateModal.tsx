@@ -29,7 +29,7 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
 
         const [isVisible, setVisible] = useState(true);
 
-        const resolveRef = useRef<() => void>();
+        const resolveRef = useRef<() => void>(null);
         const queueKey = modalOptions?.queueKey ?? createQueueKey();
 
 
@@ -70,7 +70,10 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
             <ReactDidMountPortal
                 containerSelector={() => document.getElementById(rootId)}
             >
-                <AnimatePresence onExitComplete={handleOnExitComplete}>
+                <AnimatePresence
+                    mode={modalOptions?.animatePresenceMode}
+                    onExitComplete={handleOnExitComplete}
+                >
                     {isVisible &&
                         <MotionDrawer modalOptions={modalOptions}>
                             <ModalComponent {...args as T & {}} />

@@ -5,9 +5,10 @@ import {AnimatePresence} from 'framer-motion';
 import React from 'react';
 
 import {rootId} from './config';
+import {GlobalModalContext} from './GlobalModalProvider';
 import styles from './modal.module.scss';
 import {ModalProviderContext} from './ModalProvider';
-import {IModal, IModalPortalProps, IRow, THidden, TShow} from './types';
+import {IModal, IModalPortalProps, IRow, THidden, TShow, TShowWithKey} from './types';
 import {createQueueKey, removeByIndex} from './utils';
 
 
@@ -39,25 +40,49 @@ class Modal extends React.Component<IModalPortalProps, IState> {
 
         modal = {
             show: this.show,
+            showWithKey: this.showWithKey,
             hide: this.hide,
         };
     }
 
     /**
      * 顯示 Toaster
+     * (自動 QueueKey)
      * @param ModalComponent
      * @param args
      */
     show: TShow = (ModalComponent, args) => {
         const queueKey = createQueueKey();
+        this.showWithKey(ModalComponent, queueKey, args);
+    };
+
+    /**
+     * 顯示 Toaster
+     * (手動 QueueKey)
+     * @param ModalComponent
+     * @param queueKey
+     * @param args
+     */
+    showWithKey: TShowWithKey = (ModalComponent, queueKey, args) => {
         this.setState(prev => {
+            if(this.typeProps._onShow){
+                this.typeProps._onShow(queueKey);
+            }
+
+            const activeIdx = prev.rows.findIndex(row => row.queueKey === queueKey);
+            if(activeIdx === -1){
+                return {
+                    rows: [...prev.rows, {queueKey, ModalComponent, args}],
+                };
+            }
+
+            const cloneRow = [...prev.rows];
+            cloneRow[activeIdx] = {queueKey, ModalComponent, args};
+
             return {
-                rows: [...prev.rows, {queueKey, ModalComponent, args}],
+                rows: cloneRow,
             };
         });
-        if(this.typeProps._onShow){
-            this.typeProps._onShow(queueKey);
-        }
     };
 
 
@@ -105,15 +130,26 @@ class Modal extends React.Component<IModalPortalProps, IState> {
 
 
     render() {
-        return <ReactPortal
-            id={this.typeProps.id}
-            className={styles.root}
-            containerSelector={this.typeProps.containerSelector}
+        return <GlobalModalContext.Provider
+            value={{
+                hide: this.hide,
+            }}
         >
-            <AnimatePresence>
-                {this.renderItems()}
-            </AnimatePresence>
-        </ReactPortal>;
+
+            {this.props.children}
+
+            <ReactPortal
+                id={this.typeProps.id}
+                className={styles.root}
+                containerSelector={this.typeProps.containerSelector}
+            >
+                <AnimatePresence mode={this.typeProps.animatePresenceMode}>
+                    {this.renderItems()}
+                </AnimatePresence>
+            </ReactPortal>
+                
+        </GlobalModalContext.Provider>;
+
     }
 }
 

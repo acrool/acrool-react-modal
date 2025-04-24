@@ -8,7 +8,7 @@ interface IContextProps {
 }
 
 export const ModalProviderContext = createContext<IContextProps>({
-    hide: async () => Logger.warning('No hide method detected, did you embed your app with Acrool/ModalPortal?'),
+    hide: async () => Logger.warning('No Modal/hide method detected, did you embed your app with Acrool/ModalPortal?'),
 });
 
 export const ModalProviderConsumer = ModalProviderContext.Consumer;

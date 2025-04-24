@@ -24,7 +24,14 @@ const CreateModalPrimary = () => {
                 <a href="https://acrool.com" target="_blank" rel="noreferrer">Link</a>
             </p>
 
+
+            <Button color="primary" onClick={PrimaryWithDisabledBodyScroll.show}>
+                Open
+            </Button>
+
             <Button color="grayDanger" onClick={hide}>Close</Button>
+
+
         </Card>
 
 
@@ -34,8 +41,35 @@ const CreateModalPrimary = () => {
 export default createModal(
     CreateModalPrimary,
     {
-        ...animation.generateFadeIn(),
-        className: 'p-3'
+        animation: animation.generateFadeInFromTop(),
+        className: 'p-3',
+        isBodyScrollEnable: true,
+        isHideWithMaskClick: true,
+        isMaskHidden: false
+    },
+);
+
+
+export const PrimaryWithHideMask = createModal(
+    CreateModalPrimary,
+    {
+        animation: animation.generateFadeInFromTop(),
+        className: 'p-3',
+        isBodyScrollEnable: true,
+        isHideWithMaskClick: true,
+        isMaskHidden: true
+    },
+);
+
+
+export const PrimaryWithDisabledBodyScroll = createModal(
+    CreateModalPrimary,
+    {
+        animation: animation.generateFadeInFromTop(),
+        className: 'p-3',
+        isBodyScrollEnable: false,
+        isHideWithMaskClick: true,
+        isMaskHidden: true
     },
 );
 
