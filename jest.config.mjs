@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     coverageDirectory: 'coverage',
     preset: 'ts-jest',
     testEnvironment: 'jsdom',
