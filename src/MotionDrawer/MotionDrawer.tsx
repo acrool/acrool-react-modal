@@ -27,7 +27,7 @@ const maskMotionProps: IModalOptions = {
 
 
 interface IProps {
-    modalOptions?: IModalOptions,
+    modalOptions?: IModalOptions
     children: ReactNode
 }
 

@@ -29,9 +29,9 @@ interface IControlVisibleStatus {
 
 export interface IModalPortalProps extends IControlVisibleStatus{
     id?: string
-    containerSelector?: () => HTMLElement | null;
-    animatePresenceMode?: AnimatePresenceProps['mode'];
-    children: React.ReactNode,
+    containerSelector?: () => HTMLElement | null
+    animatePresenceMode?: AnimatePresenceProps['mode']
+    children?: React.ReactNode
 }
 
 
@@ -42,8 +42,8 @@ export type TAnimationVariants = Partial<Record<TVariantKey, Variant>>;
 
 // export type TAnimationConfig = Pick<IModalOptions, 'variants'|'style'|'transition'> & TVariantKeys;
 export type TAnimationConfig = {
-    variants?: TAnimationVariants
-    transition?: Transition
+    variants?: TAnimationVariants,
+    transition?: Transition,
 }
 
 export interface IModalOptions {
@@ -58,6 +58,6 @@ export interface IModalOptions {
 
 export interface IStageModalOptions extends IModalOptions, IControlVisibleStatus{
     queueKey?: string
-    animatePresenceMode?: AnimatePresenceProps['mode'],
+    animatePresenceMode?: AnimatePresenceProps['mode']
 }
 
