@@ -57,8 +57,8 @@
     "@acrool/js-logger": "^1.0.23",
     "@acrool/react-portal": "^1.1.2",
     "clsx": "^2.1.1",
-    "framer-motion": "12.7.4",
-    "ulid": "^2.3.0"
+    "ulid": "^2.3.0",
+    "framer-motion": "11.18.2"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-ts": "^3.0.1",
