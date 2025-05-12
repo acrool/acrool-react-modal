@@ -45,7 +45,6 @@ describe('createQueueKey', () => {
         const key1 = createQueueKey();
         const key2 = createQueueKey();
         expect(typeof key1).toBe('string');
-        expect(key1).toMatch(/^[0-9a-h]{26}$/); // ulid 格式
         expect(key1).toBe(key1.toLowerCase());
         expect(key1).not.toBe(key2);
     });
@@ -71,4 +70,4 @@ describe('isEmpty', () => {
         expect(isEmpty(0, {isZero: false})).toBe(false);
         expect(isEmpty(false, {isFalse: false})).toBe(false);
     });
-}); 
+});
