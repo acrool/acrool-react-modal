@@ -1,5 +1,5 @@
 import {clsx} from 'clsx';
-import {motion} from 'framer-motion';
+import {motion, useIsPresent} from 'framer-motion';
 import React, {ForwardedRef, ReactNode, useEffect, useId} from 'react';
 
 import BodyScroll from '../bodyScroll';
@@ -27,7 +27,7 @@ const maskMotionProps: IModalOptions = {
 
 
 interface IProps {
-    modalOptions?: IModalOptions,
+    modalOptions?: IModalOptions
     children: ReactNode
 }
 
@@ -44,21 +44,28 @@ const MotionDrawer = ({
 }: IProps, ref?: ForwardedRef<HTMLDivElement>) => {
     const {style, className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, isFixedDisabled, animation} = modalOptions ?? {className: ''};
     const id = useId();
+    const isPresent = useIsPresent();
 
     const {hide} = useModal();
 
+    useEffect(() => {
+        if(!isBodyScrollEnable) {
+            if (isPresent) {
+                BodyScroll.disableBodyScroll(id);
+            } else {
+                BodyScroll.enableBodyScroll(id);
+            }
+        }
+    }, [isPresent]);
+
 
     useEffect(() => {
-        // 鎖背景
-        if(!isBodyScrollEnable){
-            BodyScroll.disableBodyScroll(id);
-        }
         return () => {
             if(!isBodyScrollEnable) {
                 BodyScroll.enableBodyScroll(id);
             }
         };
-    }, [isBodyScrollEnable]);
+    }, []);
 
 
     /**
@@ -73,7 +80,6 @@ const MotionDrawer = ({
             transition={{type: 'spring', duration: .2}}
             className={clsx(styles.motionAnimationWrapper, className)}
             style={style}
-            // variants={animation.fadeInDown}
             {...animation}
             initial="initial"
             animate="animate"

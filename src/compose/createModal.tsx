@@ -38,8 +38,8 @@ type TModalShowWithKeyMulti<T> = T extends undefined ? TModalShowWithKey :
 type TMotionModal<T> =
     React.FC<T> &
     {
-        show: TModalShowMulti<T>
-        showWithKey: TModalShowWithKeyMulti<T>
+        show: TModalShowMulti<T>,
+        showWithKey: TModalShowWithKeyMulti<T>,
     }
 
 /**

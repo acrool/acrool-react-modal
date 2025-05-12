@@ -3,7 +3,7 @@ import React, {createContext, useContext} from 'react';
 
 
 interface IContextProps {
-    queueKey?: string,
+    queueKey?: string
     hide: () => Promise<void>
 }
 
