@@ -22,7 +22,6 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "browser": "./dist/acrool-react-modal.es.js",
       "import": "./dist/acrool-react-modal.es.js"
     },
     "./dist/index.css": "./dist/react-modal.css"
