@@ -47,7 +47,7 @@ export type TAnimationConfig = {
 }
 
 export interface IModalOptions {
-    animation: TAnimationConfig
+    animation?: TAnimationConfig
     className?: string
     style?: CSS.Properties
     isMaskHidden?: boolean
