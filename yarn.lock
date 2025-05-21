@@ -2773,6 +2773,11 @@ cz-customizable@6.6.0:
     temp "^0.9.0"
     word-wrap "^1.2.3"
 
+cz-git@1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/cz-git/-/cz-git-1.6.1.tgz#8e7db8204b1c663cef566f124941133a28e3d85d"
+  integrity sha512-+ohk/MFETERw4o/WpN3hUk7GM8oAwnaQI/uDuREGm4/B+G3DghGvNZQ/0MbFqZHWgKWvMzNZI6eKmPo0uPCu1A==
+
 dargs@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/dargs/-/dargs-7.0.0.tgz#04015c41de0bcb69ec84050f3d9be0caf8d6d5cc"
