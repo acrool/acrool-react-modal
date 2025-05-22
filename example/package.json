@@ -10,7 +10,8 @@
     "pages:deploy": "NODE_VERSION=18 yarn build-storybook && wrangler pages deploy ./storybook-static --project-name=acrool-react-modal --branch main"
   },
   "resolutions": {
-    "styled-components": "6.1.17"
+    "styled-components": "6.1.17",
+    "framer-motion": "^12.x"
   },
   "dependencies": {
     "@acrool/js-utils": "^3.2.15",
@@ -33,6 +34,7 @@
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "dom-to-image": "^2.6.0",
+    "framer-motion": "12",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "sass": "^1.77.1",

@@ -38,7 +38,15 @@
 yarn add @acrool/react-modal framer-motion@12
 ```
 
-in your packages. (Make the version of styled-component you use match the version of styled-component used in acrool-react-gird)
+in your packages.
+
+```json
+{
+    "resolutions": {
+        "framer-motion": "^12.x"
+    }
+}
+```
 
 
 ## Usage
