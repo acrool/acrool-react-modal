@@ -71,7 +71,7 @@ export const WithQueueKeyGlobalHidden: Story = {
 
 
 
-        return <MyPage/>
+        return <MyPage/>;
     },
 };
 

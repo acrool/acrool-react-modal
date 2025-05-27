@@ -13,6 +13,7 @@ export interface IModal {
     show: TShow
     showWithKey: TShowWithKey
     hide: THidden
+    hideAll: THiddenAll
 }
 
 
@@ -20,6 +21,7 @@ export interface IModal {
 export type TShow = <T>(children: React.FC<T>, args?: T) => void
 export type TShowWithKey = <T>(children: React.FC<T>, queueKey: string, args?: T) => void
 export type THidden = (queueKey: string) => void;
+export type THiddenAll = (ignoreKeys?: string[]) => void;
 
 
 interface IControlVisibleStatus {

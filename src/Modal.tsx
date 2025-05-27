@@ -8,7 +8,7 @@ import {rootId} from './config';
 import {GlobalModalContext} from './GlobalModalProvider';
 import styles from './modal.module.scss';
 import {ModalProviderContext} from './ModalProvider';
-import {IModal, IModalPortalProps, IRow, THidden, TShow, TShowWithKey} from './types';
+import {IModal, IModalPortalProps, IRow, THidden, THiddenAll, TShow, TShowWithKey} from './types';
 import {createQueueKey, removeByIndex} from './utils';
 
 
@@ -42,11 +42,12 @@ class Modal extends React.Component<IModalPortalProps, IState> {
             show: this.show,
             showWithKey: this.showWithKey,
             hide: this.hide,
+            hideAll: this.hideAll,
         };
     }
 
     /**
-     * 顯示 Toaster
+     * 顯示 Modal
      * (自動 QueueKey)
      * @param ModalComponent
      * @param args
@@ -57,7 +58,7 @@ class Modal extends React.Component<IModalPortalProps, IState> {
     };
 
     /**
-     * 顯示 Toaster
+     * 顯示 Modal
      * (手動 QueueKey)
      * @param ModalComponent
      * @param queueKey
@@ -87,7 +88,7 @@ class Modal extends React.Component<IModalPortalProps, IState> {
 
 
     /**
-     * 隱藏 Toaster
+     * 隱藏 Modal
      * @param queueKey
      */
     hide: THidden = (queueKey) => {
@@ -101,6 +102,22 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         if(this.typeProps._onHide){
             this.typeProps._onHide(queueKey);
         }
+    };
+
+    /**
+     * 隱藏所有 Modal
+     */
+    hideAll: THiddenAll = (ignoreKeys) => {
+        this.setState(prev => {
+            const acc = prev.rows.filter(row => ignoreKeys?.includes(row.queueKey));
+            return {
+                rows: acc,
+            };
+        });
+
+        // if(this.typeProps._onHide){
+        //     this.typeProps._onHide(queueKey);
+        // }
     };
 
 
@@ -133,6 +150,7 @@ class Modal extends React.Component<IModalPortalProps, IState> {
         return <GlobalModalContext.Provider
             value={{
                 hide: this.hide,
+                hideAll: this.hideAll,
             }}
         >
 
@@ -147,7 +165,7 @@ class Modal extends React.Component<IModalPortalProps, IState> {
                     {this.renderItems()}
                 </AnimatePresence>
             </ReactPortal>
-                
+
         </GlobalModalContext.Provider>;
 
     }
