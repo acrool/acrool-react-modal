@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0-alpha.0](https://github.com/acrool/acrool-react-modal/compare/v1.1.5...v1.2.0-alpha.0) (2025-05-27)
+
+
+### Features
+
+* add gloabl modal hide all func ([1c8ec1a](https://github.com/acrool/acrool-react-modal/commit/1c8ec1aedb1d461481835d2063f57692ece29d8e))
+
 ### [1.1.5](https://github.com/acrool/acrool-react-modal/compare/v1.1.5-alpha.2...v1.1.5) (2025-05-21)
 
 ### [1.1.5-alpha.2](https://github.com/acrool/acrool-react-modal/compare/v1.1.5-alpha.1...v1.1.5-alpha.2) (2025-05-21)
