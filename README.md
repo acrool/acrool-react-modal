@@ -48,6 +48,8 @@ in your packages.
 }
 ```
 
+> ⚠️ If you do not rely on the project's internal `framer-motion`, the internal self-implemented AnimatePresence will be affected and produce unexpected results.
+
 
 ## Usage
 
@@ -224,7 +226,7 @@ const ExamplePage = () => {
 
 
 
-- [animation](src/animation.ts)
+- 😁 [Animation Sample](src/animation.ts)
   - fadeInDown: (default), ex Base modal style
   - zoomInDown
   - slideInLeft: ex Drawer slider
