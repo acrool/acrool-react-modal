@@ -48,7 +48,7 @@ export type TAnimationConfig = {
     transition?: Transition,
 }
 
-export interface IModalOptions {
+export interface IModalOptions extends IControlVisibleStatus{
     animation?: TAnimationConfig
     className?: string
     style?: CSS.Properties
@@ -58,7 +58,7 @@ export interface IModalOptions {
     isFixedDisabled?: boolean
 }
 
-export interface IStageModalOptions extends IModalOptions, IControlVisibleStatus{
+export interface IStageModalOptions extends IModalOptions{
     queueKey?: string
     animatePresenceMode?: AnimatePresenceProps['mode']
 }

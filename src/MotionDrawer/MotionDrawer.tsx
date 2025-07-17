@@ -42,7 +42,7 @@ const MotionDrawer = ({
     modalOptions,
     children,
 }: IProps, ref?: ForwardedRef<HTMLDivElement>) => {
-    const {style, className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, isFixedDisabled, animation} = modalOptions ?? {className: ''};
+    const {style, className, isMaskHidden, isHideWithMaskClick, isBodyScrollEnable, isFixedDisabled, animation, _onHide, _onShow} = modalOptions ?? {className: ''};
     const id = useId();
     const isPresent = useIsPresent();
 
@@ -66,6 +66,14 @@ const MotionDrawer = ({
             }
         };
     }, []);
+
+    useEffect(() => {
+        if(_onShow) _onShow(id);
+
+        return () => {
+            if(_onHide) _onHide(id);
+        };
+    }, [_onShow, _onHide]);
 
 
     /**

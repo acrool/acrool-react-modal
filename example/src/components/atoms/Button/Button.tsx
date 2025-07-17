@@ -61,11 +61,11 @@ const Button = ({
             className={className}
             type={type}
             style={style}
-            color={color}
-            size={size}
-            isBlock={isBlock}
-            isOutline={isOutline}
-            isLink={isLink}
+            $color={color}
+            $size={size}
+            $isBlock={isBlock}
+            $isOutline={isOutline}
+            $isLink={isLink}
             onClick={handleClick}
             onMouseDown={onMouseDown}
             disabled={disabled}
@@ -82,11 +82,11 @@ export default Button;
 
 
 const ButtonRoot = styled.button<{
-    isBlock?: boolean,
-    isOutline?: boolean,
-    isLink?: boolean,
-    color?: TThemeColor,
-    size?: TLabelSize,
+    $isBlock?: boolean,
+    $isOutline?: boolean,
+    $isLink?: boolean,
+    $color?: TThemeColor,
+    $size?: TLabelSize,
     onClick?: any,
 }>`
 
@@ -102,13 +102,13 @@ const ButtonRoot = styled.button<{
     border-radius: .25rem;
     transition: background .15s ease-in-out, color .15s ease-in-out,background-color .15s ease-in-out,box-shadow .15s ease-in-out, transform .15s;
     border: 0 solid #444;
-    width: ${props => props.isBlock ? '100%': 'auto'};
+    width: ${props => props.$isBlock ? '100%': 'auto'};
     white-space:nowrap;
     box-shadow: none;
 
 
-    ${props => getThemeColor(props.color)}
-    ${props => getSize(props.size)}
+    ${props => getThemeColor(props.$color)}
+    ${props => getSize(props.$size)}
 
 
 
@@ -125,7 +125,7 @@ const ButtonRoot = styled.button<{
 
 
 
-    ${props => props.isOutline && css`
+    ${props => props.$isOutline && css`
         color: var(--button-bg-color);
         border-color: var(--button-bg-color);
         background-color: transparent;
