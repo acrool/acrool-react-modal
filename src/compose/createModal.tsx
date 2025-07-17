@@ -3,6 +3,7 @@ import React from 'react';
 import {modal} from '../Modal';
 import MotionDrawer from '../MotionDrawer';
 import {IModalOptions} from '../types';
+import {createQueueKey} from '../utils';
 
 
 
@@ -50,13 +51,15 @@ type TMotionModal<T> =
  * @param modalOptions
  */
 function createModal<T = undefined>(ModalComponent: React.FC<T>, modalOptions?: IModalOptions): ICreateModal<T> {
+    const {_effect, ...options} = modalOptions ?? {} as IModalOptions;
+
     /**
      * Add framer motion
      * @param args
      */
     const MotionModal: TMotionModal<T> = (args?: T) => {
         return (
-            <MotionDrawer modalOptions={modalOptions}>
+            <MotionDrawer modalOptions={options}>
                 <ModalComponent {...args as T & {}} />
             </MotionDrawer>
         );
@@ -66,11 +69,14 @@ function createModal<T = undefined>(ModalComponent: React.FC<T>, modalOptions?: 
     function show();
     function show(args: T): void;
     function show(args?: T): void {
+        const queueKey = createQueueKey();
+
         if (args) {
-            modal.show(MotionModal, args);
+            modal.showWithKey(MotionModal, queueKey, args, _effect?.onHide);
         } else {
-            modal.show(MotionModal);
+            modal.showWithKey(MotionModal, queueKey, undefined, _effect?.onHide);
         }
+        if(_effect?.onShow) _effect.onShow(queueKey);
     }
 
     // Overload signatures
@@ -78,10 +84,11 @@ function createModal<T = undefined>(ModalComponent: React.FC<T>, modalOptions?: 
     function showWithKey(queueKey: string, args: T): void;
     function showWithKey(queueKey: string, args?: T): void {
         if (args) {
-            modal.showWithKey(MotionModal, queueKey, args);
+            modal.showWithKey(MotionModal, queueKey, args, _effect?.onHide);
         } else {
-            modal.showWithKey(MotionModal, queueKey);
+            modal.showWithKey(MotionModal, queueKey, undefined, _effect?.onHide);
         }
+        if(_effect?.onShow) _effect.onShow(queueKey);
     }
 
     // Assign the overloaded function to MotionModal.show

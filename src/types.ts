@@ -7,6 +7,7 @@ export interface IRow<T = any> {
     queueKey: string
     ModalComponent: React.FC<T>
     args?: T
+    onHide?: (queryKey: string) => void
 }
 
 export interface IModal {
@@ -16,17 +17,18 @@ export interface IModal {
     hideAll: THiddenAll
 }
 
+type TOnHide = (queryKey: string) => void
 
 
-export type TShow = <T>(children: React.FC<T>, args?: T) => void
-export type TShowWithKey = <T>(children: React.FC<T>, queueKey: string, args?: T) => void
+export type TShow = <T>(children: React.FC<T>, args?: T, onHide?: TOnHide) => void
+export type TShowWithKey = <T>(children: React.FC<T>, queueKey: string, args?: T, onHide?: TOnHide) => void
 export type THidden = (queueKey: string) => void;
 export type THiddenAll = (ignoreKeys?: string[]) => void;
 
 
 interface IControlVisibleStatus {
-    _onShow?: (queueKey: string) => void
-    _onHide?: (queueKey: string) => void
+    onShow?: (queueKey: string) => void
+    onHide?: (queueKey: string) => void
 }
 
 export interface IModalPortalProps extends IControlVisibleStatus{
@@ -48,7 +50,7 @@ export type TAnimationConfig = {
     transition?: Transition,
 }
 
-export interface IModalOptions extends IControlVisibleStatus{
+export interface IModalOptions{
     animation?: TAnimationConfig
     className?: string
     style?: CSS.Properties
@@ -56,6 +58,7 @@ export interface IModalOptions extends IControlVisibleStatus{
     isHideWithMaskClick?: boolean
     isBodyScrollEnable?: boolean
     isFixedDisabled?: boolean
+    _effect?: IControlVisibleStatus
 }
 
 export interface IStageModalOptions extends IModalOptions{

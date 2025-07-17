@@ -28,11 +28,13 @@ export default createModal(
         animation: animation.zoomInCenter,
         isHideWithMaskClick: true,
         // isFixedDisabled: false,
-        _onShow: () => {
-            console.log('onShow');
-        },
-        _onHide: () => {
-            console.log('onHide');
+        _effect: {
+            onShow: () => {
+                console.log('event onShow');
+            },
+            onHide: () => {
+                console.log('event onHide');
+            }
         }
     }
 );

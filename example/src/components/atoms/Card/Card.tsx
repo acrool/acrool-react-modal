@@ -34,9 +34,9 @@ const Card = ({
         <CardRoot style={style}
             className={className}
             onClick={onClick}
-            isGutter={isGutter}
+            $isGutter={isGutter}
         >
-            <CardBody direction={direction} fluid={fluid} className="gap-2">
+            <CardBody $direction={direction} $fluid={fluid} className="gap-2">
                 {title && <CardTitle>{title}</CardTitle>}
                 {children}
             </CardBody>
@@ -50,17 +50,17 @@ export default Card;
 
 
 const CardBody = styled.div<{
-    fluid?: boolean,
-    direction?: 'row'|'column',
+    $fluid?: boolean,
+    $direction?: 'row'|'column',
 }>`
     height: 100%;
     display: flex;
     //overflow: hidden; // 影響正常項目跑版
-    flex-direction: ${props => props.direction === 'column' ? 'column': 'row'};
-    padding: ${props => props.fluid ? 0: '5px 10px'};
+    flex-direction: ${props => props.$direction === 'column' ? 'column': 'row'};
+    padding: ${props => props.$fluid ? 0: '5px 10px'};
 
     ${props => media.lg`
-      padding: ${props.fluid ? 0: '10px 20px'};
+      padding: ${props.$fluid ? 0: '10px 20px'};
     `}
 `;
 
@@ -74,7 +74,7 @@ const CardTitle = styled.h3`
 `;
 
 const CardRoot = styled.div<{
-    isGutter: boolean,
+    $isGutter: boolean,
 }>`
 
   //margin-bottom: 15px;
@@ -92,7 +92,7 @@ const CardRoot = styled.div<{
   width: 100%;
 
 
-  ${props => props.isGutter && css`
+  ${props => props.$isGutter && css`
       border-color: transparent;
       background: transparent;
       ${CardBody}{

@@ -35,7 +35,15 @@ export default createStateModal(
     CreateStateModalPrimary,
     {
         animation: animation.generateFadeInFromTop(),
-        className: 'p-3'
+        className: 'p-3',
+        _effect: {
+            onShow: () => {
+                console.log('event onShow');
+            },
+            onHide: () => {
+                console.log('event onHide');
+            }
+        }
     },
 );
 

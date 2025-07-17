@@ -51,10 +51,12 @@ class Modal extends React.Component<IModalPortalProps, IState> {
      * (自動 QueueKey)
      * @param ModalComponent
      * @param args
+     * @param onHide
      */
-    show: TShow = (ModalComponent, args) => {
+    show: TShow = (ModalComponent, args, onHide) => {
         const queueKey = createQueueKey();
-        this.showWithKey(ModalComponent, queueKey, args);
+
+        this.showWithKey(ModalComponent, queueKey, args, onHide);
     };
 
     /**
@@ -63,17 +65,18 @@ class Modal extends React.Component<IModalPortalProps, IState> {
      * @param ModalComponent
      * @param queueKey
      * @param args
+     * @param onHide
      */
-    showWithKey: TShowWithKey = (ModalComponent, queueKey, args) => {
+    showWithKey: TShowWithKey = (ModalComponent, queueKey, args, onHide) => {
         this.setState(prev => {
-            if(this.typeProps._onShow){
-                this.typeProps._onShow(queueKey);
+            if(this.typeProps.onShow){
+                this.typeProps.onShow(queueKey);
             }
 
             const activeIdx = prev.rows.findIndex(row => row.queueKey === queueKey);
             if(activeIdx === -1){
                 return {
-                    rows: [...prev.rows, {queueKey, ModalComponent, args}],
+                    rows: [...prev.rows, {queueKey, ModalComponent, args, onHide}],
                 };
             }
 
@@ -94,13 +97,17 @@ class Modal extends React.Component<IModalPortalProps, IState> {
     hide: THidden = (queueKey) => {
         this.setState(prev => {
             const index = prev.rows.findIndex(row => row.queueKey === queueKey);
+
+            const {onHide} = prev.rows[index];
+            if(onHide) onHide(queueKey);
+
             return {
                 rows: removeByIndex(prev.rows, index),
             };
         });
 
-        if(this.typeProps._onHide){
-            this.typeProps._onHide(queueKey);
+        if(this.typeProps.onHide){
+            this.typeProps.onHide(queueKey);
         }
     };
 

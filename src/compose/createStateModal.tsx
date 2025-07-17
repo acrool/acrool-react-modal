@@ -1,6 +1,6 @@
 import {ReactDidMountPortal} from '@acrool/react-portal';
 import {AnimatePresence} from 'framer-motion';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 
 import {rootId} from '../config';
 import {ModalProviderContext} from '../ModalProvider';
@@ -34,9 +34,9 @@ function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageM
 
 
         useEffect(() => {
-            if(modalOptions?._onShow) modalOptions._onShow(queueKey);
+            if(modalOptions?._effect?.onShow) modalOptions._effect.onShow(queueKey);
             return () => {
-                if(modalOptions?._onHide) modalOptions._onHide(queueKey);
+                if(modalOptions?._effect?.onHide) modalOptions._effect.onHide(queueKey);
             };
         }, []);
 
