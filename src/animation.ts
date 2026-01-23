@@ -15,7 +15,10 @@ const defaultVariant = {
  * @param formY
  * @param toY
  */
-const generateFadeInFromTop = (formY = 20, toY = 40): TAnimationConfig => {
+const generateFadeInFromTop = (
+    formY = 20,
+    toY: number | string = 'calc(40px + env(safe-area-inset-top))'
+): TAnimationConfig => {
     return {
         ...defaultVariant,
         variants: {
