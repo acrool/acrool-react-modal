@@ -1,6 +1,6 @@
 {
   "name": "@acrool/react-modal",
-  "version": "1.2.0-alpha.4",
+  "version": "1.2.0",
   "description": "Modal library based for Reactjs",
   "keywords": [
     "acrool",

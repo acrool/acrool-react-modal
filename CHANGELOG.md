@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/acrool/acrool-react-modal/compare/v1.2.0-alpha.4...v1.2.0) (2026-02-02)
+
+
+### Bug Fixes
+
+* 修正 onHide 函數的調用方式 ([740c6b3](https://github.com/acrool/acrool-react-modal/commit/740c6b340191530baf2688df02bb215cd29b216d))
+
 ## [1.2.0-alpha.4](https://github.com/acrool/acrool-react-modal/compare/v1.2.0-alpha.3...v1.2.0-alpha.4) (2026-02-02)
 
 ## [1.2.0-alpha.3](https://github.com/acrool/acrool-react-modal/compare/v1.2.0-alpha.2...v1.2.0-alpha.3) (2026-01-23)
