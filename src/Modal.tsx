@@ -97,6 +97,7 @@ class Modal extends React.Component<IModalPortalProps, IState> {
     hide: THidden = (queueKey) => {
         this.setState(prev => {
             const index = prev.rows.findIndex(row => row.queueKey === queueKey);
+            if(index === -1) return prev;
 
             const {onHide} = prev.rows[index];
             if(onHide) onHide(queueKey);
