@@ -99,8 +99,8 @@ class Modal extends React.Component<IModalPortalProps, IState> {
             const index = prev.rows.findIndex(row => row.queueKey === queueKey);
             if(index === -1) return prev;
 
-            const {onHide} = prev.rows[index];
-            if(onHide) onHide(queueKey);
+            const curr = prev.rows[index];
+            if(curr?.onHide) curr.onHide(queueKey);
 
             return {
                 rows: removeByIndex(prev.rows, index),
