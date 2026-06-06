@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0-alpha.0](https://github.com/acrool/acrool-react-modal/compare/v1.2.0...v1.3.0-alpha.0) (2026-06-06)
+
+
+### Features
+
+* 多層光箱共用單一遮罩，並修正換層時的閃爍與延遲 ([13794ae](https://github.com/acrool/acrool-react-modal/commit/13794ae68fe34a3efc19ee0319fe857e0b483ab7))
+
 ## [1.2.0](https://github.com/acrool/acrool-react-modal/compare/v1.2.0-alpha.4...v1.2.0) (2026-02-02)
 
 
