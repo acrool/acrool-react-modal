@@ -58,6 +58,17 @@ export interface IModalOptions{
     isHideWithMaskClick?: boolean
     isBodyScrollEnable?: boolean
     isFixedDisabled?: boolean
+    /**
+     * 共用遮罩模式（預設 `true`）
+     *
+     * 開啟時：多層 Modal 共用「唯一一張」全域遮罩（由 ModalProvider 掛載的 <SharedMask>）。
+     * 這張遮罩永遠卡在「最上層 Modal 正下方」—— 最上層清楚顯示、其餘下層被壓暗。
+     * 疊一層遮罩往上挪一格、關一層往下挪一格，全程同一個 DOM、opacity 不變，
+     * 因此換層時不會閃爍，也不會因每層各疊一張而「越疊越黑」。
+     *
+     * 設為 `false` 可回到舊行為（每層 Modal 各自獨立渲染一張遮罩）。
+     */
+    isSharedMask?: boolean
     _effect?: IControlVisibleStatus
 }
 
