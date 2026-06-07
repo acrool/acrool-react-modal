@@ -8,6 +8,7 @@ import {rootId} from './config';
 import {GlobalModalContext} from './GlobalModalProvider';
 import styles from './modal.module.scss';
 import {ModalProviderContext} from './ModalProvider';
+import SharedMask from './MotionDrawer/SharedMask';
 import {IModal, IModalPortalProps, IRow, THidden, THiddenAll, TShow, TShowWithKey} from './types';
 import {createQueueKey, removeByIndex} from './utils';
 
@@ -169,6 +170,9 @@ class Modal extends React.Component<IModalPortalProps, IState> {
                 className={styles.root}
                 containerSelector={this.typeProps.containerSelector}
             >
+                {/* 唯一一張共用遮罩，訂閱 maskStore，永遠卡在最上層 Modal 正下方 */}
+                <SharedMask />
+
                 <AnimatePresence mode={this.typeProps.animatePresenceMode}>
                     {this.renderItems()}
                 </AnimatePresence>
