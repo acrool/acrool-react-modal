@@ -20,13 +20,15 @@
 </div>
 
 
+`^2.0.0 support react >=19.0.0 <20.0.0, animation by motion (Web Animations API), no framer-motion`
+
 `^1.1.0 support react >=19.0.0 <20.0.0, framer-motion@12`
 
 
 ## Features
 
 - Supports queue modal list
-- Plug and unplug using `@acrool/react-portal` and `framer-motion`
+- Plug and unplug using `@acrool/react-portal` and `motion` (AnimatePresence + mini animate)
 - Quickly create light box effects and send them to the outside to avoid hierarchical problems
 - Support [@acrool/react-router-hash](https://github.com/acrool/acrool-react-router-hash) lightbox (using createControlledModal)
 - Modal open auto add `acrool_model-open` body overflow style class
@@ -35,20 +37,30 @@
 ## Install
 
 ```bash
-yarn add @acrool/react-modal framer-motion@12
+yarn add @acrool/react-modal
 ```
 
-in your packages.
+> `motion` is installed as a dependency. If your project also uses `motion`, keep a single copy (same major version) so the `AnimatePresence` context is shared.
 
-```json
-{
-    "resolutions": {
-        "framer-motion": "^12.x"
-    }
-}
+### Migrating from 1.x
+
+`animation` is no longer framer-motion `variants` / `transition`. It is now `{style, enter, exit}`:
+
+```ts
+createModal(MyModal, {
+    animation: {
+        // static style (positioning), not animated
+        style: {position: 'absolute', left: '50%', top: '40px'},
+        // keyframes are played by the Web Animations API; write translate / scale as a transform string
+        enter: {keyframes: {opacity: [0, 1], transform: ['translate(-50%, -20px)', 'translate(-50%, 0px)']}, options: {duration: .2}},
+        exit: {keyframes: {opacity: 0, transform: 'translate(-50%, -20px)'}, options: {duration: .2}},
+    },
+});
 ```
 
-> ⚠️ If you do not rely on the project's internal `framer-motion`, the internal self-implemented AnimatePresence will be affected and produce unexpected results.
+- `options.ease` accepts `linear` / `easeIn` / `easeOut` / `easeInOut` or a cubic-bezier array. Spring is not supported.
+- The built-in presets (`animation.zoomInCenter`, `animation.generateFadeInFromTop()` ...) keep the same names.
+- Animations are skipped when the user enables "reduce motion".
 
 
 ## Usage

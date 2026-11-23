@@ -1,7 +1,7 @@
 import {delay} from '@acrool/js-utils/promise';
 import {Flex} from '@acrool/react-grid';
-import {animation, createModal, useModal} from '@acrool/react-modal';
-import {motion} from 'framer-motion';
+import {createModal, useModal} from '@acrool/react-modal';
+import {motion} from 'motion/react';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
@@ -15,6 +15,8 @@ import Card from '../../atoms/Card';
  *
  *
  * PS: 示範用客製化光箱
+ * 光箱本身不設定動畫，等資料回來後由內容自己播進場 (這裡自行使用 motion/react 的 motion.div，
+ * 離場時 AnimatePresence 仍會等它播完)
  */
 const CreateModalWithFetchWait = () => {
     const {hide} = useModal();
@@ -38,7 +40,11 @@ const CreateModalWithFetchWait = () => {
     }
 
     return <CreateTaskModalRoot
-        {...animation.generateFadeInFromTop()}
+        style={{position: 'absolute', left: '50%', top: 40, x: '-50%'}}
+        initial={{opacity: 0, y: -20}}
+        animate={{opacity: 1, y: 0}}
+        exit={{opacity: 0, y: -20}}
+        transition={{duration: .2}}
     >
         <Card title="With Fetch Wait" direction="column">
             <p>
