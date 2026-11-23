@@ -1,5 +1,5 @@
 import CSS from 'csstype';
-import {AnimatePresenceProps, Transition, Variant} from 'framer-motion';
+import type {AnimatePresenceProps} from 'motion/react';
 import React from 'react';
 
 
@@ -40,14 +40,37 @@ export interface IModalPortalProps extends IControlVisibleStatus{
 
 
 
-type TVariantKey = 'initial'|'animate'|'exit';
-type TVariantKeys = Record<TVariantKey, string>;
-export type TAnimationVariants = Partial<Record<TVariantKey, Variant>>;
+/**
+ * 動畫曲線: 具名曲線，或貝茲曲線的四個數值
+ */
+export type TModalEase = 'linear'|'easeIn'|'easeOut'|'easeInOut'|[number, number, number, number];
 
-// export type TAnimationConfig = Pick<IModalOptions, 'variants'|'style'|'transition'> & TVariantKeys;
+type TKeyframeValue = string|number;
+
+/**
+ * 一段動畫 (由 Web Animations API 播放)
+ * keyframes: CSS 屬性對應的影格，單一值代表「由目前狀態到該值」，陣列代表完整影格
+ * 位移、縮放請寫成 transform 字串，例如 {transform: ['translateY(20px)', 'translateY(0px)']}
+ */
+export interface IModalAnimation {
+    keyframes: Record<string, TKeyframeValue|TKeyframeValue[]>
+    options?: {
+        duration?: number,
+        delay?: number,
+        ease?: TModalEase,
+    }
+}
+
+/**
+ * 光箱內容的動畫設定
+ * style: 不參與動畫的固定樣式 (例如定位)
+ * enter: 進場動畫
+ * exit: 離場動畫
+ */
 export type TAnimationConfig = {
-    variants?: TAnimationVariants,
-    transition?: Transition,
+    style?: CSS.Properties,
+    enter?: IModalAnimation,
+    exit?: IModalAnimation,
 }
 
 export interface IModalOptions{

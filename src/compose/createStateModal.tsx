@@ -1,5 +1,5 @@
 import {ReactDidMountPortal} from '@acrool/react-portal';
-import {AnimatePresence} from 'framer-motion';
+import {AnimatePresence} from 'motion/react';
 import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 
 import {rootId} from '../config';
@@ -13,7 +13,7 @@ interface ICreateStateModal<T> extends React.FC<T>{
 }
 
 /**
- * 產生帶 framer-motion 功能的Modal Component
+ * 產生帶進場、離場動畫的Modal Component
  *
  * 當渲染時直接會插入到 Portal
  * @param ModalComponent
@@ -21,7 +21,7 @@ interface ICreateStateModal<T> extends React.FC<T>{
  */
 function createStateModal<T>(ModalComponent: React.FC<T>, modalOptions?: IStageModalOptions): ICreateStateModal<T>{
     /**
-     * Add framer motion
+     * Add motion
      * Add state
      * @param args
      */

@@ -10,11 +10,23 @@
   margin: 0 auto;
 
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
+
+  // 離場動畫期間不攔截點擊
+  &[data-exiting] {
+    pointer-events: none;
+
+    .motion-mask-wrapper {
+      pointer-events: none;
+    }
+  }
 
   &.fixedDisabled{
     display: contents;
@@ -25,7 +37,10 @@
 .motion-mask-wrapper {
     background: rgba(0, 0, 0, 0.8);
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     z-index: var(--modal-msak-index, var(--default-modal-msak-index));
     pointer-events: auto;

@@ -44,7 +44,7 @@ type TMotionModal<T> =
     }
 
 /**
- * 產生帶 framer-motion 功能的Modal
+ * 產生帶進場、離場動畫的Modal
  *
  * 需要呼叫 show 才會傳送到 portal
  * @param ModalComponent
@@ -54,7 +54,7 @@ function createModal<T = undefined>(ModalComponent: React.FC<T>, modalOptions?: 
     const {_effect, ...options} = modalOptions ?? {} as IModalOptions;
 
     /**
-     * Add framer motion
+     * Add motion
      * @param args
      */
     const MotionModal: TMotionModal<T> = (args?: T) => {
