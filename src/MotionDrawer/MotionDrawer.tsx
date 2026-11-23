@@ -211,9 +211,15 @@ const MotionDrawer = ({
      * 共用遮罩模式下，依本層 token 給定遞增 z-index（越上層越大），
      * 讓全域 <SharedMask> 能把自己卡在「最上層」與「下一層」之間。
      * 非共用模式維持 scss 預設值。
+     *
+     * isFixedDisabled 時外層是 display: contents，本身沒有盒子、z-index 不生效，
+     * 主內容會直接與共用遮罩比層級，所以主內容也要帶同一個 z-index，否則會被遮罩蓋住。
      */
     const drawerStyle = token !== null
-        ? {['--modal-drawer-index' as string]: getDrawerZIndex(token)} as React.CSSProperties
+        ? {
+            ['--modal-drawer-index' as string]: getDrawerZIndex(token),
+            ['--modal-main-index' as string]: getDrawerZIndex(token),
+        } as React.CSSProperties
         : undefined;
 
     return <div
