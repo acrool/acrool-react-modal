@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/acrool/acrool-react-modal/compare/v1.3.0-alpha.0...v2.0.0) (2026-11-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* replace framer-motion with motion mini and externalize jsx-runtime
+
+### Features
+
+* merge shared mask and play it with motion mini ([420e0f3](https://github.com/acrool/acrool-react-modal/commit/420e0f38df50adc80d491bbc7676de684547ac51))
+* replace framer-motion with motion mini and externalize jsx-runtime ([89ef284](https://github.com/acrool/acrool-react-modal/commit/89ef284cf5352d0a517daed98dc2cbb444dff6de))
+
+
+### Bug Fixes
+
+* keep isFixedDisabled modal content above the shared mask ([e937ca1](https://github.com/acrool/acrool-react-modal/commit/e937ca139ed5abf46dd603c0257eb8d4ffebee3a))
+
 ## [1.3.0-alpha.0](https://github.com/acrool/acrool-react-modal/compare/v1.2.0...v1.3.0-alpha.0) (2026-06-06)
 
 
