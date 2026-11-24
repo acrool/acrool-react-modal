@@ -246,12 +246,11 @@ const ExamplePage = () => {
   - slideInLeft: ex Drawer slider
   - slideInRight: ex Drawer slider
   - slideInUp: ex Dropdown
-  - custom (ref; https://www.framer.com/motion/animate-presence/#usage)
+  - custom: `{style, enter, exit}`, see [Migrating from 1.x](#migrating-from-1x)
    ```tsx
-  variants = {
-     initial: {opacity: 0, y: -20, transition: {type:'spring'}},
-     animate: {opacity: 1, y: 0},
-     exit: {opacity: 0, y: -40}
+  animation = {
+     enter: {keyframes: {opacity: [0, 1], transform: ['translateY(-20px)', 'translateY(0px)']}, options: {duration: .2}},
+     exit: {keyframes: {opacity: 0, transform: 'translateY(-40px)'}, options: {duration: .2}},
   }
   ```
 
